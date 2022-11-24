@@ -1,6 +1,6 @@
 const myName = "Margo";
-let myAge = 45;
-let bigInt = 123456789n;
+let myAge = 31;
+let cryptoWalletKey = 123456789n;
 let isAdult = true;
 let list = null;
 let myCountry = undefined;
@@ -12,7 +12,11 @@ let myAddress = {
 
 console.log(String(myName), Number(myName), Boolean(myName));
 console.log(String(myAge), Number(myAge), Boolean(myAge));
-console.log(String(bigInt), Number(bigInt), Boolean(bigInt));
+console.log(
+  String(cryptoWalletKey),
+  Number(cryptoWalletKey),
+  Boolean(cryptoWalletKey)
+);
 console.log(String(isAdult), Number(isAdult), Boolean(isAdult));
 console.log(String(list), Number(list), Boolean(list));
 console.log(String(myCountry), Number(myCountry), Boolean(myCountry));
