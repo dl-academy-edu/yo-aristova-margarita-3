@@ -15,7 +15,7 @@
 /*
   Import all other blocks
 */
-@import "_blocks/container";
+
 @import "_blocks/footer";
 
 /*
@@ -34,27 +34,3 @@
   Не стал выносить в отдельный файл, но если бы блок coming-soon действительно был бы нужен,
   то он должен был бы быть в файле _blocks/coming-soon.scss
 */
-
-.coming-soon {
-  color: $color-text;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  min-height: calc(100vh - 100px);
-  margin: auto;
-  padding: 0 5vw;
-
-  &__title {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
-    font-size: 25vw;
-    font-weight: 400;
-    margin: 0 auto;
-    text-transform: uppercase;
-    width: 100%;
-  }
-}
