@@ -2,6 +2,31 @@
   box-sizing: border-box;
 }
 
+/*
+* Fonts
+*/
+
+@font-face {
+  font-family: "Gilroy-400", sans-serif;
+  src: url("../fonts/Gilroy-400.woff") format("woff"),
+    url("../fonts/Gilroy-400.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy-500", sans-serif;
+  src: url("../fonts/Gilroy-500.woff") format("woff"),
+    url("../fonts/Gilroy-500.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy-700", sans-serif;
+  src: url("../fonts/Gilroy-700.woff") format("woff"),
+    url("../fonts/Gilroy-700.woff2") format("woff2");
+  font-style: normal;
+}
+
 body {
   font-family: "Gilroy-400", sans-serif;
   font-weight: 400;
@@ -39,4 +64,30 @@ fieldset {
   border: none;
   margin: 0;
   padding: 0;
+}
+
+.subtitle {
+  font-weight: 700;
+  font-size: 34px;
+  line-height: 41px;
+  text-align: center;
+  color: $secondary;
+}
+
+.info {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.button {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: 2.5px solid $secondary;
+  border-radius: 30px;
+  background-color: $primary;
+  cursor: pointer;
+  padding: 10px 19px;
 }

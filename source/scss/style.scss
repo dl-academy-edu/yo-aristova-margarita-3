@@ -16,6 +16,8 @@
   Import all other blocks
 */
 
+@import "_blocks/container";
+@import "_blocks/header";
 @import "_blocks/footer";
 
 /*
@@ -27,10 +29,4 @@
   Для именования селекторов давайте придерживаться стиля two dashes
   (https://ru.bem.info/methodology/naming-convention/#%D1%81%D1%82%D0%B8%D0%BB%D1%8C-two-dashes)
   block-name__element-name--modificator
-*/
-
-/*
-  Код ниже нужно удалить, он добавлен просто для примера
-  Не стал выносить в отдельный файл, но если бы блок coming-soon действительно был бы нужен,
-  то он должен был бы быть в файле _blocks/coming-soon.scss
 */

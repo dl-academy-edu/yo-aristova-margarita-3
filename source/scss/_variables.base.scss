@@ -1,29 +1,4 @@
 /*
-* Fonts
-*/
-
-@font-face {
-  font-family: "Gilroy-400", sans-serif;
-  src: url("../fonts/Gilroy-400.woff") format("woff"),
-    url("../fonts/Gilroy-400.woff2") format("woff2");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Gilroy-500", sans-serif;
-  src: url("../fonts/Gilroy-500.woff") format("woff"),
-    url("../fonts/Gilroy-500.woff2") format("woff2");
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Gilroy-700", sans-serif;
-  src: url("../fonts/Gilroy-700.woff") format("woff"),
-    url("../fonts/Gilroy-700.woff2") format("woff2");
-  font-style: normal;
-}
-
-/*
 * Breakpoints
 */
 
@@ -37,3 +12,4 @@ $media-desktop: 1200px;
 
 $primary: #fff;
 $secondary: #151515;
+$base-grey: #828282;

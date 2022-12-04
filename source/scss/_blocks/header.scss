@@ -1,0 +1,27 @@
+.header {
+  padding-top: 33px;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 33px;
+  border-bottom: 1px solid $base-grey;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 20px;
+  }
+  &__link {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    color: $base-grey;
+    &--checked {
+      font-weight: 700;
+      color: $secondary;
+    }
+  }
+}
