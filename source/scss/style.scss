@@ -30,3 +30,44 @@
   (https://ru.bem.info/methodology/naming-convention/#%D1%81%D1%82%D0%B8%D0%BB%D1%8C-two-dashes)
   block-name__element-name--modificator
 */
+
+.about {
+  background-color: #f6f6f6;
+  padding: 60px 0 87px 0;
+  &__title {
+    margin-bottom: 51px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 45px;
+    margin: 0 auto;
+    max-width: 578px;
+  }
+  &__info {
+    position: relative;
+    border: 2.5px solid $secondary;
+    max-width: 478px;
+    padding: 15px;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      bottom: -50px;
+      border: 25px solid transparent;
+      border-top: 25px solid $secondary;
+    }
+    &::after {
+      border-top: 25px solid #f6f6f6;
+      bottom: -48px;
+    }
+  }
+  &__info--left {
+    align-self: flex-end;
+    &::before,
+    &::after {
+      transform: translateX(-380px);
+    }
+  }
+}
