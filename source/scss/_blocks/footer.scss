@@ -50,3 +50,14 @@
   column-gap: 10px;
   max-width: 340px;
 }
+
+@media screen and (max-width: 480px) {
+  .footer {
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__info {
+      margin-bottom: 40px;
+    }
+  }
+}
