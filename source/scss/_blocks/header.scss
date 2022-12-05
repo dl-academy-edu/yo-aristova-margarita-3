@@ -1,5 +1,8 @@
 .header {
   padding-top: 33px;
+  @media screen and (max-width: 480px) {
+    display: none;
+  }
 }
 
 .nav {
