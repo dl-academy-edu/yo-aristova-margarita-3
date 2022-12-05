@@ -35,7 +35,7 @@
   background-color: #f6f6f6;
   padding: 60px 0 87px 0;
   &__title {
-    margin-bottom: 51px;
+    margin-bottom: 50px;
   }
   &__wrapper {
     display: flex;
@@ -67,7 +67,38 @@
     align-self: flex-end;
     &::before,
     &::after {
-      transform: translateX(-380px);
+      right: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .about {
+    &__wrapper {
+      max-width: 400px;
+    }
+    &__info {
+      max-width: 100%;
+    }
+    &__info--left::before,
+    &__info--left::after {
+      right: 325px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about {
+    padding: 40px 0 65px 0;
+    &__title {
+      margin-bottom: 30px;
+    }
+    &__wrapper {
+      max-width: 100%;
+    }
+    &__info--left::before,
+    &__info--left::after {
+      right: 200px;
     }
   }
 }
