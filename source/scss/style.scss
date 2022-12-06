@@ -33,6 +33,15 @@
 
 .main {
   padding: 40px 0 60px 0;
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 546px;
+  }
+  &__info {
+    max-width: 227px;
+  }
 }
 
 .about {
