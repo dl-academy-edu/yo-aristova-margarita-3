@@ -106,6 +106,62 @@
           </ul>
         </div>
       </section>
+      <section class="portfolio">
+        <div class="container">
+          <h2 class="subtitle portfolio__title">Portfolio</h2>
+          <div class="portfolio__wrapper">
+            <picture>
+              <!-- <source
+                srcset="./img/monster.png, ./img/monster-2x.png 2x"
+                width="292"
+                height="226"
+                media="(max-width: 676px)"
+              />
+              <source
+                srcset="./img/monster.png, ./img/monster-2x.png 2x"
+                media="(max-width: 1200px)"
+                width="385"
+                height="286"
+              /> -->
+              <source
+                srcset="./img/monster.png, ./img/monster-2x.png 2x"
+                width="1000"
+                height="604"
+              />
+              <img
+                src="./img/monster.png"
+                alt="Image: Monster Project Cover"
+                width="1000"
+                height="604"
+              />
+            </picture>
+            <div class="portfolio__overlay">
+              <a href="#"
+                ><p class="info portfolio__info">
+                  Learning site for DL Academy courses
+                </p></a
+              >
+              <p class="portfolio__description">
+                A simple multi-page static site. The design layout was in Figma.
+                HTML and CSS were used. The site is responsive and
+                cross-browser, but without adding interactivity via JavaScript.
+              </p>
+            </div>
+            <button class="arrow-button portfolio__button">
+              <svg class="arrow-button__icon" width="43" height="61">
+                <use xlink:href="./img/sprite.svg#arrow-prev"></use>
+              </svg>
+            </button>
+            <button
+              class="arrow-button portfolio__button portfolio__button--right"
+            >
+              <svg class="arrow-button__icon" width="43" height="61">
+                <use xlink:href="./img/sprite.svg#arrow-next"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
     @@include('blocks/footer.html')
 

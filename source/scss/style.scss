@@ -204,3 +204,57 @@
     }
   }
 }
+
+.portfolio {
+  background-color: #f6f6f6;
+  padding: 60px 0 60px 0;
+  &__title {
+    margin-bottom: 50px;
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    background-color: $secondary;
+    opacity: 0.85;
+    width: 100%;
+    padding: 33px 0 33px 0;
+  }
+  &__info {
+    font-family: "Gilroy-500", sans-serif;
+    color: $primary;
+    border-bottom: 1px $primary dashed;
+    max-width: 400px;
+  }
+  &__description {
+    font-family: "Gilroy-500", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: $primary;
+    text-align: center;
+    max-width: 400px;
+  }
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    &--right {
+      left: 940px;
+    }
+  }
+}
+
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
