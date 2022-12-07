@@ -173,3 +173,34 @@
     background-color: #e5e5e5;
   }
 }
+
+@media screen and (max-width: 992px) {
+  .skills {
+    &__list {
+      row-gap: 40px;
+    }
+  }
+  .progress {
+    column-gap: 10px;
+    &__line {
+      width: 111px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills {
+    padding: 40px 0 40px 0;
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__info {
+      margin-bottom: 40px;
+    }
+  }
+  .progress {
+    &__line {
+      width: 94px;
+    }
+  }
+}
