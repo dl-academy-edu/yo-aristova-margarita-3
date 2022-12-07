@@ -258,3 +258,30 @@
   cursor: pointer;
   padding: 0;
 }
+
+@media screen and (max-width: 992px) {
+  .portfolio__button {
+    left: 17px;
+    &--right {
+      left: 588px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .portfolio__button {
+    left: 0;
+    &--right {
+      left: 440px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+    padding: 40px 0 40px 0;
+    &__title {
+      margin-bottom: 30px;
+    }
+  }
+}
