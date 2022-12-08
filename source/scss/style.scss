@@ -230,7 +230,9 @@
   &__info {
     font-family: "Gilroy-500", sans-serif;
     color: $primary;
-    border-bottom: 1px $primary dashed;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-align: center;
     max-width: 400px;
   }
   &__description {
@@ -282,6 +284,15 @@
     padding: 40px 0 40px 0;
     &__title {
       margin-bottom: 30px;
+    }
+    &__button--right {
+      left: 235px;
+    }
+    &__overlay {
+      padding: 20px 15px;
+    }
+    &__info {
+      max-width: 160px;
     }
   }
 }
