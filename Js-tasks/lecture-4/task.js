@@ -125,12 +125,12 @@ const data = [
 ];
 
 const extensions = (string) => {
-  if (string.length === 0) return "";
   const extensionsArray = string.split(",");
+  let newExtensionsString = "";
   for (let item in extensionsArray) {
     extensionsArray[item] = `.${extensionsArray[item].trim()}`;
   }
-  const newExtensionsString = extensionsArray.join(", ");
+  newExtensionsString = extensionsArray.join(", ");
   return newExtensionsString;
 };
 
@@ -146,17 +146,38 @@ const languages = (array) => {
   return newLanguagesString;
 };
 
-const firstStory = `${data[0].name} - язык программирования, выпущенный в ${
-  data[0].year
-}. Автором языка стал ${developers[0].name} - ${
-  developers[0].work
-}. Файлы программ, написанных на ${
-  data[0].name
-}, могут иметь расширения ${extensions(data[0].filenameExtensions)}. ${
-  data[0].name
-} испытал влияние ${
-  data[0].influencedBy.length
-} языков программирования: ${data[0].influencedBy.join(", ")}. ${
-  data[0].name
-} повлиял на ${languages(data[0].affectedBy)}.`;
-console.log(firstStory);
+function countdown() {
+  console.log(time, "ожидание...");
+  time--;
+  if (time < 0) {
+    clearTimeout(timer);
+  } else {
+    timer = setTimeout(countdown, 1000);
+  }
+}
+
+let timer;
+let time = 9;
+
+console.log("Через 10 секунд будет выведена информация");
+countdown();
+
+setTimeout(function () {
+  for (let i = 0; i < 3; i++) {
+    console.log();
+    const story = `${data[i].name} - язык программирования, выпущенный в ${
+      data[i].year
+    }. Автором языка стал ${developers[i].name} - ${
+      developers[i].work
+    }. Файлы программ, написанных на ${
+      data[i].name
+    }, могут иметь расширения ${extensions(data[i].filenameExtensions)}. ${
+      data[i].name
+    } испытал влияние ${
+      data[i].influencedBy.length
+    } языков программирования: ${data[i].influencedBy.join(", ")}. ${
+      data[i].name
+    } повлиял на ${languages(data[i].affectedBy)}.`;
+    console.log(story);
+  }
+}, 10000);
