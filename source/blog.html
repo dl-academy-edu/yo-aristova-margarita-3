@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="google" content="notranslate" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>My Blog</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <script>
+      var docElement = document.documentElement;
+      docElement.className =
+        docElement.className.replace(/\bno-js\b/, "") + " js";
+    </script>
+
+    <!-- Favicon -->
+
+    <!-- build:css -->
+    <link href="css/style.min.css" rel="stylesheet" />
+    <!-- endbuild -->
+  </head>
+  <body>
+    @@include('blocks/header.html')
+    <main>
+      <section class="blog">
+        <h1 class="title">My blog</h1>
+        <form action="#" class="reset">
+          <button class="button">Reset</button>
+        </form>
+      </section>
+    </main>
+    @@include('blocks/footer.html')
+
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

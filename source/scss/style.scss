@@ -15,7 +15,9 @@
 /*
   Import all other blocks
 */
+
 @import "_blocks/container";
+@import "_blocks/header";
 @import "_blocks/footer";
 
 /*
@@ -29,32 +31,268 @@
   block-name__element-name--modificator
 */
 
-/*
-  Код ниже нужно удалить, он добавлен просто для примера
-  Не стал выносить в отдельный файл, но если бы блок coming-soon действительно был бы нужен,
-  то он должен был бы быть в файле _blocks/coming-soon.scss
-*/
+.main {
+  padding: 40px 0 60px 0;
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 546px;
+  }
+  &__info {
+    max-width: 227px;
+  }
+}
 
-.coming-soon {
-  color: $color-text;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  min-height: calc(100vh - 100px);
-  margin: auto;
-  padding: 0 5vw;
+@media screen and (max-width: 480px) {
+  .main {
+    padding: 30px 0 36px 0;
+    &__block {
+      flex-direction: column;
+      align-items: flex-start;
+      row-gap: 20px;
+    }
+    &__info {
+      max-width: 205px;
+    }
+  }
+}
 
+.about {
+  background-color: #f6f6f6;
+  padding: 60px 0 87px 0;
   &__title {
+    margin-bottom: 50px;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 45px;
+    margin: 0 auto;
+    max-width: 578px;
+  }
+  &__info {
+    position: relative;
+    border: 2.5px solid $secondary;
+    max-width: 478px;
+    padding: 15px;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      bottom: -50px;
+      border: 25px solid transparent;
+      border-top: 25px solid $secondary;
+    }
+    &::after {
+      border-top: 25px solid #f6f6f6;
+      bottom: -48px;
+    }
+  }
+  &__info--left {
+    align-self: flex-end;
+    &::before,
+    &::after {
+      right: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .about {
+    &__wrapper {
+      max-width: 400px;
+    }
+    &__info {
+      max-width: 100%;
+    }
+    &__info--left::before,
+    &__info--left::after {
+      right: 325px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about {
+    padding: 40px 0 65px 0;
+    &__title {
+      margin-bottom: 30px;
+    }
+    &__wrapper {
+      max-width: 100%;
+    }
+    &__info--left::before,
+    &__info--left::after {
+      right: 200px;
+    }
+  }
+}
+
+.skills {
+  padding: 60px 0 60px 0;
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__info {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  &__list {
     display: flex;
     align-items: center;
-    flex-direction: row;
     justify-content: space-between;
-    font-size: 25vw;
-    font-weight: 400;
-    margin: 0 auto;
-    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 22px;
+  }
+  &__program {
+    text-align: center;
+  }
+}
+
+.skill {
+  font-family: "Gilroy-700";
+  font-size: 14px;
+  line-height: 17px;
+  color: $base-grey;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  &__line {
+    width: 142px;
+    height: 9px;
+    background-color: #e5e5e5;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .skills {
+    &__list {
+      row-gap: 40px;
+    }
+  }
+  .progress {
+    column-gap: 10px;
+    &__line {
+      width: 111px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .skills {
+    padding: 40px 0 40px 0;
+    &__title {
+      margin-bottom: 10px;
+    }
+    &__info {
+      margin-bottom: 40px;
+    }
+  }
+  .progress {
+    &__line {
+      width: 94px;
+    }
+  }
+}
+
+.portfolio {
+  background-color: #f6f6f6;
+  padding: 60px 0 60px 0;
+  &__title {
+    margin-bottom: 50px;
+  }
+  &__wrapper {
+    position: relative;
+  }
+  &__overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+    background-color: $secondary;
+    opacity: 0.85;
     width: 100%;
+    padding: 33px 0 33px 0;
+  }
+  &__info {
+    font-family: "Gilroy-500", sans-serif;
+    color: $primary;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-align: center;
+    max-width: 400px;
+  }
+  &__description {
+    font-family: "Gilroy-500", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    color: $primary;
+    text-align: center;
+    max-width: 400px;
+  }
+  &__button {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    &--right {
+      left: 940px;
+    }
+  }
+}
+
+.arrow-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media screen and (max-width: 992px) {
+  .portfolio__button {
+    left: 17px;
+    &--right {
+      left: 588px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .portfolio__button {
+    left: 0;
+    &--right {
+      left: 440px;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .portfolio {
+    padding: 40px 0 40px 0;
+    &__title {
+      margin-bottom: 30px;
+    }
+    &__button--right {
+      left: 235px;
+    }
+    &__overlay {
+      padding: 20px 15px;
+    }
+    &__info {
+      max-width: 160px;
+    }
   }
 }

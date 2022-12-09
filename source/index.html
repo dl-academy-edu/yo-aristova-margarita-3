@@ -1,39 +1,170 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="no-js">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="google" content="notranslate">
-    <meta name="format-detection" content="telephone=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="google" content="notranslate" />
+    <meta name="format-detection" content="telephone=no" />
 
-    <title>DL Academy</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+    <title>Rita Aristova</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
 
     <script>
       var docElement = document.documentElement;
-      docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
+      docElement.className =
+        docElement.className.replace(/\bno-js\b/, "") + " js";
     </script>
 
     <!-- Favicon -->
 
     <!-- build:css -->
-    <link href="css/style.min.css" rel="stylesheet">
+    <link href="css/style.min.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
   <body>
-    <div class="wrapper">
-      <main class="content">
-        <div class="coming-soon">
-          <h1 class="coming-soon__title">
-            <span>A</span>
-            <span>T</span>
-            <span>X</span>
-          </h1>
+    @@include('blocks/header.html')
+    <main>
+      <section class="main">
+        <div class="container">
+          <div class="main__block">
+            <h1 class="title">Rita Aristova</h1>
+            <p class="info main__info">
+              Future front-end developer, 31 years old, Tolyatti
+            </p>
+          </div>
         </div>
-      </main>
-      @@include('blocks/footer.html')
-    </div>
+      </section>
+      <section class="about">
+        <div class="container">
+          <h2 class="subtitle about__title">About me</h2>
+          <div class="about__wrapper">
+            <p class="info about__info">
+              Aliquam tortor molestie turpis est tristique. Congue diam orci
+              amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies
+              euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac
+              elit vel sagittis.
+            </p>
+            <p class="info about__info about__info--left">
+              Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam
+              dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non
+              justo. Etiam platea consectetur.
+            </p>
+            <p class="info about__info">
+              Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis
+              risus nec vitae nunc ultricies placerat. Nullam nec felis eu id
+              dolor pellentesque tristique.
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="skills">
+        <div class="container">
+          <h2 class="subtitle skills__title">Skills</h2>
+          <p class="info skills__info">I work in such programs as</p>
+          <ul class="skills__list">
+            <li class="skills__item">
+              <img src="./img/html.png" alt="Image: Html" />
+              <span class="skill skills__program">HTML 5</span>
+              <div class="progress">
+                <span class="skill progress__number">85%</span>
+                <div class="progress__line"></div>
+              </div>
+            </li>
+            <li class="skills__item">
+              <img src="./img/css.png" alt="Image: CSS" />
+              <span class="skill skills__program">CSS/SCSS</span>
+              <div class="progress">
+                <span class="skill progress__number">55%</span>
+                <div class="progress__line"></div>
+              </div>
+            </li>
+            <li class="skills__item">
+              <img src="./img/js.png" alt="Image: JavaScript" />
+              <span class="skill skills__program">JavaScript</span>
+              <div class="progress">
+                <span class="skill progress__number">5%</span>
+                <div class="progress__line"></div>
+              </div>
+            </li>
+            <li class="skills__item">
+              <img src="./img/git.png" alt="Image: Git" />
+              <span class="skill skills__program">Git/GitHub</span>
+              <div class="progress">
+                <span class="skill progress__number">15%</span>
+                <div class="progress__line"></div>
+              </div>
+            </li>
+            <li class="skills__item">
+              <img src="./img/figma.png" alt="Image: Figma" />
+              <span class="skill skills__program">Figma</span>
+              <div class="progress">
+                <span class="skill progress__number">80%</span>
+                <div class="progress__line"></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="portfolio">
+        <div class="container">
+          <h2 class="subtitle portfolio__title">Portfolio</h2>
+          <div class="portfolio__wrapper">
+            <picture>
+              <source
+                srcset="
+                  ./img/monster-mobile.png,
+                  ./img/monster-mobile-2x.png 2x
+                "
+                media="(max-width: 480px)"
+              />
+              <source
+                srcset="
+                  ./img/monster-tablet.png,
+                  ./img/monster-tablet-2x.png 2x
+                "
+                width="100%"
+                media="(max-width: 992px)"
+              />
+              <source
+                srcset="./img/monster.png, ./img/monster-2x.png 2x"
+                width="100%"
+                height="604"
+              />
+              <img
+                src="./img/monster.png"
+                alt="Image: Monster Project Cover"
+                width="100%"
+                height="604"
+              />
+            </picture>
+            <div class="portfolio__overlay">
+              <a href="#" class="info portfolio__info">
+                Learning site for DL Academy courses
+              </a>
+              <p class="portfolio__description">
+                A simple multi-page static site. The design layout was in Figma.
+                HTML and CSS were used. The site is responsive and
+                cross-browser, but without adding interactivity via JavaScript.
+              </p>
+            </div>
+            <button class="arrow-button portfolio__button">
+              <svg class="arrow-button__icon" width="43" height="61">
+                <use xlink:href="./img/sprite.svg#arrow-prev"></use>
+              </svg>
+            </button>
+            <button
+              class="arrow-button portfolio__button portfolio__button--right"
+            >
+              <svg class="arrow-button__icon" width="43" height="61">
+                <use xlink:href="./img/sprite.svg#arrow-next"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('blocks/footer.html')
 
     <script src="js/app.js" defer></script>
   </body>
