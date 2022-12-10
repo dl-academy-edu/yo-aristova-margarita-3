@@ -33,4 +33,8 @@
     </filter>
     </defs>
   </symbol>
+  <symbol id="close" width="26" height="26" viewBox="0 0 26 26" fill="none">
+    <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill="#828282"/>
+    <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill="#828282"/>
+  </symbol>
 </svg>

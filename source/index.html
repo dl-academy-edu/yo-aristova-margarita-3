@@ -148,15 +148,15 @@
                 cross-browser, but without adding interactivity via JavaScript.
               </p>
             </div>
-            <button class="arrow-button portfolio__button">
-              <svg class="arrow-button__icon" width="43" height="61">
+            <button class="button-link portfolio__button">
+              <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-prev"></use>
               </svg>
             </button>
             <button
-              class="arrow-button portfolio__button portfolio__button--right"
+              class="button-link portfolio__button portfolio__button--right"
             >
-              <svg class="arrow-button__icon" width="43" height="61">
+              <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-next"></use>
               </svg>
             </button>
@@ -165,6 +165,18 @@
       </section>
     </main>
     @@include('blocks/footer.html')
+    <section class="sign-in sign-in--visible">
+      <h1 class="hidden">Sign in</h1>
+      <div class="sign-in__overlay"></div>
+      <div class="sign-in__dialog">
+        <button class="button-link sign-in__close">
+          <svg width="26" height="26">
+            <use xlink:href="./img/sprite.svg#close"></use>
+          </svg>
+        </button>
+        <form action="#" class="form"></form>
+      </div>
+    </section>
 
     <script src="js/app.js" defer></script>
   </body>
