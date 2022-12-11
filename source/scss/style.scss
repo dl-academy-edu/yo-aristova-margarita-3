@@ -309,11 +309,13 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 11;
-    width: 680px;
   }
   &__close {
     position: absolute;
     top: 0;
     right: -36px;
+  }
+  &__button {
+    margin-top: 10px;
   }
 }

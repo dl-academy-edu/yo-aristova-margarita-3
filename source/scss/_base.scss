@@ -108,7 +108,31 @@ fieldset {
 }
 
 .form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
   background-color: $primary;
   border: 2.5px solid $secondary;
   padding: 40px;
+  &__label {
+    display: block;
+    font-family: "Gilroy-500", sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 6px;
+    &::after {
+      content: " *";
+      color: red;
+    }
+  }
+  &__input {
+    border: 2.5px solid #e5e5e5;
+    // outline: 2.5px solid $secondary;
+    width: 290px;
+    min-height: 50px;
+    padding: 0;
+  }
+  &__button {
+    max-width: max-content;
+  }
 }
