@@ -167,22 +167,24 @@
     @@include('blocks/footer.html')
     <section class="sign-in">
       <h1 class="hidden">Sign in</h1>
-      <div class="sign-in__overlay"></div>
-      <div class="sign-in__dialog">
-        <button class="button-link sign-in__close">
+      <div class="overlay"></div>
+      <div class="dialog">
+        <button class="button-link close-button sign-in__close">
           <svg width="26" height="26">
             <use xlink:href="./img/sprite.svg#close"></use>
           </svg>
         </button>
         <form action="#" class="form">
           <div>
-            <label for="input-name" class="form__label">Name</label>
-            <input type="email" id="input-name" class="form__input" required />
+            <label for="input-email" class="form__label">Email</label>
+            <input type="email" id="input-email" class="form__input" required />
           </div>
           <div>
-            <label for="input-password" class="form__label">Password</label>
+            <label for="input-password-sign" class="form__label"
+              >Password</label
+            >
             <input
-              type="password"
+              type="password-sign"
               id="input-password"
               class="form__input"
               required
@@ -191,6 +193,91 @@
           <button type="submit" class="button form__button sign-in__button">
             Log in
           </button>
+        </form>
+      </div>
+    </section>
+    <section class="register">
+      <h1 class="hidden">Register</h1>
+      <div class="overlay"></div>
+      <div class="dialog">
+        <button class="button-link close-button register__close">
+          <svg width="26" height="26">
+            <use xlink:href="./img/sprite.svg#close"></use>
+          </svg>
+        </button>
+        <form action="#" class="form">
+          <div>
+            <label for="input-long-email" class="form__label">Email</label>
+            <input
+              type="email"
+              id="input-long-email"
+              class="form__input register__email"
+              required
+            />
+          </div>
+          <div class="register__wrapper">
+            <div>
+              <label for="input-name" class="form__label">Name</label>
+              <input type="text" id="input-name" class="form__input" required />
+            </div>
+            <div>
+              <label for="input-surname" class="form__label">Surname</label>
+              <input
+                type="text"
+                id="input-surname"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label for="input-password-register" class="form__label"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="input-password"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label for="input-password-repeat" class="form__label"
+                >Repeat password</label
+              >
+              <input
+                type="password"
+                id="input-password-repeat"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label for="input-location" class="form__label">Location</label>
+              <input
+                type="text"
+                id="input-location"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label for="input-age" class="form__label">Age</label>
+              <input type="text" id="input-age" class="form__input" required />
+            </div>
+          </div>
+
+          <div class="form__personal">
+            <input
+              type="checkbox"
+              class="form__input checkbox"
+              id="input-personal"
+            />
+            <label for="input-personal" class="form__assent"
+              >Clicking on the button, you consent to the processing of your
+              personal data.</label
+            >
+          </div>
+          <button type="submit" class="button form__button">Sign up</button>
         </form>
       </div>
     </section>
