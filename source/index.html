@@ -164,11 +164,11 @@
       </section>
     </main>
     @@include('blocks/footer.html')
-    <section class="sign-in">
+    <section class="modal sign-in">
       <h1 class="hidden">Sign in</h1>
-      <div class="overlay"></div>
-      <div class="dialog">
-        <button class="button-link close-button sign-in__close">
+      <div class="modal__overlay"></div>
+      <div class="modal__dialog">
+        <button class="button-link modal__close">
           <svg width="26" height="26">
             <use xlink:href="./img/sprite.svg#close"></use>
           </svg>
@@ -199,11 +199,11 @@
         </form>
       </div>
     </section>
-    <section class="register">
+    <section class="modal register">
       <h1 class="hidden">Register</h1>
-      <div class="overlay"></div>
-      <div class="dialog">
-        <button class="button-link close-button register__close">
+      <div class="modal__overlay"></div>
+      <div class="modal__dialog">
+        <button class="button-link modal__close">
           <svg width="26" height="26">
             <use xlink:href="./img/sprite.svg#close"></use>
           </svg>
@@ -223,13 +223,13 @@
             />
           </div>
           <div class="form__wrapper">
-            <div>
+            <div class="form__group">
               <label for="input-name" class="form__label form__label--required"
                 >Name</label
               >
               <input type="text" id="input-name" class="form__input" required />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-surname"
                 class="form__label form__label--required"
@@ -242,7 +242,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-password"
                 class="form__label form__label--required"
@@ -255,7 +255,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-password-repeat"
                 class="form__label form__label--required"
@@ -268,7 +268,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-location"
                 class="form__label form__label--required"
@@ -281,14 +281,13 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label for="input-age" class="form__label form__label--required"
                 >Age</label
               >
               <input type="text" id="input-age" class="form__input" required />
             </div>
           </div>
-
           <div class="form__personal">
             <input
               type="checkbox"
@@ -304,18 +303,18 @@
         </form>
       </div>
     </section>
-    <section class="send-message">
+    <section class="modal send-message">
       <h1 class="hidden">Send Message</h1>
-      <div class="overlay"></div>
-      <div class="dialog">
-        <button class="button-link close-button register__close">
+      <div class="modal__overlay"></div>
+      <div class="modal__dialog">
+        <button class="button-link modal__close">
           <svg width="26" height="26">
             <use xlink:href="./img/sprite.svg#close"></use>
           </svg>
         </button>
         <form action="#" class="form">
           <div class="form__wrapper">
-            <div>
+            <div class="form__group">
               <label
                 for="input-username"
                 class="form__label form__label--required"
@@ -328,7 +327,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-subject"
                 class="form__label form__label--required"
@@ -341,7 +340,7 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label
                 for="input-usermail"
                 class="form__label form__label--required"
@@ -354,14 +353,14 @@
                 required
               />
             </div>
-            <div>
+            <div class="form__group">
               <label for="input-phone" class="form__label form__label--required"
                 >Your mobile phone</label
               >
               <input type="tel" id="input-phone" class="form__input" required />
             </div>
           </div>
-          <div>
+          <div class="form__group">
             <label for="input-message" class="form__label"
               >What do you want to discuss with me?</label
             >
