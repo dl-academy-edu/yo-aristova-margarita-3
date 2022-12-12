@@ -26,10 +26,51 @@
     @@include('blocks/header.html')
     <main>
       <section class="blog">
-        <h1 class="title">My blog</h1>
-        <form action="#" class="reset">
-          <button class="button">Reset</button>
-        </form>
+        <div class="container">
+          <h1 class="title blog__title">My blog</h1>
+          <form action="#" class="filter">
+            <fieldset class="views">
+              <legend class="headline filter__subtitle">Views</legend>
+              <ul class="views-list">
+                <li class="views-list__item">
+                  <input
+                    type="radio"
+                    id="input-views-100"
+                    name="views"
+                    class="radio"
+                  />
+                  <label for="input-views-100" class="info info--bold"
+                    >100-500</label
+                  >
+                </li>
+                <li class="views-list__item">
+                  <input
+                    type="radio"
+                    id="input-views-500"
+                    name="views"
+                    class="radio"
+                    checked
+                  />
+                  <label for="input-views-500" class="info info--bold"
+                    >500-1000</label
+                  >
+                </li>
+                <li class="views-list__item">
+                  <input
+                    type="radio"
+                    id="input-views-1000"
+                    name="views"
+                    class="radio"
+                  />
+                  <label for="input-views-1000" class="info info--bold"
+                    >1000-2000</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+            <button class="button">Reset</button>
+          </form>
+        </div>
       </section>
     </main>
     @@include('blocks/footer.html')

@@ -240,9 +240,6 @@
     max-width: 400px;
   }
   &__description {
-    font-family: "Gilroy-500", sans-serif;
-    font-size: 14px;
-    line-height: 16px;
     color: $primary;
     text-align: center;
     max-width: 400px;
@@ -294,11 +291,29 @@
   }
 }
 
-.sign-in {
-  &--visible {
-    visibility: visible;
+// .sign-in {
+//   &--visible {
+//     visibility: visible;
+//   }
+// }
+
+.blog {
+  padding: 40px 0 60px 0;
+  &__title {
+    margin-bottom: 40px;
   }
-  &__button {
-    margin-top: 10px;
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  &__subtitle {
+    margin-bottom: 10px;
   }
+}
+
+.views-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }

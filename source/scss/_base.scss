@@ -82,9 +82,18 @@ fieldset {
   color: $secondary;
 }
 
+.headline {
+  font-family: "Gilroy-500", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}
+
 .info {
   font-size: 18px;
   line-height: 21px;
+  &--bold {
+    font-family: "Gilroy-500", sans-serif;
+  }
 }
 
 .button {
@@ -128,6 +137,9 @@ fieldset {
     position: absolute;
     top: 0;
     right: -36px;
+  }
+  &__button {
+    margin-top: 10px;
   }
 }
 
