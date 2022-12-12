@@ -138,13 +138,20 @@ fieldset {
   background-color: $primary;
   border: 2.5px solid $secondary;
   padding: 40px;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    max-width: 600px;
+  }
   &__label {
     display: block;
     font-family: "Gilroy-500", sans-serif;
     font-size: 14px;
     line-height: 16px;
     margin-bottom: 6px;
-    &::after {
+    &--required::after {
       content: " *";
       color: red;
     }
@@ -154,6 +161,13 @@ fieldset {
     width: 290px;
     min-height: 50px;
     padding: 0;
+    &--long {
+      width: 600px;
+    }
+  }
+  &__message {
+    min-height: 150px;
+    resize: none;
   }
   &__assent {
     font-family: "Gilroy-500", sans-serif;

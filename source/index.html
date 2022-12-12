@@ -117,25 +117,24 @@
                   ./img/monster-mobile-2x.png 2x
                 "
                 media="(max-width: 480px)"
+                class="portfolio__image"
               />
               <source
                 srcset="
                   ./img/monster-tablet.png,
                   ./img/monster-tablet-2x.png 2x
                 "
-                width="100%"
                 media="(max-width: 992px)"
+                class="portfolio__image"
               />
               <source
                 srcset="./img/monster.png, ./img/monster-2x.png 2x"
-                width="100%"
-                height="604"
+                class="portfolio__image"
               />
               <img
                 src="./img/monster.png"
                 alt="Image: Monster Project Cover"
-                width="100%"
-                height="604"
+                class="portfolio__image"
               />
             </picture>
             <div class="portfolio__overlay">
@@ -176,16 +175,20 @@
         </button>
         <form action="#" class="form">
           <div>
-            <label for="input-email" class="form__label">Email</label>
+            <label for="input-email" class="form__label form__label--required"
+              >Email</label
+            >
             <input type="email" id="input-email" class="form__input" required />
           </div>
           <div>
-            <label for="input-password-sign" class="form__label"
+            <label
+              for="input-password-sign"
+              class="form__label form__label--required"
               >Password</label
             >
             <input
-              type="password-sign"
-              id="input-password"
+              type="password"
+              id="input-password-sign"
               class="form__input"
               required
             />
@@ -207,21 +210,31 @@
         </button>
         <form action="#" class="form">
           <div>
-            <label for="input-long-email" class="form__label">Email</label>
+            <label
+              for="input-long-email"
+              class="form__label form__label--required"
+              >Email</label
+            >
             <input
               type="email"
               id="input-long-email"
-              class="form__input register__email"
+              class="form__input form__input--long"
               required
             />
           </div>
-          <div class="register__wrapper">
+          <div class="form__wrapper">
             <div>
-              <label for="input-name" class="form__label">Name</label>
+              <label for="input-name" class="form__label form__label--required"
+                >Name</label
+              >
               <input type="text" id="input-name" class="form__input" required />
             </div>
             <div>
-              <label for="input-surname" class="form__label">Surname</label>
+              <label
+                for="input-surname"
+                class="form__label form__label--required"
+                >Surname</label
+              >
               <input
                 type="text"
                 id="input-surname"
@@ -230,7 +243,9 @@
               />
             </div>
             <div>
-              <label for="input-password-register" class="form__label"
+              <label
+                for="input-password"
+                class="form__label form__label--required"
                 >Password</label
               >
               <input
@@ -241,7 +256,9 @@
               />
             </div>
             <div>
-              <label for="input-password-repeat" class="form__label"
+              <label
+                for="input-password-repeat"
+                class="form__label form__label--required"
                 >Repeat password</label
               >
               <input
@@ -252,7 +269,11 @@
               />
             </div>
             <div>
-              <label for="input-location" class="form__label">Location</label>
+              <label
+                for="input-location"
+                class="form__label form__label--required"
+                >Location</label
+              >
               <input
                 type="text"
                 id="input-location"
@@ -261,7 +282,9 @@
               />
             </div>
             <div>
-              <label for="input-age" class="form__label">Age</label>
+              <label for="input-age" class="form__label form__label--required"
+                >Age</label
+              >
               <input type="text" id="input-age" class="form__input" required />
             </div>
           </div>
@@ -278,6 +301,87 @@
             >
           </div>
           <button type="submit" class="button form__button">Sign up</button>
+        </form>
+      </div>
+    </section>
+    <section class="send-message">
+      <h1 class="hidden">Send Message</h1>
+      <div class="overlay"></div>
+      <div class="dialog">
+        <button class="button-link close-button register__close">
+          <svg width="26" height="26">
+            <use xlink:href="./img/sprite.svg#close"></use>
+          </svg>
+        </button>
+        <form action="#" class="form">
+          <div class="form__wrapper">
+            <div>
+              <label
+                for="input-username"
+                class="form__label form__label--required"
+                >What is your name?</label
+              >
+              <input
+                type="text"
+                id="input-username"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="input-subject"
+                class="form__label form__label--required"
+                >Message subject</label
+              >
+              <input
+                type="text"
+                id="input-subject"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label
+                for="input-usermail"
+                class="form__label form__label--required"
+                >Your Email</label
+              >
+              <input
+                type="email"
+                id="input-usermail"
+                class="form__input"
+                required
+              />
+            </div>
+            <div>
+              <label for="input-phone" class="form__label form__label--required"
+                >Your mobile phone</label
+              >
+              <input type="tel" id="input-phone" class="form__input" required />
+            </div>
+          </div>
+          <div>
+            <label for="input-message" class="form__label"
+              >What do you want to discuss with me?</label
+            >
+            <textarea
+              id="input-message"
+              class="form__input form__input--long form__message"
+            ></textarea>
+          </div>
+          <div class="form__personal">
+            <input
+              type="checkbox"
+              class="form__input checkbox"
+              id="input-personal"
+            />
+            <label for="input-personal" class="form__assent"
+              >Clicking on the button, you consent to the processing of your
+              personal data.</label
+            >
+          </div>
+          <button type="submit" class="button form__button">Send</button>
         </form>
       </div>
     </section>
