@@ -94,6 +94,10 @@ fieldset {
   &--bold {
     font-family: "Gilroy-500", sans-serif;
   }
+  &--extrabold {
+    font-family: "Gilroy-700", sans-serif;
+    line-height: 22px;
+  }
 }
 
 .button {
