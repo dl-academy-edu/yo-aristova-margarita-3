@@ -305,15 +305,31 @@
 }
 
 .filter {
-  display: flex;
-  align-items: center;
-  &__subtitle {
-    margin-bottom: 10px;
+  &-form {
+    display: flex;
+    align-items: flex-start;
+    &__subtitle {
+      margin-bottom: 10px;
+    }
+    &__views {
+      margin-right: 70px;
+    }
+    &__comments {
+      margin-right: 137px;
+    }
+    &__show {
+      margin-right: 76px;
+    }
+    &__sort {
+      margin-right: 48px;
+    }
+    &__button {
+      align-self: center;
+    }
   }
-}
-
-.views-list {
-  display: flex;
-  flex-direction: column;
-  row-gap: 10px;
+  &-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
 }

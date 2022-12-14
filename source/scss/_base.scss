@@ -253,18 +253,56 @@ fieldset {
   display: inline-flex;
   align-items: center;
   user-select: none;
-}
-
-.checkbox + label::before {
-  content: "";
-  display: inline-flex;
-  min-width: 19px;
-  height: 19px;
-  background-image: url("../img/checkbox-off.svg");
-  margin-right: 15px;
-  cursor: pointer;
+  &::before {
+    content: "";
+    display: inline-flex;
+    min-width: 25px;
+    height: 25px;
+    background-image: url("../img/checkbox-off.svg");
+    margin-right: 12px;
+    cursor: pointer;
+  }
 }
 
 .checkbox:checked + label::before {
   background-image: url("../img/checkbox-on.svg");
+}
+
+.checkbox--mini + label {
+  &::before {
+    min-width: 19px;
+    height: 19px;
+    background-image: url("../img/checkbox-mini-off.svg");
+    margin-right: 15px;
+  }
+}
+
+.checkbox--mini:checked + label::before {
+  background-image: url("../img/checkbox-mini-on.svg");
+}
+
+.radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.radio + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.radio + label::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url("../img/radio-off.svg");
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.radio:checked + label::before {
+  background-image: url("../img/radio-on.svg");
 }

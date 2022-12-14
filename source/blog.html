@@ -28,11 +28,11 @@
       <section class="blog">
         <div class="container">
           <h1 class="title blog__title">My blog</h1>
-          <form action="#" class="filter">
-            <fieldset class="views">
-              <legend class="headline filter__subtitle">Views</legend>
-              <ul class="views-list">
-                <li class="views-list__item">
+          <form action="#" class="filter-form">
+            <fieldset class="filter-form__views">
+              <legend class="headline filter-form__subtitle">Views</legend>
+              <ul class="filter-list">
+                <li>
                   <input
                     type="radio"
                     id="input-views-100"
@@ -43,7 +43,7 @@
                     >100-500</label
                   >
                 </li>
-                <li class="views-list__item">
+                <li>
                   <input
                     type="radio"
                     id="input-views-500"
@@ -55,7 +55,7 @@
                     >500-1000</label
                   >
                 </li>
-                <li class="views-list__item">
+                <li>
                   <input
                     type="radio"
                     id="input-views-1000"
@@ -68,7 +68,113 @@
                 </li>
               </ul>
             </fieldset>
-            <button class="button">Reset</button>
+            <fieldset class="filter-form__comments">
+              <legend class="headline filter-form__subtitle">Comments</legend>
+              <ul class="filter-list">
+                <li>
+                  <input
+                    type="checkbox"
+                    id="input-comments-0"
+                    name="comments"
+                    class="checkbox"
+                    checked
+                  />
+                  <label for="input-comments-0" class="info info--bold"
+                    >0</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="input-comments-1"
+                    name="comments"
+                    class="checkbox"
+                  />
+                  <label for="input-comments-1" class="info info--bold"
+                    >0-1</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="checkbox"
+                    id="input-comments-50"
+                    name="comments"
+                    class="checkbox"
+                  />
+                  <label for="input-comments-50" class="info info--bold"
+                    >1-50</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="filter-form__show">
+              <legend class="headline filter-form__subtitle">How show?</legend>
+              <ul class="filter-list">
+                <li>
+                  <input
+                    type="radio"
+                    id="input-show-5"
+                    name="show"
+                    class="radio"
+                    checked
+                  />
+                  <label for="input-show-5" class="info info--bold"
+                    >show 5</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    id="input-show-10"
+                    name="show"
+                    class="radio"
+                  />
+                  <label for="input-show-10" class="info info--bold"
+                    >show 10</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+            <fieldset class="filter-form__sort">
+              <legend class="headline filter-form__subtitle">Sort by</legend>
+              <ul class="filter-list">
+                <li>
+                  <input
+                    type="radio"
+                    id="input-sort-date"
+                    name="sort"
+                    class="radio"
+                    checked
+                  />
+                  <label for="input-sort-date" class="info info--bold"
+                    >date</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    id="input-sort-title"
+                    name="sort"
+                    class="radio"
+                  />
+                  <label for="input-sort-title" class="info info--bold"
+                    >title</label
+                  >
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    id="input-sort-views"
+                    name="sort"
+                    class="radio"
+                  />
+                  <label for="input-sort-views" class="info info--bold"
+                    >views</label
+                  >
+                </li>
+              </ul>
+            </fieldset>
+            <button class="button filter-form__button">Reset</button>
           </form>
         </div>
       </section>
