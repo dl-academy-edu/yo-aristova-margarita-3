@@ -309,9 +309,34 @@
     display: flex;
     flex-direction: column;
     row-gap: 20px;
+    max-width: 254px;
   }
   &__button {
     margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .profile {
+    &__wrapper {
+      column-gap: 76px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .profile {
+    &__title {
+      margin-bottom: 36px;
+    }
+    &__wrapper {
+      flex-direction: column;
+      row-gap: 40px;
+    }
+    &__image {
+      object-fit: cover;
+      width: 280px;
+    }
   }
 }
 
