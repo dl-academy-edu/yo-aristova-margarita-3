@@ -137,16 +137,17 @@ fieldset {
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $overlay;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
 .modal {
-  &__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(246, 246, 246, 0.99);
-    width: 100%;
-    height: 100%;
-    z-index: 10;
-  }
   &__dialog {
     position: fixed;
     top: 50%;

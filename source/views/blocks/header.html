@@ -7,19 +7,69 @@
             >Home</a
           >
         </li>
-        <div class="nav__wrapper">
-          <li><a href="../../blog.html" class="nav__link">My blog</a></li>
-          <li>
-            <button type="button" class="button-link nav__link sign-in-button">
-              Sign in
-            </button>
-          </li>
-          <li>
-            <button type="button" class="button-link nav__link register-button">
-              Register
-            </button>
-          </li>
-        </div>
+        <li>
+          <ul class="nav__inner">
+            <li><a href="../../blog.html" class="nav__link">My blog</a></li>
+            <li>
+              <button
+                type="button"
+                class="button-link nav__link sign-in-button"
+              >
+                Sign in
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="button-link nav__link register-button"
+              >
+                Register
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<header class="header-mobile">
+  <div class="overlay"></div>
+  <div class="header-mobile__wrapper">
+    <button class="button-link header-mobile__close">
+      <svg width="26" height="26">
+        <use xlink:href="../../img/sprite.svg#dark-close"></use>
+      </svg>
+    </button>
+    <nav>
+      <ul class="nav-mobile">
+        <li>
+          <a
+            href="../../index.html"
+            class="nav__link nav__link--large nav__link--checked"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a href="../../blog.html" class="nav__link nav__link--large"
+            >My blog</a
+          >
+        </li>
+        <li>
+          <button
+            type="button"
+            class="button-link nav__link nav__link--large sign-in-button"
+          >
+            Sign in
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="button-link nav__link nav__link--large register-button"
+          >
+            Register
+          </button>
+        </li>
       </ul>
     </nav>
   </div>

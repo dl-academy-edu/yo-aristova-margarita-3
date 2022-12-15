@@ -1,7 +1,21 @@
 .header {
   padding-top: 33px;
-  @media screen and (max-width: 480px) {
+  &-mobile {
     display: none;
+  }
+}
+
+.header-mobile {
+  &__wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 187px;
+    top: 0;
+    right: 20px;
+    z-index: 12;
+    padding-top: 50px;
   }
 }
 
@@ -11,9 +25,8 @@
   align-items: center;
   padding-bottom: 33px;
   border-bottom: 1px solid $base-grey;
-  &__wrapper {
+  &__inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     column-gap: 20px;
   }
@@ -23,8 +36,28 @@
     line-height: 22px;
     color: $base-grey;
     &--checked {
-      font-weight: 700;
+      font-family: "Gilroy-700", sans-serif;
       color: $secondary;
+    }
+    &--large {
+      font-size: 34px;
+      line-height: 41px;
+    }
+  }
+}
+
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  row-gap: 40px;
+}
+
+@media screen and (max-width: 480px) {
+  .header {
+    display: none;
+    &-mobile {
+      display: block;
     }
   }
 }
