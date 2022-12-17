@@ -1,21 +1,7 @@
 .header {
   padding-top: 33px;
-  &-mobile {
+  @media screen and (max-width: 480px) {
     display: none;
-  }
-}
-
-.header-mobile {
-  &__wrapper {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    row-gap: 187px;
-    top: 0;
-    right: 20px;
-    z-index: 12;
-    padding-top: 50px;
   }
 }
 
@@ -46,18 +32,27 @@
   }
 }
 
+.header-mobile {
+  display: none;
+  &__wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 187px;
+    top: 0;
+    right: 20px;
+    z-index: 12;
+    padding-top: 50px;
+  }
+  &--visible {
+    display: block;
+  }
+}
+
 .nav-mobile {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   row-gap: 40px;
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    display: none;
-    &-mobile {
-      display: block;
-    }
-  }
 }

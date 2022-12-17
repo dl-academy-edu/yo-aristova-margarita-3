@@ -25,4 +25,16 @@ window.addEventListener("DOMContentLoaded", function () {
   //     signInButton.focus();
   //   }
   // });
+
+  const openMenuButton = this.document.querySelector(".menu-button");
+  const mobileMenu = this.document.querySelector(".header-mobile");
+  const closeMenuButton = this.document.querySelector(".header-mobile__close");
+
+  openMenuButton.addEventListener("click", function () {
+    mobileMenu.classList.toggle("header-mobile--visible");
+  });
+
+  closeMenuButton.addEventListener("click", function () {
+    mobileMenu.classList.toggle("header-mobile--visible");
+  });
 });
