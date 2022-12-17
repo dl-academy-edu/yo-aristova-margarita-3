@@ -27,7 +27,10 @@
     <main>
       <section class="profile">
         <div class="container">
-          <h1 class="title profile__title">My profile</h1>
+          <div class="title-wrapper profile__title">
+            <h1 class="title">My profile</h1>
+            @@include('blocks/menu-button.html')
+          </div>
           <div class="profile__wrapper">
             <img
               src="./img/no-photo.png"

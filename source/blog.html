@@ -27,7 +27,10 @@
     <main>
       <section class="blog">
         <div class="container">
-          <h1 class="title blog__title">My blog</h1>
+          <div class="title-wrapper blog__title">
+            <h1 class="title">My profile</h1>
+            @@include('blocks/menu-button.html')
+          </div>
           <form action="#" class="filter-form">
             <fieldset class="filter-form__views">
               <legend class="headline filter-form__subtitle">Views</legend>
