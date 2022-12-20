@@ -292,6 +292,12 @@
   }
 }
 
+.sign-in--visible,
+.register--visible,
+.send-message--visible {
+  visibility: visible;
+}
+
 .profile {
   padding: 40px 0 60px 0;
   &__title {
