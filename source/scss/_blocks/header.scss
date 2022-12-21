@@ -34,6 +34,18 @@
 
 .header-mobile {
   display: none;
+  &--visible {
+    display: block;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $overlay;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+  }
   &__wrapper {
     position: fixed;
     display: flex;
@@ -44,9 +56,6 @@
     right: 20px;
     z-index: 12;
     padding-top: 50px;
-  }
-  &--visible {
-    display: block;
   }
 }
 
