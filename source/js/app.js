@@ -1,48 +1,40 @@
 window.addEventListener("DOMContentLoaded", function () {
-  const signInButton = document.querySelector(".sign-in-button");
   const signInModal = document.querySelector(".sign-in");
-  const registerButton = document.querySelector(".register-button");
   const registerModal = document.querySelector(".register");
   const sendMessageModal = this.document.querySelector(".send-message");
-  const sendMessageButton = this.document.querySelector(".send-message-button");
-  const input = document.querySelector(".form__input");
-  const signCloseButton = document.querySelector(".sign-in__close");
-  const registerCloseButton = document.querySelector(".register__close");
-  const sendMessageCloseButton = this.document.querySelector(
-    ".send-message__close"
-  );
+  const inputArray = [
+    signInModal.querySelector(".form__input"),
+    registerModal.querySelector(".form__input"),
+    sendMessageModal.querySelector(".form__input"),
+  ];
+  const openButtonArray = [...this.document.querySelectorAll(".modal-button")];
+  const closeButtonArray = [...this.document.querySelectorAll(".modal__close")];
+  const modalArray = [...this.document.querySelectorAll(".modal")];
+  const overlayArray = [...this.document.querySelectorAll(".overlay")];
 
-  signInButton.addEventListener("click", () => {
-    signInModal.classList.add("sign-in--visible");
-    input.focus();
-  });
-
-  signCloseButton.addEventListener("click", function () {
-    signInModal.classList.remove("sign-in--visible");
-    signInButton.focus();
-  });
-
-  registerButton.addEventListener("click", () => {
-    registerModal.classList.add("register--visible");
-    input.focus();
-  });
-
-  registerCloseButton.addEventListener("click", function () {
-    registerModal.classList.remove("register--visible");
-    registerButton.focus();
-  });
-
-  sendMessageButton.addEventListener("click", () => {
-    sendMessageModal.classList.add("send-message--visible");
-    input.focus();
-  });
-
-  sendMessageCloseButton.addEventListener("click", function () {
-    sendMessageModal.classList.remove("send-message--visible");
-    sendMessageButton.focus();
-  });
-
-  // console.log([...this.document.querySelectorAll(".modal__close")]);
+  for (let i = 0; i < modalArray.length; i++) {
+    openButtonArray[i].addEventListener("click", () => {
+      modalArray[i].classList.add("visible");
+      inputArray[i].focus();
+    });
+    closeButtonArray[i].addEventListener("click", () => {
+      modalArray[i].classList.remove("visible");
+      openButtonArray[i].focus();
+    });
+    window.addEventListener("keydown", function (event) {
+      if (
+        event.code === "Escape" &&
+        modalArray[i].classList.contains("visible")
+      ) {
+        modalArray[i].classList.remove("visible");
+        openButtonArray[i].focus();
+      }
+    });
+    overlayArray[i].addEventListener("click", () => {
+      modalArray[i].classList.remove("visible");
+      openButtonArray[i].focus();
+    });
+  }
 
   const openMenuButton = this.document.querySelector(".menu-button");
   const mobileMenu = this.document.querySelector(".header-mobile");
