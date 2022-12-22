@@ -164,8 +164,19 @@ fieldset {
   }
 }
 
-.checkbox--mini:checked + label::before {
-  background-image: url("../img/checkbox-mini-on.svg");
+.checkbox--mini:checked + label {
+  &::before {
+    background-image: url("../img/checkbox-mini-on.svg");
+  }
+}
+
+@for $i from 1 through 8 {
+  .checkbox--#{$i} + label::before {
+    background-image: url("../img/checkbox-#{$i}-off.svg");
+  }
+  .checkbox--#{$i}:checked + label::before {
+    background-image: url("../img/checkbox-#{$i}-on.svg");
+  }
 }
 
 .radio {
