@@ -83,10 +83,16 @@
     &--long {
       width: 600px;
     }
+    &:focus {
+      outline: 2.5px solid $secondary;
+    }
   }
   &__message {
     min-height: 150px;
     resize: none;
+    &:focus {
+      outline: 2.5px solid $secondary;
+    }
   }
   &__assent {
     font-family: "Gilroy-500", sans-serif;

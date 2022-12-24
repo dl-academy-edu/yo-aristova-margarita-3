@@ -2,29 +2,32 @@
   <h1 class="hidden">Sign in</h1>
   <div class="overlay"></div>
   <div class="modal__dialog">
-    <button class="button-link modal__close sign-in__close">
+    <button class="button-link modal__close">
       <svg width="26" height="26">
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form action="#" class="form">
+    <form method="post" name="signIn" class="form">
       <div>
-        <label for="input-email" class="form__label form__label--required"
+        <label for="signInEmail" class="form__label form__label--required"
           >Email</label
         >
-        <input type="email" id="input-email" class="form__input" required />
+        <input
+          type="text"
+          id="signInEmail"
+          name="signInEmail"
+          class="form__input"
+        />
       </div>
       <div>
-        <label
-          for="input-password-sign"
-          class="form__label form__label--required"
+        <label for="signInPassword" class="form__label form__label--required"
           >Password</label
         >
         <input
           type="password"
-          id="input-password-sign"
+          id="signInPassword"
+          name="signInPassword"
           class="form__input"
-          required
         />
       </div>
       <button type="submit" class="button modal__button">Log in</button>

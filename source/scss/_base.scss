@@ -121,6 +121,10 @@ fieldset {
   max-width: max-content;
   cursor: pointer;
   padding: 10px 19px;
+  &:disabled {
+    color: #e5e5e5;
+    border-color: #e5e5e5;
+  }
 }
 
 .button-link {
