@@ -57,6 +57,13 @@
     z-index: 12;
     padding-top: 50px;
   }
+  &__close {
+    color: $secondary;
+    &:hover {
+      color: $base-grey;
+      transition-duration: 0.4s;
+    }
+  }
 }
 
 .nav-mobile {

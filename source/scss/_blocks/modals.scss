@@ -20,6 +20,11 @@
     position: absolute;
     top: 0;
     right: -36px;
+    color: $base-grey;
+    &:hover {
+      color: $secondary;
+      transition-duration: 0.4s;
+    }
   }
   &__button {
     margin-top: 10px;
