@@ -1,13 +1,3 @@
-// const registerForm = this.document.forms.register;
-// const registerEmailInput = registerForm.elements.registerEmail;
-// const registerNameInput = registerForm.elements.registerName;
-// const registerSurnameInput = registerForm.elements.registerSurname;
-// const registerPasswordInput = registerForm.elements.registerPassword;
-// const registerRepeatPasswordInput =
-//   registerForm.elements.registerPasswordRepeat;
-// const registerLocationInput = registerForm.elements.registerLocation;
-// const registerAgeInput = registerForm.elements.registerAge;
-const overlayArray = [...this.document.querySelectorAll(".overlay")];
 const success = "#03bc3c";
 const invalid = "#EB3617";
 

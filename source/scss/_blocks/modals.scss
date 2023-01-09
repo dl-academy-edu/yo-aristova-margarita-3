@@ -23,7 +23,6 @@
     color: $base-grey;
     &:hover {
       color: $secondary;
-      transition-duration: 0.4s;
     }
   }
   &__button {
@@ -99,7 +98,7 @@
       outline: 2.5px solid $secondary;
     }
   }
-  &__assent {
+  &__accepnt {
     font-family: "Gilroy-500", sans-serif;
     font-size: 14px;
     line-height: 16px;

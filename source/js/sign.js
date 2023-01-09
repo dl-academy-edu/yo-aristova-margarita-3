@@ -3,13 +3,12 @@
   const signInOpenButton = document.querySelector(".nav__link--sign-js");
   const signInCloseButton = signInModal.querySelector(".modal__close");
   const signInOverlay = signInModal.querySelector(".overlay");
-  const signInForm = this.document.forms.signIn;
-  const signInEmailInput = signInForm.elements.signInEmail;
-  const signInPasswordInput = signInForm.elements.signInPassword;
+  const signInForm = document.forms.signIn;
+  const input = signInForm.querySelector(".form__input");
 
   signInOpenButton.addEventListener("click", () => {
     interactiveModal(signInModal);
-    signInEmailInput.focus();
+    input.focus();
   });
 
   signInCloseButton.addEventListener("click", () => {
@@ -26,9 +25,11 @@
 
   signInForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    const email = signInForm.elements.signInEmail;
+    const password = signInForm.elements.signInPassword;
     const data = {
-      email: signInEmailInput.value,
-      password: signInPasswordInput.value,
+      email: email.value,
+      password: password.value,
     };
     let errors = {};
 
@@ -36,7 +37,7 @@
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
-      showCorrectInput(signInEmailInput);
+      showCorrectInput(email);
     }
 
     if (data.password <= 6) {
