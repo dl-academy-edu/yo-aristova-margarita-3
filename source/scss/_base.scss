@@ -217,3 +217,14 @@ fieldset {
 .radio:checked + label::before {
   background-image: url("../img/radio-on.svg");
 }
+
+.success {
+  color: $success;
+  margin-top: 10px;
+}
+
+.invalid {
+  max-width: 290px;
+  color: $invalid;
+  margin-top: 10px;
+}

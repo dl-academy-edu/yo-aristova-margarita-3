@@ -1,8 +1,6 @@
-const success = "#03bc3c";
-const invalid = "#EB3617";
-
-let statusSubmitMessage = document.createElement("div");
-statusSubmitMessage.style.marginTop = "10px";
+const interactiveModal = (modal) => {
+  modal.classList.toggle("visible");
+};
 
 const clickEscape = (modal, focusButton) => {
   window.addEventListener("keydown", function (event) {
@@ -17,12 +15,23 @@ const isEmailValid = (email) => {
   return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
 };
 
-const interactiveModal = (modal) => {
-  modal.classList.toggle("visible");
+const setSuccessText = (input) => {
+  let messageSuccess = document.createElement("div");
+  messageSuccess.classList.add("success");
+  input.classList.add("form__input--success");
+  messageSuccess.innerText = "All right";
+  input.insertAdjacentElement("afterend", messageSuccess);
 };
 
-const showCorrectInput = (input) => {
-  statusSubmitMessage.style.color = success;
-  statusSubmitMessage.innerText = "All right";
-  input.insertAdjacentElement("afterend", statusSubmitMessage);
+const errorCreator = (message) => {
+  let messageError = document.createElement("div");
+  messageError.classList.add("invalid");
+  messageError.innerText = message;
+  return messageError;
+};
+
+const setErrorText = (input, message) => {
+  const error = errorCreator(message);
+  input.classList.add("form__input--invalid");
+  input.insertAdjacentElement("afterend", error);
 };

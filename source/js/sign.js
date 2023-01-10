@@ -25,30 +25,39 @@
 
   signInForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const email = signInForm.elements.signInEmail;
-    const password = signInForm.elements.signInPassword;
-    const data = {
-      email: email.value,
-      password: password.value,
-    };
+    const email = signInForm.elements.email;
+    const password = signInForm.elements.password;
+
     let errors = {};
 
-    if (!isEmailValid(data.email)) {
+    if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
-      showCorrectInput(email);
+      setSuccessText(email);
     }
 
-    if (data.password <= 6) {
+    if (password.value <= 6) {
       errors.password = "The password must be more than 6 characters";
+    } else {
+      setSuccessText(password);
     }
+
+    console.log(errors);
 
     if (!Object.keys(errors).length) {
-      console.log("All right");
+      const data = {
+        email: email.value,
+        password: password.value,
+      };
+      console.log(data);
     } else {
       console.log("Validation error");
-      return;
+      Object.keys(errors).forEach((key) => {
+        const messageError = errors[key];
+        const input = signInForm.elements[key];
+        setErrorText(input, messageError);
+      });
     }
   });
 })();

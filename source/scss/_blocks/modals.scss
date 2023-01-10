@@ -90,6 +90,12 @@
     &:focus {
       outline: 2.5px solid $secondary;
     }
+    &--success {
+      border: 2.5px solid $success;
+    }
+    &--invalid {
+      border: 2.5px solid $invalid;
+    }
   }
   &__message {
     min-height: 150px;
