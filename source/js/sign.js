@@ -30,6 +30,21 @@
 
     let errors = {};
 
+    const errorMessages = [...document.querySelectorAll(".invalid")];
+    const errorInputs = [...document.querySelectorAll("form__input--invalid")];
+
+    if (errorMessages) {
+      for (let errorMessage of errorMessages) {
+        errorMessage.remove();
+      }
+    }
+
+    if (errorInputs) {
+      for (let errorInput of errorInputs) {
+        errorInput.classList.remove("form__input--invalid");
+      }
+    }
+
     if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
@@ -37,13 +52,11 @@
       setSuccessText(email);
     }
 
-    if (password.value <= 6) {
+    if (password.value.length <= 6) {
       errors.password = "The password must be more than 6 characters";
     } else {
       setSuccessText(password);
     }
-
-    console.log(errors);
 
     if (!Object.keys(errors).length) {
       const data = {

@@ -25,18 +25,15 @@
 
   registerForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const email = registerForm.elements.registerEmail;
-    const name = registerForm.elements.registerName;
-    const surname = registerForm.elements.registerSurname;
-    const password = registerForm.elements.registerPassword;
-    const passwordRepeat = registerForm.elements.registerPasswordRepeat;
-    const location = registerForm.elements.registerLocation;
-    const age = registerForm.elements.registerAge;
-    const accepnt = registerForm.elements.registerAccepnt;
-    const data = {
-      email: email.value,
-      password: password.value,
-    };
+    const email = registerForm.elements.email;
+    const name = registerForm.elements.name;
+    const surname = registerForm.elements.surname;
+    const password = registerForm.elements.password;
+    const passwordRepeat = registerForm.elements.passwordRepeat;
+    const location = registerForm.elements.location;
+    const age = registerForm.elements.age;
+    const accepnt = registerForm.elements.accepnt;
+
     let errors = {};
   });
 })();
