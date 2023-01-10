@@ -32,12 +32,17 @@
 
     const errorMessages = [...document.querySelectorAll(".invalid")];
     const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
-
-    console.log(errorInputs);
+    const successMessages = [...document.querySelectorAll(".success")];
 
     if (errorMessages) {
       for (let errorMessage of errorMessages) {
         errorMessage.remove();
+      }
+    }
+
+    if (successMessages) {
+      for (let successMessage of successMessages) {
+        successMessage.remove();
       }
     }
 
@@ -53,8 +58,9 @@
     } else {
       setSuccessText(email);
     }
-
-    if (password.value.length <= 6) {
+    if (!password.value.length) {
+      errors.password = "This field is required";
+    } else if (password.value.length <= 6) {
       errors.password = "The password must be more than 6 characters";
     } else {
       setSuccessText(password);

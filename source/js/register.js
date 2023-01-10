@@ -35,5 +35,10 @@
     const accepnt = registerForm.elements.accepnt;
 
     let errors = {};
+
+    if (!accepnt.checked) {
+      errors.accepnt = "You must agree to register";
+      console.log("you must agree to register");
+    }
   });
 })();
