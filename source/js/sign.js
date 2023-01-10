@@ -31,7 +31,9 @@
     let errors = {};
 
     const errorMessages = [...document.querySelectorAll(".invalid")];
-    const errorInputs = [...document.querySelectorAll("form__input--invalid")];
+    const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
+
+    console.log(errorInputs);
 
     if (errorMessages) {
       for (let errorMessage of errorMessages) {

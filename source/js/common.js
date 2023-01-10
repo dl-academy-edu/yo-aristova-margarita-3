@@ -34,4 +34,12 @@ const setErrorText = (input, message) => {
   const error = errorCreator(message);
   input.classList.add("form__input--invalid");
   input.insertAdjacentElement("afterend", error);
+  input.addEventListener(
+    "input",
+    () => {
+      error.remove();
+      input.classList.remove("form__input--invalid");
+    },
+    { once: true }
+  );
 };
