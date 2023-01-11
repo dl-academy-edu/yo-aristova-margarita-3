@@ -15,6 +15,10 @@ const isEmailValid = (email) => {
   return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
 };
 
+const isPhoneValid = (phone) => {
+  return phone.match(/^((\+7|7|8)+([0-9]){10})$/i);
+};
+
 const setSuccessText = (input) => {
   let messageSuccess = document.createElement("div");
   messageSuccess.classList.add("success");
