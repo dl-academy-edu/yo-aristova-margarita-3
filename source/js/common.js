@@ -2,11 +2,29 @@ const interactiveModal = (modal) => {
   modal.classList.toggle("visible");
 };
 
-const clickEscape = (modal, focusButton) => {
+const interactiveWindow = (modal, openButton, closeButton) => {
+  const overlay = modal.querySelector(".overlay");
+
+  openButton.addEventListener("click", () => {
+    const firstInput = modal.querySelector(".form__input");
+    interactiveModal(modal);
+    firstInput.focus();
+  });
+
+  closeButton.addEventListener("click", () => {
+    interactiveModal(modal);
+    openButton.focus();
+  });
+
+  overlay.addEventListener("click", () => {
+    interactiveModal(modal);
+    openButton.focus();
+  });
+
   window.addEventListener("keydown", function (event) {
     if (event.code === "Escape" && modal.classList.contains("visible")) {
       interactiveModal(modal);
-      focusButton.focus();
+      openButton.focus();
     }
   });
 };
@@ -56,7 +74,7 @@ const switchButton = (button) => {
   }
 };
 
-const clearForm = (form) => {
+const clearForm = () => {
   const errorMessages = [...document.querySelectorAll(".invalid")];
   const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
   const successMessages = [...document.querySelectorAll(".success")];

@@ -3,27 +3,10 @@
   const registerForm = document.forms.register;
   const registerOpenButton = document.querySelector(".nav__link--register-js");
   const registerCloseButton = registerModal.querySelector(".modal__close");
-  const registerOverlay = registerModal.querySelector(".overlay");
-  const input = registerForm.querySelector(".form__input");
   const registerButton = registerForm.querySelector(".button--register-js");
   const accept = registerForm.elements.accept;
 
-  registerOpenButton.addEventListener("click", () => {
-    interactiveModal(registerModal);
-    input.focus();
-  });
-
-  registerCloseButton.addEventListener("click", () => {
-    interactiveModal(registerModal);
-    registerOpenButton.focus();
-  });
-
-  registerOverlay.addEventListener("click", () => {
-    interactiveModal(registerModal);
-    registerOpenButton.focus();
-  });
-
-  clickEscape(registerModal, registerOpenButton);
+  interactiveWindow(registerModal, registerOpenButton, registerCloseButton);
 
   accept.addEventListener("click", () => {
     switchButton(registerButton);

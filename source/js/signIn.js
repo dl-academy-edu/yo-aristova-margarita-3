@@ -2,26 +2,9 @@
   const signInModal = document.querySelector(".sign-in");
   const signInOpenButton = document.querySelector(".nav__link--sign-js");
   const signInCloseButton = signInModal.querySelector(".modal__close");
-  const signInOverlay = signInModal.querySelector(".overlay");
   const signInForm = document.forms.signIn;
-  const input = signInForm.querySelector(".form__input");
 
-  signInOpenButton.addEventListener("click", () => {
-    interactiveModal(signInModal);
-    input.focus();
-  });
-
-  signInCloseButton.addEventListener("click", () => {
-    interactiveModal(signInModal);
-    signInOpenButton.focus();
-  });
-
-  signInOverlay.addEventListener("click", () => {
-    interactiveModal(signInModal);
-    signInOpenButton.focus();
-  });
-
-  clickEscape(signInModal, signInOpenButton);
+  interactiveWindow(signInModal, signInOpenButton, signInCloseButton);
 
   signInForm.addEventListener("submit", (event) => {
     event.preventDefault();

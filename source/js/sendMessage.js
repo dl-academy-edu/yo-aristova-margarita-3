@@ -4,29 +4,16 @@
   const sendMessageOpenButton = document.querySelector(".footer__button--js");
   const sendMessageCloseButton =
     sendMessageModal.querySelector(".modal__close");
-  const sendMessageOverlay = sendMessageModal.querySelector(".overlay");
-  const input = sendMessageForm.querySelector(".form__input");
   const sendMessageButton = sendMessageForm.querySelector(
     ".button--send-message-js"
   );
   const accept = sendMessageForm.elements.accept;
 
-  sendMessageOpenButton.addEventListener("click", () => {
-    interactiveModal(sendMessageModal);
-    input.focus();
-  });
-
-  sendMessageCloseButton.addEventListener("click", () => {
-    interactiveModal(sendMessageModal);
-    sendMessageOpenButton.focus();
-  });
-
-  sendMessageOverlay.addEventListener("click", () => {
-    interactiveModal(sendMessageModal);
-    sendMessageOpenButton.focus();
-  });
-
-  clickEscape(sendMessageModal, sendMessageOpenButton);
+  interactiveWindow(
+    sendMessageModal,
+    sendMessageOpenButton,
+    sendMessageCloseButton
+  );
 
   accept.addEventListener("click", () => {
     switchButton(sendMessageButton);
