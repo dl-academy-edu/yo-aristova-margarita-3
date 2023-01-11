@@ -178,6 +178,7 @@ fieldset {
 }
 
 .checkbox--mini:checked + label {
+  color: $secondary;
   &::before {
     background-image: url("../img/checkbox-mini-on.svg");
   }

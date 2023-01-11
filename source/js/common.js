@@ -43,3 +43,35 @@ const setErrorText = (input, message) => {
     { once: true }
   );
 };
+
+const switchButton = (button) => {
+  if (button.disabled) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+};
+
+const clearForm = (form) => {
+  const errorMessages = [...document.querySelectorAll(".invalid")];
+  const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
+  const successMessages = [...document.querySelectorAll(".success")];
+
+  if (errorMessages) {
+    for (let errorMessage of errorMessages) {
+      errorMessage.remove();
+    }
+  }
+
+  if (successMessages) {
+    for (let successMessage of successMessages) {
+      successMessage.remove();
+    }
+  }
+
+  if (errorInputs) {
+    for (let errorInput of errorInputs) {
+      errorInput.classList.remove("form__input--invalid");
+    }
+  }
+};

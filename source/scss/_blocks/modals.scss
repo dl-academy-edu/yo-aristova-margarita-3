@@ -91,10 +91,10 @@
       outline: 2.5px solid $secondary;
     }
     &--success {
-      border: 2.5px solid $success;
+      outline: 2.5px solid $success;
     }
     &--invalid {
-      border: 2.5px solid $invalid;
+      outline: 2.5px solid $invalid;
     }
   }
   &__message {
@@ -104,10 +104,11 @@
       outline: 2.5px solid $secondary;
     }
   }
-  &__accepnt {
+  &__accept {
     font-family: "Gilroy-500", sans-serif;
     font-size: 14px;
     line-height: 16px;
+    color: #e5e5e5;
   }
 }
 

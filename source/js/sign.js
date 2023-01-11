@@ -30,34 +30,17 @@
 
     let errors = {};
 
-    const errorMessages = [...document.querySelectorAll(".invalid")];
-    const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
-    const successMessages = [...document.querySelectorAll(".success")];
+    clearForm();
 
-    if (errorMessages) {
-      for (let errorMessage of errorMessages) {
-        errorMessage.remove();
-      }
-    }
-
-    if (successMessages) {
-      for (let successMessage of successMessages) {
-        successMessage.remove();
-      }
-    }
-
-    if (errorInputs) {
-      for (let errorInput of errorInputs) {
-        errorInput.classList.remove("form__input--invalid");
-      }
-    }
-
-    if (!isEmailValid(email.value)) {
+    if (!email.value.length) {
+      errors.email = "This field is required";
+    } else if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
       setSuccessText(email);
     }
+
     if (!password.value.length) {
       errors.password = "This field is required";
     } else if (password.value.length <= 6) {
