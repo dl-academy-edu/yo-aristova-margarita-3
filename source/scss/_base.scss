@@ -68,10 +68,19 @@ fieldset {
   padding: 0;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .title {
   font-family: "Gilroy-700", sans-serif;
   font-size: 47px;
   line-height: 57px;
+  &-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 
 .subtitle {
@@ -82,9 +91,22 @@ fieldset {
   color: $secondary;
 }
 
+.headline {
+  font-family: "Gilroy-500", sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}
+
 .info {
   font-size: 18px;
   line-height: 21px;
+  &--bold {
+    font-family: "Gilroy-500", sans-serif;
+  }
+  &--extrabold {
+    font-family: "Gilroy-700", sans-serif;
+    line-height: 22px;
+  }
 }
 
 .button {
@@ -96,8 +118,13 @@ fieldset {
   border: 2.5px solid $secondary;
   border-radius: 30px;
   background-color: $primary;
+  max-width: max-content;
   cursor: pointer;
   padding: 10px 19px;
+  &:disabled {
+    color: #e5e5e5;
+    border-color: #e5e5e5;
+  }
 }
 
 .button-link {
@@ -105,4 +132,100 @@ fieldset {
   border: none;
   cursor: pointer;
   padding: 0;
+  &__arrow {
+    width: 25px;
+    height: 43px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    &:hover {
+      opacity: 0.5;
+      transition-duration: 0.4s;
+    }
+  }
+}
+
+.checkbox {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.checkbox + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+  &::before {
+    content: "";
+    display: inline-flex;
+    min-width: 25px;
+    height: 25px;
+    background-image: url("../img/checkbox-off.svg");
+    margin-right: 12px;
+    cursor: pointer;
+  }
+}
+
+.checkbox:checked + label::before {
+  background-image: url("../img/checkbox-on.svg");
+}
+
+.checkbox--mini + label {
+  &::before {
+    min-width: 19px;
+    height: 19px;
+    background-image: url("../img/checkbox-mini-off.svg");
+    margin-right: 15px;
+  }
+}
+
+.checkbox--mini:checked + label {
+  color: $secondary;
+  &::before {
+    background-image: url("../img/checkbox-mini-on.svg");
+  }
+}
+
+@for $i from 1 through 8 {
+  .checkbox--#{$i} + label::before {
+    background-image: url("../img/checkbox-#{$i}-off.svg");
+  }
+  .checkbox--#{$i}:checked + label::before {
+    background-image: url("../img/checkbox-#{$i}-on.svg");
+  }
+}
+
+.radio {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+.radio + label {
+  display: inline-flex;
+  align-items: center;
+  user-select: none;
+}
+
+.radio + label::before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-image: url("../img/radio-off.svg");
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.radio:checked + label::before {
+  background-image: url("../img/radio-on.svg");
+}
+
+.success {
+  color: $success;
+  margin-top: 10px;
+}
+
+.invalid {
+  max-width: 290px;
+  color: $invalid;
+  margin-top: 10px;
 }

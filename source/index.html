@@ -32,7 +32,10 @@
             <p class="info main__info">
               Future front-end developer, 31 years old, Tolyatti
             </p>
+            @@include('blocks/menu-button.html')
           </div>
+          <!-- Time link -->
+          <a href="./profile.html">My profile >></a>
         </div>
       </section>
       <section class="about">
@@ -117,46 +120,45 @@
                   ./img/monster-mobile-2x.png 2x
                 "
                 media="(max-width: 480px)"
+                class="portfolio__image"
               />
               <source
                 srcset="
                   ./img/monster-tablet.png,
                   ./img/monster-tablet-2x.png 2x
                 "
-                width="100%"
                 media="(max-width: 992px)"
+                class="portfolio__image"
               />
               <source
                 srcset="./img/monster.png, ./img/monster-2x.png 2x"
-                width="100%"
-                height="604"
+                class="portfolio__image"
               />
               <img
                 src="./img/monster.png"
                 alt="Image: Monster Project Cover"
-                width="100%"
-                height="604"
+                class="portfolio__image"
               />
             </picture>
             <div class="portfolio__overlay">
               <a href="#" class="info portfolio__info">
                 Learning site for DL Academy courses
               </a>
-              <p class="portfolio__description">
+              <p class="headline portfolio__description">
                 A simple multi-page static site. The design layout was in Figma.
                 HTML and CSS were used. The site is responsive and
                 cross-browser, but without adding interactivity via JavaScript.
               </p>
             </div>
-            <button class="arrow-button portfolio__button">
-              <svg class="arrow-button__icon" width="43" height="61">
+            <button class="button-link portfolio__button">
+              <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-prev"></use>
               </svg>
             </button>
             <button
-              class="arrow-button portfolio__button portfolio__button--right"
+              class="button-link portfolio__button portfolio__button--right"
             >
-              <svg class="arrow-button__icon" width="43" height="61">
+              <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-next"></use>
               </svg>
             </button>
@@ -164,8 +166,13 @@
         </div>
       </section>
     </main>
-    @@include('blocks/footer.html')
+    @@include('blocks/footer.html') @@include('blocks/sign-in.html')
+    @@include('blocks/register.html') @@include('blocks/send-message.html')
 
-    <script src="js/app.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/mobileMenu.js" defer></script>
+    <script src="js/signIn.js" defer></script>
+    <script src="js/register.js" defer></script>
+    <script src="js/sendMessage.js" defer></script>
   </body>
 </html>

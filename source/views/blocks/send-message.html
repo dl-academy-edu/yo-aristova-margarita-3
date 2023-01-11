@@ -1,0 +1,84 @@
+<section class="modal send-message">
+  <h1 class="hidden">Send Message</h1>
+  <div class="overlay"></div>
+  <div class="modal__dialog">
+    <button class="button-link modal__close">
+      <svg width="26" height="26">
+        <use xlink:href="./img/sprite.svg#close"></use>
+      </svg>
+    </button>
+    <form method="post" name="sendMessage" class="form">
+      <div class="form__wrapper">
+        <div class="form__group">
+          <label for="input-username" class="form__label form__label--required"
+            >What is your name?</label
+          >
+          <input
+            type="text"
+            id="input-username"
+            name="name"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="input-subject" class="form__label form__label--required"
+            >Message subject</label
+          >
+          <input
+            type="text"
+            id="input-subject"
+            name="subject"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="input-usermail" class="form__label form__label--required"
+            >Your Email</label
+          >
+          <input
+            type="text"
+            id="input-usermail"
+            name="email"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="input-phone" class="form__label form__label--required"
+            >Your mobile phone</label
+          >
+          <input
+            type="text"
+            id="input-phone"
+            name="phone"
+            class="form__input"
+          />
+        </div>
+      </div>
+      <div class="form__group">
+        <label for="input-message" class="form__label"
+          >What do you want to discuss with me?</label
+        >
+        <textarea
+          id="input-message"
+          name="message"
+          class="form__input form__input--long form__message"
+        ></textarea>
+      </div>
+      <div class="form__personal">
+        <input
+          type="checkbox"
+          id="sendMessageAccept"
+          name="accept"
+          class="checkbox checkbox--mini"
+        />
+        <label for="sendMessageAccept" class="form__accept"
+          >Clicking on the button, you consent to the processing of your
+          personal data.</label
+        >
+      </div>
+      <button type="submit" class="button button--send-message-js" disabled>
+        Send
+      </button>
+    </form>
+  </div>
+</section>

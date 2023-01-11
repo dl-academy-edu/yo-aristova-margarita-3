@@ -7,13 +7,69 @@
             >Home</a
           >
         </li>
-        <div class="nav__wrapper">
-          <li><a href="#" class="nav__link">My blog</a></li>
-          <li>
-            <button type="button" class="button-link nav__link">Sign in</button>
-          </li>
-          <li><a href="#" class="nav__link">Register</a></li>
-        </div>
+        <li>
+          <ul class="nav__inner">
+            <li><a href="../../blog.html" class="nav__link">My blog</a></li>
+            <li>
+              <button
+                type="button"
+                class="button-link nav__link nav__link--sign-js"
+              >
+                Sign in
+              </button>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="button-link nav__link nav__link--register-js"
+              >
+                Register
+              </button>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<header class="header-mobile">
+  <div class="header-mobile__overlay"></div>
+  <div class="header-mobile__wrapper">
+    <button class="button-link header-mobile__close">
+      <svg width="26" height="26">
+        <use xlink:href="../../img/sprite.svg#dark-close"></use>
+      </svg>
+    </button>
+    <nav>
+      <ul class="nav nav--mobile">
+        <li>
+          <a
+            href="../../index.html"
+            class="nav__link nav__link--large nav__link--checked"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a href="../../blog.html" class="nav__link nav__link--large"
+            >My blog</a
+          >
+        </li>
+        <li>
+          <button
+            type="button"
+            class="button-link nav__link nav__link--large nav__link--sign-js"
+          >
+            Sign in
+          </button>
+        </li>
+        <li>
+          <button
+            type="button"
+            class="button-link nav__link nav__link--large nav__link--modal"
+          >
+            Register
+          </button>
+        </li>
       </ul>
     </nav>
   </div>

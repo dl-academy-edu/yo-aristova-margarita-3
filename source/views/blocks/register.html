@@ -1,0 +1,108 @@
+<section class="modal register">
+  <h1 class="hidden">Register</h1>
+  <div class="overlay"></div>
+  <div class="modal__dialog">
+    <button class="button-link modal__close">
+      <svg width="26" height="26">
+        <use xlink:href="./img/sprite.svg#close"></use>
+      </svg>
+    </button>
+    <form method="post" name="register" class="form">
+      <div>
+        <label for="registerEmail" class="form__label form__label--required"
+          >Email</label
+        >
+        <input
+          type="text"
+          id="registerEmail"
+          name="email"
+          class="form__input form__input--long"
+        />
+      </div>
+      <div class="form__wrapper">
+        <div class="form__group">
+          <label for="registerName" class="form__label form__label--required"
+            >Name</label
+          >
+          <input
+            type="text"
+            id="registerName"
+            name="name"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="registerSurname" class="form__label form__label--required"
+            >Surname</label
+          >
+          <input
+            type="text"
+            id="registerSurname"
+            name="surname"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label
+            for="registerPassword"
+            class="form__label form__label--required"
+            >Password</label
+          >
+          <input
+            type="password"
+            id="registerPassword"
+            name="password"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label
+            for="registerPasswordRepeat"
+            class="form__label form__label--required"
+            >Repeat password</label
+          >
+          <input
+            type="password"
+            id="registerPasswordRepeat"
+            name="passwordRepeat"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label
+            for="registerLocation"
+            class="form__label form__label--required"
+            >Location</label
+          >
+          <input
+            type="text"
+            id="registerLocation"
+            name="location"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="registerAge" class="form__label form__label--required"
+            >Age</label
+          >
+          <input type="text" id="registerAge" name="age" class="form__input" />
+        </div>
+      </div>
+      <div class="form__personal">
+        <input
+          type="checkbox"
+          id="registerAccept"
+          name="accept"
+          class="checkbox checkbox--mini"
+        />
+        <label for="registerAccept" class="form__accept"
+          >Clicking on the button, you consent to the processing of your
+          personal data.</label
+        >
+      </div>
+      <button type="submit" class="button button--register-js" disabled>
+        Sign up
+      </button>
+    </form>
+  </div>
+</section>

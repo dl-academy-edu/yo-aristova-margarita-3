@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="google" content="notranslate" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <title>My profile</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <script>
+      var docElement = document.documentElement;
+      docElement.className =
+        docElement.className.replace(/\bno-js\b/, "") + " js";
+    </script>
+
+    <!-- Favicon -->
+
+    <!-- build:css -->
+    <link href="css/style.min.css" rel="stylesheet" />
+    <!-- endbuild -->
+  </head>
+  <body>
+    @@include('blocks/header.html')
+    <main>
+      <section class="profile">
+        <div class="container">
+          <div class="title-wrapper profile__title">
+            <h1 class="title">My profile</h1>
+            @@include('blocks/menu-button.html')
+          </div>
+          <div class="profile__wrapper">
+            <img
+              src="./img/no-photo.png"
+              class="profile__image"
+              alt="Image: Profile Photo"
+            />
+            <div class="profile__info">
+              <span class="info info--extrabold">Name:</span>
+              <span class="info info--extrabold">Surname:</span>
+              <span class="info info--extrabold">Email:</span>
+              <span class="info info--extrabold">Password:</span>
+              <span class="info info--extrabold">Location:</span>
+              <span class="info info--extrabold">Age:</span>
+              <button class="button profile__button">Change password</button>
+              <button class="button">Change other data</button>
+              <button class="button">Delete account</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    @@include('blocks/footer.html') @@include('blocks/editing-password.html')
+    @@include('blocks/editing-data.html')
+
+    <script src="js/app.js" defer></script>
+  </body>
+</html>

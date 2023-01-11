@@ -1,0 +1,70 @@
+<section class="modal editing-data">
+  <h1 class="hidden">Editing data</h1>
+  <div class="overlay"></div>
+  <div class="modal__dialog">
+    <button class="button-link modal__close">
+      <svg width="26" height="26">
+        <use xlink:href="./img/sprite.svg#close"></use>
+      </svg>
+    </button>
+    <form method="post" name="register" class="form">
+      <div>
+        <label for="editingEmail" class="form__label">Email</label>
+        <input
+          type="text"
+          id="editingEmail"
+          name="editingEmail"
+          class="form__input form__input--long"
+        />
+      </div>
+      <div class="form__wrapper">
+        <div class="form__group">
+          <label for="editingName" class="form__label">Name</label>
+          <input
+            type="text"
+            id="editingName"
+            name="editingName"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="editingSurname" class="form__label">Surname</label>
+          <input
+            type="text"
+            id="editingSurname"
+            name="editingSurname"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="editingLocation" class="form__label">Location</label>
+          <input
+            type="text"
+            id="editingLocation"
+            name="editingLocation"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="editingAge" class="form__label">Age</label>
+          <input
+            type="text"
+            id="editingAge"
+            name="editingAge"
+            class="form__input"
+          />
+        </div>
+        <div class="form__group">
+          <label for="editinPicture" class="form__label">Profile picture</label>
+          <input
+            type="file"
+            id="editinPicture"
+            name="editinPicture"
+            class="form__input"
+          />
+        </div>
+      </div>
+      <button type="submit" class="button">Submit changes</button>
+    </form>
+  </div>
+</section>

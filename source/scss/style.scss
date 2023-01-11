@@ -18,18 +18,11 @@
 
 @import "_blocks/container";
 @import "_blocks/header";
+@import "_blocks/menu-button";
 @import "_blocks/footer";
+@import "_blocks/modals";
 
-/*
-  Ниже пример подключения других блоков
-
-  Каждый новый файл должен отвечать за конкретный блок в терминах БЭМ
-  (https://ru.bem.info/methodology/key-concepts/#%D0%B1%D0%BB%D0%BE%D0%BA)
-
-  Для именования селекторов давайте придерживаться стиля two dashes
-  (https://ru.bem.info/methodology/naming-convention/#%D1%81%D1%82%D0%B8%D0%BB%D1%8C-two-dashes)
-  block-name__element-name--modificator
-*/
+// @import "_blocks/modal";
 
 .main {
   padding: 40px 0 60px 0;
@@ -48,8 +41,8 @@
   .main {
     padding: 30px 0 36px 0;
     &__block {
-      flex-direction: column;
       align-items: flex-start;
+      flex-wrap: wrap;
       row-gap: 20px;
     }
     &__info {
@@ -214,6 +207,10 @@
   &__wrapper {
     position: relative;
   }
+  &__image {
+    width: 100%;
+    height: 604px;
+  }
   &__overlay {
     position: absolute;
     bottom: 0;
@@ -236,9 +233,6 @@
     max-width: 400px;
   }
   &__description {
-    font-family: "Gilroy-500", sans-serif;
-    font-size: 14px;
-    line-height: 16px;
     color: $primary;
     text-align: center;
     max-width: 400px;
@@ -246,7 +240,7 @@
   &__button {
     position: absolute;
     top: 50%;
-    left: 20px;
+    left: 30px;
     transform: translateY(-50%);
     &--right {
       left: 940px;
@@ -254,18 +248,11 @@
   }
 }
 
-.arrow-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
 @media screen and (max-width: 992px) {
   .portfolio__button {
     left: 17px;
     &--right {
-      left: 588px;
+      left: 605px;
     }
   }
 }
@@ -274,7 +261,7 @@
   .portfolio__button {
     left: 0;
     &--right {
-      left: 440px;
+      left: 450px;
     }
   }
 }
@@ -286,13 +273,192 @@
       margin-bottom: 30px;
     }
     &__button--right {
-      left: 235px;
+      left: 255px;
     }
     &__overlay {
       padding: 20px 15px;
     }
     &__info {
       max-width: 160px;
+    }
+  }
+}
+
+.sign-in--visible,
+.register--visible,
+.send-message--visible {
+  visibility: visible;
+}
+
+.profile {
+  padding: 40px 0 60px 0;
+  &__title {
+    margin-bottom: 40px;
+  }
+  &__wrapper {
+    display: flex;
+    column-gap: 105px;
+  }
+  &__image {
+    width: 320px;
+    height: 450px;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.25));
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    max-width: 254px;
+  }
+  &__button {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .profile {
+    &__wrapper {
+      column-gap: 76px;
+    }
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .profile {
+    &__title {
+      margin-bottom: 36px;
+    }
+    &__wrapper {
+      flex-direction: column;
+      row-gap: 40px;
+    }
+    &__image {
+      object-fit: cover;
+      width: 280px;
+    }
+  }
+}
+
+.blog {
+  padding: 40px 0 60px 0;
+  &__title {
+    margin-bottom: 40px;
+  }
+}
+
+.filter-form {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  &__subtitle {
+    margin-bottom: 10px;
+  }
+  &__tags {
+    margin-right: 75px;
+  }
+  &__views {
+    margin-right: 70px;
+  }
+  &__comments {
+    margin-right: 137px;
+  }
+  &__show {
+    margin-right: 76px;
+  }
+  &__sort {
+    margin-right: 48px;
+  }
+  &__button {
+    align-self: center;
+  }
+}
+
+.tags {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: 5px;
+  column-gap: 5px;
+  max-width: 116px;
+  &__item {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.filter-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.search-form {
+  display: flex;
+  column-gap: 30px;
+  align-items: center;
+  padding: 35px 0 20px 0;
+  &__input {
+    flex-basis: 100%;
+    border: 2.5px solid #e5e5e5;
+    min-height: 50px;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .filter-form {
+    justify-content: space-between;
+    row-gap: 30px;
+    column-gap: 35px;
+    &__tags,
+    &__views,
+    &__comments,
+    &__show,
+    &__sort {
+      margin-right: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filter-form {
+    justify-content: flex-start;
+    column-gap: 50px;
+    &__comments {
+      order: 1;
+    }
+    &__views {
+      order: 2;
+    }
+    &__sort {
+      order: 3;
+      margin-right: 35px;
+    }
+    &__show {
+      order: 4;
+    }
+    &__tags {
+      order: 5;
+    }
+    &__button {
+      order: 6;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .filter-form {
+    row-gap: 25px;
+    &__sort {
+      margin-right: 0;
+    }
+  }
+  .search-form {
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 20px;
+    &__input {
+      width: 100%;
     }
   }
 }
