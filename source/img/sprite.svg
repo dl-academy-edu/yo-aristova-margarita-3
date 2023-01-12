@@ -1,11 +1,11 @@
 <svg display="none" xmlns="http://www.w3.org/2000/svg">
   <symbol id="arrow-prev" width="25" height="43" viewBox="0 0 25 43" fill="none">
-    <rect x="21.1641" y="43" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-135 21.1641 43)" fill="#070707"/>
-    <rect x="25" y="4.51978" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(135 25 4.51978)" fill="#070707"/>
+    <rect x="21.1641" y="43" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-135 21.1641 43)" fill="currentcolor"/>
+    <rect x="25" y="4.51978" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(135 25 4.51978)" fill="currentcolor"/>
   </symbol>
   <symbol id="arrow-next" width="25" height="43" viewBox="0 0 25 43" fill="none">
-    <rect x="3.83594" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(45 3.83594 0)" fill="#070707"/>
-    <rect y="38.4802" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-45 0 38.4802)" fill="#070707"/>
+    <rect x="3.83594" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(45 3.83594 0)" fill="currentcolor"/>
+    <rect y="38.4802" width="29.9303" height="5.42502" rx="2.71251" transform="rotate(-45 0 38.4802)" fill="currentcolor"/>
   </symbol>
   <symbol id="close" width="26" height="26" viewBox="0 0 26 26" fill="none">
     <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)" fill="currentcolor"/>
@@ -16,13 +16,13 @@
     <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)" fill="currentcolor"/>
   </symbol>
   <symbol id="button-prev" width="42" height="42" viewBox="0 0 42 42" fill="none">
-    <rect x="40.75" y="40.75" width="39.5" height="39.5" rx="19.75" transform="rotate(-180 40.75 40.75)" stroke="#070707" stroke-width="2.5"/>
-    <rect x="24.5791" y="32.6992" width="16.5512" height="3" rx="1.5" transform="rotate(-135 24.5791 32.6992)" fill="#070707"/>
-    <rect x="26.7002" y="11.4199" width="16.5512" height="3" rx="1.5" transform="rotate(135 26.7002 11.4199)" fill="#070707"/>
+    <rect x="40.75" y="40.75" width="39.5" height="39.5" rx="19.75" transform="rotate(-180 40.75 40.75)" stroke="currentcolor" stroke-width="2.5"/>
+    <rect x="24.5791" y="32.6992" width="16.5512" height="3" rx="1.5" transform="rotate(-135 24.5791 32.6992)" fill="currentcolor"/>
+    <rect x="26.7002" y="11.4199" width="16.5512" height="3" rx="1.5" transform="rotate(135 26.7002 11.4199)" fill="currentcolor"/>
   </symbol>
   <symbol id="button-next" width="42" height="42" viewBox="0 0 42 42" fill="none">
-    <rect x="1.25" y="1.25006" width="39.5" height="39.5" rx="19.75" stroke="#070707" stroke-width="2.5"/>
-    <rect x="17.4209" y="9.30084" width="16.5512" height="3" rx="1.5" transform="rotate(45 17.4209 9.30084)" fill="#070707"/>
-    <rect x="15.2998" y="30.5801" width="16.5512" height="3" rx="1.5" transform="rotate(-45 15.2998 30.5801)" fill="#070707"/>
+    <rect x="1.25" y="1.25006" width="39.5" height="39.5" rx="19.75" stroke="currentcolor" stroke-width="2.5"/>
+    <rect x="17.4209" y="9.30084" width="16.5512" height="3" rx="1.5" transform="rotate(45 17.4209 9.30084)" fill="currentcolor"/>
+    <rect x="15.2998" y="30.5801" width="16.5512" height="3" rx="1.5" transform="rotate(-45 15.2998 30.5801)" fill="currentcolor"/>
   </symbol>
 </svg>
