@@ -44,14 +44,13 @@
 
 .slider {
   user-select: none;
-  margin: 50px auto;
   &__wrapper {
     overflow: hidden;
+    margin-bottom: 30px;
   }
   &__inner-wrapper {
     display: flex;
     height: 100%;
-    // transition: ;
   }
   &__slide {
     display: flex;
@@ -70,7 +69,7 @@
       background-color: blue;
     }
   }
-  &__pagination {
+  &__panel {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -78,17 +77,17 @@
   &__dot {
     width: 10px;
     height: 10px;
+    background-color: #e5e5e5;
     border: none;
-    // outline: none;
     border-radius: 50%;
     padding: 0;
     cursor: pointer;
     transition: background-color 0.4s;
     &:not(:last-child) {
-      margin-right: 5px;
+      margin-right: 7px;
     }
     &--active {
-      background-color: $primary;
+      background-color: $secondary;
     }
     &:not(.slider__dot--active):hover,
     &:not(.slider__dot--active):focus {
@@ -98,16 +97,15 @@
   &__button {
     color: $secondary;
     transition: all 0.4s;
-    &:not(:disabled):hover,
-    &:not(:disabled):focus {
+    &:not(:disabled):hover {
       color: $base-grey;
       cursor: pointer;
     }
-  }
-  &:disabled {
-    user-select: none;
-    pointer-events: none;
-    color: #e5e5e5;
+    &:disabled {
+      user-select: none;
+      pointer-events: none;
+      color: #e5e5e5;
+    }
   }
 }
 
