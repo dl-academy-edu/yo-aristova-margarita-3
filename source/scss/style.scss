@@ -164,6 +164,21 @@
     width: 142px;
     height: 9px;
     background-color: #e5e5e5;
+    &--html:before {
+      @include progress(90%);
+    }
+    &--css:before {
+      @include progress(85%);
+    }
+    &--js:before {
+      @include progress(50%);
+    }
+    &--git:before {
+      @include progress(50%);
+    }
+    &--figma:before {
+      @include progress(80%);
+    }
   }
 }
 
