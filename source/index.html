@@ -34,8 +34,18 @@
             </p>
             @@include('blocks/menu-button.html')
           </div>
-          <!-- Time link -->
-          <a href="./profile.html">My profile >></a>
+          <div class="main__slider">
+            <button class="button-link">
+              <svg width="42" height="42">
+                <use xlink:href="./img/sprite.svg#button-prev"></use>
+              </svg>
+            </button>
+            <button class="button-link">
+              <svg width="42" height="42">
+                <use xlink:href="./img/sprite.svg#button-next"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
       <section class="about">
@@ -43,9 +53,9 @@
           <h2 class="subtitle about__title">About me</h2>
           <div class="about__wrapper">
             <p class="info about__info">
-              I am a beginner frontend developer, in my training projects I used
-              html, scss, javascript, git and gulp. I really like frontend and
-              I'm interested in developing in this direction.
+              I am a beginner front-end developer, in my training projects I
+              used html, scss, javascript, git and gulp. I really like front-end
+              and I'm interested in developing in this direction.
             </p>
             <p class="info about__info about__info--left">
               I can work with different graphic editors: figma, photoshop,
@@ -173,5 +183,6 @@
     <script src="js/signIn.js" defer></script>
     <script src="js/register.js" defer></script>
     <script src="js/sendMessage.js" defer></script>
+    <script src="js/slider.js" defer></script>
   </body>
 </html>
