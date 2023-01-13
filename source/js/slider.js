@@ -12,6 +12,8 @@ let activeSlideIndex = 0;
 let slideWidth = wrapper.offsetWidth;
 let dots = [];
 let timer = null;
+let position = { x: 0 };
+let isMouseDown = false;
 
 const initWidth = () => {
   slideWidth = wrapper.offsetWidth;
@@ -70,6 +72,24 @@ const createDots = () => {
     pagination.insertAdjacentElement("beforeend", dot);
   }
 };
+
+const endMouseEvent = (event) => {
+  if (!isMouseDown) return;
+  isMouseDown = false;
+  if (position.x > event.clientX) {
+    setActiveSlide(activeSlideIndex + 1);
+  } else {
+    setActiveSlide(activeSlideIndex - 1);
+  }
+};
+
+wrapper.addEventListener("mousedown", (event) => {
+  position.x = event.clientX;
+  isMouseDown = true;
+});
+
+wrapper.addEventListener("mouseup", endMouseEvent);
+wrapper.addEventListener("mouseout", endMouseEvent);
 
 window.addEventListener("resize", () => {
   initWidth();
