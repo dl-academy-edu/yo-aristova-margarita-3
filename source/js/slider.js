@@ -20,8 +20,6 @@ const initWidth = () => {
   });
 };
 
-initWidth();
-
 const setActiveSlide = (index, withAnimation = true) => {
   if (index < 0 || index > slidesCount - 1) return;
   innerWrapper.style.transform = `translateX(${-1 * index * slideWidth}px)`;
@@ -73,12 +71,14 @@ const createDots = () => {
   }
 };
 
-createDots();
-setActiveSlide(0);
 window.addEventListener("resize", () => {
   initWidth();
   setActiveSlide(activeSlideIndex, false);
 });
+
+initWidth();
+createDots();
+setActiveSlide(0);
 
 buttonPrev.addEventListener("click", () => {
   setActiveSlide(activeSlideIndex - 1);

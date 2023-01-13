@@ -21,6 +21,7 @@
 @import "_blocks/menu-button";
 @import "_blocks/footer";
 @import "_blocks/modals";
+@import "_blocks/swiper-bundle";
 
 // @import "_blocks/modal";
 
@@ -59,14 +60,17 @@
     flex-shrink: 0;
     height: 465px;
     color: $primary;
-    &:nth-child(3n + 1) {
+    &:nth-child(4n + 1) {
       background-color: tomato;
     }
-    &:nth-child(3n + 2) {
+    &:nth-child(4n + 2) {
       background-color: green;
     }
-    &:nth-child(3n + 3) {
+    &:nth-child(4n + 3) {
       background-color: blue;
+    }
+    &:nth-child(4n + 4) {
+      background-color: teal;
     }
   }
   &__panel {
@@ -107,6 +111,11 @@
       color: #e5e5e5;
     }
   }
+}
+
+.swiper {
+  width: 600px;
+  height: 300px;
 }
 
 @media screen and (max-width: 480px) {
