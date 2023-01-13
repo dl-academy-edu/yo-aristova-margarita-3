@@ -1,12 +1,15 @@
-import Swiper from "swiper";
-
 const swiper = new Swiper(".swiper", {
-  direction: "horizontal",
   loop: true,
 
-  // Navigation arrows
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
+  keyboard: {
+    enabled: true,
+    onlyInViewport: false,
   },
+
+  navigation: {
+    nextEl: ".portfolio__button--next",
+    prevEl: ".portfolio__button--prev",
+  },
+
+  effect: "coverflow",
 });

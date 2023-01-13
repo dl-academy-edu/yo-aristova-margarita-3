@@ -21,7 +21,7 @@ const interactiveWindow = (modal, openButton, closeButton) => {
     openButton.focus();
   });
 
-  window.addEventListener("keydown", function (event) {
+  window.addEventListener("keydown", (event) => {
     if (event.code === "Escape" && modal.classList.contains("visible")) {
       interactiveModal(modal);
       openButton.focus();

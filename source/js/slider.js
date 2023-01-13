@@ -23,18 +23,19 @@ const initWidth = () => {
 };
 
 const setActiveSlide = (index, withAnimation = true) => {
-  if (index < 0 || index > slidesCount - 1) return;
+  if (index < 0 || index >= slidesCount) return;
   innerWrapper.style.transform = `translateX(${-1 * index * slideWidth}px)`;
 
   buttonPrev.removeAttribute("disabled");
   buttonNext.removeAttribute("disabled");
 
   if (withAnimation) {
-    clearTimeout(timer);
     innerWrapper.style.transition = `transform ${animationDuration}ms`;
-    timer = setTimeout(() => {
-      innerWrapper.style.transition = "";
-    }, animationDuration);
+    // clearTimeout(timer);
+    // innerWrapper.style.transition = `transform ${animationDuration}ms`;
+    // timer = setTimeout(() => {
+    //   innerWrapper.style.transition = "";
+    // }, animationDuration);
   }
 
   if (index === 0) {
@@ -106,4 +107,16 @@ buttonPrev.addEventListener("click", () => {
 
 buttonNext.addEventListener("click", () => {
   setActiveSlide(activeSlideIndex + 1);
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.code === "ArrowLeft") {
+    setActiveSlide(activeSlideIndex - 1);
+  }
+});
+
+window.addEventListener("keydown", (event) => {
+  if (event.code === "ArrowRight") {
+    setActiveSlide(activeSlideIndex + 1);
+  }
 });
