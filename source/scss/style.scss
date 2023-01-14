@@ -54,24 +54,7 @@
     height: 100%;
   }
   &__slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
     height: 465px;
-    color: $primary;
-    &:nth-child(4n + 1) {
-      background-color: tomato;
-    }
-    &:nth-child(4n + 2) {
-      background-color: green;
-    }
-    &:nth-child(4n + 3) {
-      background-color: blue;
-    }
-    &:nth-child(4n + 4) {
-      background-color: teal;
-    }
   }
   &__panel {
     display: flex;

@@ -31,11 +31,11 @@ const setActiveSlide = (index, withAnimation = true) => {
 
   if (withAnimation) {
     innerWrapper.style.transition = `transform ${animationDuration}ms`;
-    // clearTimeout(timer);
-    // innerWrapper.style.transition = `transform ${animationDuration}ms`;
-    // timer = setTimeout(() => {
-    //   innerWrapper.style.transition = "";
-    // }, animationDuration);
+    clearTimeout(timer);
+    innerWrapper.style.transition = `transform ${animationDuration}ms`;
+    timer = setTimeout(() => {
+      innerWrapper.style.transition = "";
+    }, animationDuration);
   }
 
   if (index === 0) {
