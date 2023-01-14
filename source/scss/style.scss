@@ -19,6 +19,7 @@
 @import "_blocks/container";
 @import "_blocks/header";
 @import "_blocks/menu-button";
+@import "_blocks/panel";
 @import "_blocks/footer";
 @import "_blocks/modals";
 @import "_blocks/swiper-bundle";
@@ -54,13 +55,10 @@
     height: 100%;
   }
   &__slide {
+    pointer-events: none;
     height: 465px;
   }
-  &__panel {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+
   &__dot {
     width: 10px;
     height: 10px;
@@ -79,19 +77,6 @@
     &:not(.slider__dot--active):hover,
     &:not(.slider__dot--active):focus {
       background-color: $base-grey;
-    }
-  }
-  &__button {
-    color: $secondary;
-    transition: all 0.4s;
-    &:not(:disabled):hover {
-      color: $base-grey;
-      cursor: pointer;
-    }
-    &:disabled {
-      user-select: none;
-      pointer-events: none;
-      color: #e5e5e5;
     }
   }
 }

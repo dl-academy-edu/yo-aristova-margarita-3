@@ -154,23 +154,7 @@
                   </div>
                 </div>
               </div>
-              <div class="slider__panel">
-                <button
-                  class="button-link slider__button slider__button--prev-js"
-                >
-                  <svg width="42" height="42">
-                    <use xlink:href="./img/sprite.svg#button-prev"></use>
-                  </svg>
-                </button>
-                <div class="slider__pagination slider__pagination--js"></div>
-                <button
-                  class="button-link slider__button slider__button--next-js"
-                >
-                  <svg width="42" height="42">
-                    <use xlink:href="./img/sprite.svg#button-next"></use>
-                  </svg>
-                </button>
-              </div>
+              @@include('blocks/panel.html', { "class": "slider" })
             </div>
           </div>
         </div>
