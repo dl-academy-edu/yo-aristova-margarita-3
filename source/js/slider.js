@@ -30,7 +30,6 @@ const setActiveSlide = (index, withAnimation = true) => {
   buttonNext.removeAttribute("disabled");
 
   if (withAnimation) {
-    innerWrapper.style.transition = `transform ${animationDuration}ms`;
     clearTimeout(timer);
     innerWrapper.style.transition = `transform ${animationDuration}ms`;
     timer = setTimeout(() => {
