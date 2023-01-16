@@ -8,7 +8,7 @@ const buttonNext = slider.querySelector(".slider__button--next-js");
 const pagination = slider.querySelector(".slider__pagination--js");
 const animationDuration = 500;
 
-let activeSlideIndex = 0;
+let activeSlideIndex;
 let slideWidth = wrapper.offsetWidth;
 let dots = [];
 let timer = null;
@@ -83,6 +83,12 @@ const endMouseEvent = (event) => {
   }
 };
 
+const updateSlider = () => {
+  +localStorage.getItem("activeSlideIndex")
+    ? (activeSlideIndex = +localStorage.getItem("activeSlideIndex"))
+    : (activeSlideIndex = 0);
+};
+
 wrapper.addEventListener("mousedown", (event) => {
   position.x = event.clientX;
   isMouseDown = true;
@@ -91,21 +97,26 @@ wrapper.addEventListener("mousedown", (event) => {
 wrapper.addEventListener("mouseup", endMouseEvent);
 wrapper.addEventListener("mouseout", endMouseEvent);
 
+initWidth();
+createDots();
+updateSlider();
+setActiveSlide(activeSlideIndex);
+
 window.addEventListener("resize", () => {
   initWidth();
   setActiveSlide(activeSlideIndex, false);
 });
 
-initWidth();
-createDots();
-setActiveSlide(0);
-
 buttonPrev.addEventListener("click", () => {
   setActiveSlide(activeSlideIndex - 1);
+  localStorage.setItem("activeSlideIndex", activeSlideIndex);
+  updateSlider();
 });
 
 buttonNext.addEventListener("click", () => {
   setActiveSlide(activeSlideIndex + 1);
+  localStorage.setItem("activeSlideIndex", activeSlideIndex);
+  updateSlider();
 });
 
 window.addEventListener("keydown", (event) => {
