@@ -1,11 +1,8 @@
 if (location.search) {
   const filterForm = document.forms.filter;
-  const arrayStringParams = location.search.substring(1).split("&");
-  const baseUrl = `${location.origin}${location.pathname}`;
-  const arrayCheckedInput = [];
-  const checkedInputsString = "";
   const params = {};
-  const newUrl = "";
+  const arrayStringParams = location.search.substring(1).split("&");
+  const url = new URL(location.pathname, location.origin);
 
   for (let stringParam of arrayStringParams) {
     const param = stringParam.split("=");
@@ -35,11 +32,14 @@ if (location.search) {
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
+    url.searchParams.delete("views");
+    url.searchParams.delete("comments");
+    url.searchParams.delete("show");
+    url.searchParams.delete("sort");
+
     const addCheckedInput = (nameGroupInputs, typeParam) => {
       for (let checkbox of nameGroupInputs) {
-        if (checkbox.checked) {
-          arrayCheckedInput.push(`${typeParam}=${checkbox.value}`);
-        }
+        if (checkbox.checked) url.searchParams.append(typeParam.checkbox.value);
       }
     };
 
@@ -48,14 +48,6 @@ if (location.search) {
     addCheckedInput(e.target.show, "show");
     addCheckedInput(e.target.sort, "sort");
 
-    for ([index, activeInput] of arrayCheckedInput.entries()) {
-      checkedInputsString += activeInput;
-      if (index != arrayCheckedInput.length - 1) {
-        checkedInputsString += "&";
-      }
-    }
-
-    newUrl = baseUrl + `?${checkedInputsString}`;
-    location = newUrl;
+    history.replaceState(null, "", url);
   });
 }
