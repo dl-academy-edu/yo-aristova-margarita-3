@@ -124,6 +124,14 @@ fieldset {
   &:disabled {
     color: #e5e5e5;
     border-color: #e5e5e5;
+    cursor: auto;
+  }
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
+    color: $primary;
+    border: 2.5px solid $primary;
+    background-color: $secondary;
+    transition: all 0.4s;
   }
 }
 
@@ -176,6 +184,14 @@ fieldset {
     height: 19px;
     background-image: url("../img/checkbox-mini-off.svg");
     margin-right: 15px;
+  }
+}
+
+.checkbox--mini:hover + label,
+.checkbox--mini:focus + label {
+  color: $base-grey;
+  &::before {
+    background-image: url("../img/checkbox-mini-hover.svg");
   }
 }
 

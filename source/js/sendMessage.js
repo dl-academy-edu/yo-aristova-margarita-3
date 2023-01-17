@@ -15,6 +15,8 @@
     sendMessageCloseButton
   );
 
+  // hoverButton(sendMessageForm);
+
   accept.addEventListener("click", () => {
     switchButton(sendMessageButton);
   });

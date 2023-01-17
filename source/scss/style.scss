@@ -292,6 +292,11 @@
     text-decoration-style: dashed;
     text-align: center;
     max-width: 400px;
+    &:hover,
+    &:focus {
+      text-decoration-style: solid;
+      transition: all 0.4s;
+    }
   }
   &__description {
     color: $primary;

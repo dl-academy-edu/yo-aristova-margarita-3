@@ -29,6 +29,29 @@ const interactiveWindow = (modal, openButton, closeButton) => {
   });
 };
 
+const hoverButton = (form) => {
+  const personal = form.querySelector(".form__personal");
+  const button = form.querySelector(".form__button");
+
+  personal.addEventListener("mouseover", () => {
+    button.classList.toggle("form__button--hover");
+    button.disabled = false;
+  });
+
+  personal.addEventListener("mouseout", () => {
+    button.classList.toggle("form__button--hover");
+    button.disabled = true;
+  });
+};
+
+const switchButton = (button) => {
+  if (button.disabled) {
+    button.disabled = false;
+  } else {
+    button.disabled = true;
+  }
+};
+
 const isEmailValid = (email) => {
   return email.match(/^[0-9a-z-\.]+\@[0-9a-z-]{2,}\.[a-z]{2,}$/i);
 };
@@ -64,14 +87,6 @@ const setErrorText = (input, message) => {
     },
     { once: true }
   );
-};
-
-const switchButton = (button) => {
-  if (button.disabled) {
-    button.disabled = false;
-  } else {
-    button.disabled = true;
-  }
 };
 
 const clearForm = () => {

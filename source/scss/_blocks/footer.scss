@@ -17,9 +17,16 @@
     font-weight: 400px;
     color: $primary;
     background-color: $secondary;
-    border: none;
+    border: 2.5px solid $primary;
     padding: 10px 29px;
     margin-bottom: 40px;
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      color: $secondary;
+      border: 2.5px solid $secondary;
+      background-color: $primary;
+      transition: all 0.4s;
+    }
   }
   &__social {
     margin-bottom: 40px;
@@ -38,6 +45,12 @@
     &--link {
       color: $base-grey;
       border-bottom: 1px $base-grey dashed;
+    }
+    &--link:hover,
+    &--link:focus {
+      color: $secondary;
+      border-bottom: 1px $secondary solid;
+      transition: all 0.4s;
     }
   }
 }
