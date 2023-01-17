@@ -425,6 +425,27 @@
   &__title {
     margin-bottom: 40px;
   }
+  &__page {
+    background-color: #e5e5e5;
+  }
+  &__page-number {
+    font-family: "Gilroy-700", sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: all 0.4s;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &--active {
+      color: $secondary;
+    }
+    &:not(.slider__dot--active):hover,
+    &:not(.slider__dot--active):focus {
+      color: #e5e5e5;
+    }
+  }
 }
 
 .filter-form {
