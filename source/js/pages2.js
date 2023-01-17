@@ -20,6 +20,25 @@ const updatePage = () => {
     : (activePage = 1);
 };
 
+const setActiveNumber = (index) => {
+  if (index < 1 || index > pagesArray.length) return;
+
+  buttonPrev.removeAttribute("disabled");
+  buttonNext.removeAttribute("disabled");
+
+  if (index === 1) {
+    buttonPrev.setAttribute("disabled", "");
+  }
+
+  if (index === pagesArray.length) {
+    buttonNext.setAttribute("disabled", "");
+  }
+
+  pagesNumbers[activePage].classList.remove("blog__page-number--active");
+  pagesNumbers[index - 1].classList.add("blog__page-number--active");
+  activePage = index;
+};
+
 const createPage = () => {
   const div = document.createElement("div");
   div.classList.add("blog__page");
@@ -31,15 +50,17 @@ const createPageNumber = (number) => {
   const div = document.createElement("div");
   div.classList.add("blog__page-number");
 
+  console.log("number: ", number);
+  console.log("active page: ", activePage);
+
   if (number === activePage) {
     div.classList.add("blog__page-number--active");
   }
 
   div.addEventListener("click", () => {
-    localStorage.setItem("activePage", number);
-    updatePage();
-    div.classList.add("blog__page-number--active");
-    console.log("active page: ", activePage);
+    document.querySelector(".blog__page").remove();
+    createPage();
+    setActiveNumber(number);
   });
   return div;
 };
@@ -56,53 +77,20 @@ const createPagesNumbers = () => {
 updatePage();
 createPage();
 createPagesNumbers();
-
-if (activePage === 1) buttonPrev.setAttribute("disabled", "");
-if (activePage === pagesArray.length) buttonNext.setAttribute("disabled", "");
-
-const changePage = (direction) => {
-  switch (direction) {
-    case "prev": {
-      if (activePage !== 1) {
-        pagesNumbers[activePage - 1].classList.remove(
-          "blog__page-number--active"
-        );
-        pagesNumbers[activePage - 2].classList.add("blog__page-number--active");
-        localStorage.setItem("activePage", activePage - 1);
-        updatePage();
-        buttonNext.removeAttribute("disabled");
-      }
-      if (activePage === 1) {
-        buttonPrev.setAttribute("disabled", "");
-      }
-      break;
-    }
-    case "next": {
-      if (activePage < pagesArray.length) {
-        pagesNumbers[activePage - 1].classList.remove(
-          "blog__page-number--active"
-        );
-        pagesNumbers[activePage].classList.add("blog__page-number--active");
-        localStorage.setItem("activePage", activePage + 1);
-        updatePage();
-        buttonPrev.removeAttribute("disabled");
-      }
-      if (activePage === pagesArray.length) {
-        buttonNext.setAttribute("disabled", "");
-      }
-      break;
-    }
-  }
-  document.querySelector(".blog__page").remove();
-  createPage();
-  document.querySelector(".blog__page-number").remove();
-  createPagesNumbers();
-};
+setActiveNumber(activePage);
 
 buttonPrev.addEventListener("click", () => {
-  changePage("prev");
+  setActiveNumber(activePage - 1);
+  localStorage.setItem("activePage", activePage);
+  updatePage();
+  document.querySelector(".blog__page").remove();
+  createPage();
 });
 
 buttonNext.addEventListener("click", () => {
-  changePage("next");
+  setActiveNumber(activePage + 1);
+  localStorage.setItem("activePage", activePage);
+  updatePage();
+  document.querySelector(".blog__page").remove();
+  createPage();
 });

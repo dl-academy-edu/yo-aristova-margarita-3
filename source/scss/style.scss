@@ -426,9 +426,10 @@
     margin-bottom: 40px;
   }
   &__page {
-    background-color: #e5e5e5;
+    background-color: tomato;
   }
   &__page-number {
+    display: inline-block;
     font-family: "Gilroy-700", sans-serif;
     font-size: 18px;
     line-height: 22px;
@@ -498,6 +499,7 @@
   display: flex;
   column-gap: 30px;
   align-items: center;
+  border-bottom: 2px solid #e5e5e5;
   padding: 35px 0 20px 0;
   &__input {
     flex-basis: 100%;

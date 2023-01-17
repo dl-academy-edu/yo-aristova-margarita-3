@@ -122,11 +122,15 @@ buttonNext.addEventListener("click", () => {
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowLeft") {
     setActiveSlide(activeSlideIndex - 1);
+    localStorage.setItem("activeSlideIndex", activeSlideIndex);
+    updateSlider();
   }
 });
 
 window.addEventListener("keydown", (event) => {
   if (event.code === "ArrowRight") {
     setActiveSlide(activeSlideIndex + 1);
+    localStorage.setItem("activeSlideIndex", activeSlideIndex);
+    updateSlider();
   }
 });
