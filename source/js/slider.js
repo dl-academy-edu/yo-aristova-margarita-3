@@ -6,6 +6,7 @@ const slidesCount = slides.length;
 const buttonPrev = slider.querySelector(".slider__button--prev-js");
 const buttonNext = slider.querySelector(".slider__button--next-js");
 const pagination = slider.querySelector(".slider__pagination--js");
+
 const animationDuration = 500;
 
 let activeSlideIndex;
@@ -61,7 +62,6 @@ const createDot = (index) => {
   dot.addEventListener("click", () => {
     setActiveSlide(index);
   });
-
   return dot;
 };
 
@@ -99,6 +99,7 @@ wrapper.addEventListener("mouseout", endMouseEvent);
 
 initWidth();
 createDots();
+
 updateSlider();
 setActiveSlide(activeSlideIndex);
 

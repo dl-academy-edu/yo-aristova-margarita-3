@@ -472,7 +472,20 @@
     margin-right: 48px;
   }
   &__button {
+    position: relative;
     align-self: center;
+    &::before {
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      content: "reset form";
+      font-family: "Gilroy-500", sans-serif;
+      font-size: 14px;
+      line-height: 16px;
+      color: #e5e5e5;
+      width: 65px;
+    }
   }
 }
 
