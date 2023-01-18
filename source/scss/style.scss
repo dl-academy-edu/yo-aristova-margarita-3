@@ -442,9 +442,9 @@
     &--active {
       color: $secondary;
     }
-    &:not(.slider__dot--active):hover,
-    &:not(.slider__dot--active):focus {
-      color: #e5e5e5;
+    &:not(.blog__page-number--active):hover,
+    &:not(.blog__page-number--active):focus {
+      color: $base-grey;
     }
   }
 }
