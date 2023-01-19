@@ -30,13 +30,16 @@ const getParamsFromLocation = () => {
   let searchParams = new URLSearchParams(location.search);
 
   return {
-    page: searchParams.get("page") || "",
     tags: searchParams.getAll("tags"),
-    sort: searchParams.getAll("sort"),
+    sort: searchParams.get("sort"),
   };
 };
 
 const setDataToFilter = (data) => {
+  if (!data.tags.lenght && !data.sort) {
+    console.log("no data");
+    return;
+  }
   const filterForm = document.forms.filter;
   filterForm.elements.tags.forEach((checkbox) => {
     checkbox.checked = data.tags.includes(checkbox.value);
@@ -55,11 +58,36 @@ const createPost = (title, text, src, tags) => {
         <h3 class="post__title">${title}</h3>
         <p class="info">${text}</p>
         ${tags.map(
-          (tag) => `<span style="color: ${tag.color}">${tag.name}</span>`
+          (tag) => `<span style="color: ${tag.color} ">${tag.name}</span>`
         )}
       </div>
     </div>
   </div>
+  `;
+};
+
+const createPostWithoutFilter = (
+  src,
+  title,
+  date,
+  views,
+  commentsCount,
+  text
+) => {
+  return `
+    <div class="post">
+      <img src="${SERVER_URL}${src}" alt="${title}">
+      <div class="post__body">
+        <div class="post__info">
+          <span class="post__data">${date}</span>
+          <span class="post__data">${views} views</span>
+          <span class="post__data">${commentsCount} comments</span>
+        </div>      
+        <h3 class="post__title">${title}</h3>
+        <p class="info">${text}</p>
+        <a href="#" class="info info--extrabold post__link">Go to this post</a>
+      </div>
+    </div>
   `;
 };
 
@@ -78,19 +106,17 @@ const getData = (params) => {
     searchParams.set("tags", JSON.stringify(params.tags));
   }
 
-  if (params.page) {
-    console.log("hello");
-    filter.page = params.page;
-    console.log(filter);
-  }
+  filter.page = 1;
 
-  searchParams.set("filter", JSON.stringify(params.filter));
+  // searchParams.set("filter", JSON.stringify(params.filter));
 
   if (params.sort) {
     searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
   }
 
-  xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
+  xhr.open("GET", SERVER_URL + "/api/posts?");
+
+  // xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
   xhr.send();
   result.innerHTML = "";
 
@@ -98,14 +124,17 @@ const getData = (params) => {
 
   xhr.onload = () => {
     const response = JSON.parse(xhr.response);
+    console.log(response);
     response.data.forEach((card) => {
-      const post = createPost({
-        title: card.title,
-        text: card.text,
-        src: card.photo.desktopPhotoUrl,
-        tags: card.tags,
-      });
-      result.insertAdjacentHTML("beforeend", card);
+      const post = createPostWithoutFilter(
+        card.desktopPhotoUrl,
+        card.title,
+        card.date,
+        card.views,
+        card.commentsCount,
+        card.text
+      );
+      result.insertAdjacentHTML("beforeend", post);
     });
     // hideLoader();
   };
@@ -114,24 +143,6 @@ const getData = (params) => {
     console.log(`Ошибка ${xhr.status}`);
   };
 };
-
-// (function () {
-//   const filterForm = document.forms.filter;
-//   filterForm.addEventListener("submit", (event) => {
-//     event.preventDefault();
-//     let data = {
-//       page: 0,
-//     };
-//     data.tags = [...filterForm.elements.tags];
-//     .filter(checkbox => checkbox.checked);
-//     .map(checkbox => checkbox.value);
-//     data.sort = ([...filterForm.elements.sort]
-//       .find(radio => radio.checked) || {value: null}).value;
-//       getData(data);
-//       setSearchParams(data);
-
-//   });
-// })();
 
 (function () {
   const filterForm = document.forms.filter;
@@ -162,6 +173,7 @@ const getData = (params) => {
       tagsBox.insertAdjacentHTML("beforeend", tagHTML);
     });
     const params = getParamsFromLocation();
+    console.log(params);
     setDataToFilter(params);
     getData(params);
     // hideLoader();

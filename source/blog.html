@@ -157,7 +157,6 @@
                     name="sort"
                     value="date"
                     class="radio"
-                    checked
                   />
                   <label for="input-sort-date" class="info info--bold"
                     >date</label
@@ -199,11 +198,12 @@
           </form>
           <div class="blog__list"></div>
           @@include('blocks/panel.html', { "class": "blog" })
+          <div class="blog__tomato"></div>
         </div>
       </section>
     </main>
     <div class="loader loader--js hidden">
-      <div class="loader_inner"></div>
+      <div class="loader__inner"></div>
     </div>
     @@include('blocks/footer.html') @@include('blocks/sign-in.html')
     @@include('blocks/register.html') @@include('blocks/send-message.html')

@@ -54,7 +54,7 @@ if (location.search) {
 }
 
 // ------------------- pages part ------------------------------
-const blogList = document.querySelector(".blog__list");
+const blogList = document.querySelector(".blog__tomato");
 const panel = document.querySelector(".panel");
 const buttonPrev = panel.querySelector(".blog__button--prev-js");
 const buttonNext = panel.querySelector(".blog__button--next-js");
