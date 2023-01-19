@@ -1,7 +1,6 @@
 const SERVER_URL = "https://academy.directlinedev.com";
 const LIMIT = 9;
 const loader = document.querySelector(".loader--js");
-console.log(loader);
 
 let loaderCount = 0;
 
@@ -27,7 +26,94 @@ const createTag = ({ id, color }) => {
   </div>`;
 };
 
-const getParamsFromLocation = () => {};
+const getParamsFromLocation = () => {
+  let searchParams = new URLSearchParams(location.search);
+
+  return {
+    page: searchParams.get("page") || "",
+    tags: searchParams.getAll("tags"),
+    sort: searchParams.getAll("sort"),
+  };
+};
+
+const setDataToFilter = (data) => {
+  const filterForm = document.forms.filter;
+  filterForm.elements.tags.forEach((checkbox) => {
+    checkbox.checked = data.tags.includes(checkbox.value);
+  });
+  filterForm.elements.sort.forEach((radio) => {
+    radio.checked = data.sort === radio.value;
+  });
+};
+
+const createPost = (title, text, src, tags) => {
+  return `
+  <div>
+    <div class="post">
+      <img scr="${SERVER_URL}${src}" alt="${title}">
+      <div class="post__body">
+        <h3 class="post__title">${title}</h3>
+        <p class="info">${text}</p>
+        ${tags.map(
+          (tag) => `<span style="color: ${tag.color}">${tag.name}</span>`
+        )}
+      </div>
+    </div>
+  </div>
+  `;
+};
+
+const getData = (params) => {
+  const result = document.querySelector(".blog__list");
+
+  let xhr = new XMLHttpRequest();
+  let searchParams = new URLSearchParams();
+  let filter = {};
+
+  console.log("params: ", params);
+
+  searchParams.set("v", "1.0.0");
+
+  if (params.tags && Array.isArray(params.tags) && params.tags.lenght) {
+    searchParams.set("tags", JSON.stringify(params.tags));
+  }
+
+  if (params.page) {
+    console.log("hello");
+    filter.page = params.page;
+    console.log(filter);
+  }
+
+  searchParams.set("filter", JSON.stringify(params.filter));
+
+  if (params.sort) {
+    searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
+  }
+
+  xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
+  xhr.send();
+  result.innerHTML = "";
+
+  // showLoader();
+
+  xhr.onload = () => {
+    const response = JSON.parse(xhr.response);
+    response.data.forEach((card) => {
+      const post = createPost({
+        title: card.title,
+        text: card.text,
+        src: card.photo.desktopPhotoUrl,
+        tags: card.tags,
+      });
+      result.insertAdjacentHTML("beforeend", card);
+    });
+    // hideLoader();
+  };
+
+  xhr.error = () => {
+    console.log(`Ошибка ${xhr.status}`);
+  };
+};
 
 // (function () {
 //   const filterForm = document.forms.filter;
@@ -52,7 +138,7 @@ const getParamsFromLocation = () => {};
   filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
     let data = {
-      page: 0,
+      page: 1,
     };
     // data.name = filterForm.elements.name.value;
     data.sort = (
@@ -66,20 +152,19 @@ const getParamsFromLocation = () => {};
 
   xhr.open("GET", SERVER_URL + "/api/tags");
   xhr.send();
-  showLoader();
+  // showLoader();
 
   xhr.onload = () => {
     const tags = JSON.parse(xhr.response).data;
-    console.log(tags);
     const tagsBox = document.querySelector(".tags--js");
     tags.forEach((tag) => {
       tagHTML = createTag(tag);
       tagsBox.insertAdjacentHTML("beforeend", tagHTML);
     });
     const params = getParamsFromLocation();
-    // setDataToFilter(params);
-    // getData(params);
-    hideLoader();
+    setDataToFilter(params);
+    getData(params);
+    // hideLoader();
   };
 
   xhr.error = () => {
