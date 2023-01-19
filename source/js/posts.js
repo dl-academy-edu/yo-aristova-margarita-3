@@ -1,6 +1,7 @@
 const SERVER_URL = "https://academy.directlinedev.com";
 const LIMIT = 9;
-// const loader = document.querySelector(".");
+const loader = document.querySelector(".loader--js");
+console.log(loader);
 
 let loaderCount = 0;
 
@@ -25,6 +26,8 @@ const createTag = ({ id, color }) => {
   <label for="tags-${id}"></label>
   </div>`;
 };
+
+const getParamsFromLocation = () => {};
 
 // (function () {
 //   const filterForm = document.forms.filter;
@@ -61,9 +64,9 @@ const createTag = ({ id, color }) => {
 
   let xhr = new XMLHttpRequest();
 
-  // showLoader();
   xhr.open("GET", SERVER_URL + "/api/tags");
   xhr.send();
+  showLoader();
 
   xhr.onload = () => {
     const tags = JSON.parse(xhr.response).data;
@@ -73,10 +76,10 @@ const createTag = ({ id, color }) => {
       tagHTML = createTag(tag);
       tagsBox.insertAdjacentHTML("beforeend", tagHTML);
     });
-    // const params = getParamsFromLocation();
+    const params = getParamsFromLocation();
     // setDataToFilter(params);
     // getData(params);
-    // hideLoader();
+    hideLoader();
   };
 
   xhr.error = () => {
