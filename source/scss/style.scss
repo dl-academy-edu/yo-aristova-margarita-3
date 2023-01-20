@@ -471,6 +471,16 @@
       transition: all 0.4s;
     }
   }
+  &__tags {
+    width: 30px;
+    height: 10px;
+    border-radius: 5px;
+    &-wrapper {
+      display: flex;
+      column-gap: 5px;
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .filter-form {

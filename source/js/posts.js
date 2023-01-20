@@ -31,53 +31,43 @@ const getParamsFromLocation = () => {
 
   return {
     tags: searchParams.getAll("tags"),
+    views: searchParams.get("views"),
+    comments: searchParams.getAll("comments"),
+    show: searchParams.get("show"),
     sort: searchParams.get("sort"),
   };
 };
 
 const setDataToFilter = (data) => {
-  if (!data.tags.lenght && !data.sort) {
-    console.log("no data");
-    return;
-  }
   const filterForm = document.forms.filter;
   filterForm.elements.tags.forEach((checkbox) => {
     checkbox.checked = data.tags.includes(checkbox.value);
+  });
+  filterForm.elements.views.forEach((radio) => {
+    radio.checked = data.views === radio.value;
+  });
+  filterForm.elements.comments.forEach((checkbox) => {
+    checkbox.checked = data.comments.includes(checkbox.value);
+  });
+  filterForm.elements.limit.forEach((radio) => {
+    radio.checked = data.limit === radio.value;
   });
   filterForm.elements.sort.forEach((radio) => {
     radio.checked = data.sort === radio.value;
   });
 };
 
-const createPost = (title, text, src, tags) => {
-  return `
-  <div>
-    <div class="post">
-      <img scr="${SERVER_URL}${src}" alt="${title}">
-      <div class="post__body">
-        <h3 class="post__title">${title}</h3>
-        <p class="info">${text}</p>
-        ${tags.map(
-          (tag) => `<span style="color: ${tag.color} ">${tag.name}</span>`
-        )}
-      </div>
-    </div>
-  </div>
-  `;
-};
-
-const createPostWithoutFilter = (
-  src,
-  title,
-  date,
-  views,
-  commentsCount,
-  text
-) => {
+const createPost = (src, title, date, views, commentsCount, text, tags) => {
   return `
     <div class="post">
       <img src="${SERVER_URL}${src}" alt="${title}">
       <div class="post__body">
+      <div class="post__tags-wrapper">
+         ${tags.map(
+           (tag) =>
+             `<div class="post__tags" style="background-color: ${tag.tag.color} "></div>`
+         )}
+      </div>
         <div class="post__info">
           <span class="post__data">${date}</span>
           <span class="post__data">${views} views</span>
@@ -86,6 +76,7 @@ const createPostWithoutFilter = (
         <h3 class="post__title">${title}</h3>
         <p class="info">${text}</p>
         <a href="#" class="info info--extrabold post__link">Go to this post</a>
+       
       </div>
     </div>
   `;
@@ -98,7 +89,7 @@ const getData = (params) => {
   let searchParams = new URLSearchParams();
   let filter = {};
 
-  console.log("params: ", params);
+  console.log("params from getData: ", params);
 
   searchParams.set("v", "1.0.0");
 
@@ -116,6 +107,8 @@ const getData = (params) => {
 
   xhr.open("GET", SERVER_URL + "/api/posts?");
 
+  console.log("search params to string: ", searchParams.toString());
+
   // xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
   xhr.send();
   result.innerHTML = "";
@@ -126,13 +119,14 @@ const getData = (params) => {
     const response = JSON.parse(xhr.response);
     console.log(response);
     response.data.forEach((card) => {
-      const post = createPostWithoutFilter(
+      const post = createPost(
         card.desktopPhotoUrl,
         card.title,
         card.date,
         card.views,
         card.commentsCount,
-        card.text
+        card.text,
+        card.tags
       );
       result.insertAdjacentHTML("beforeend", post);
     });
@@ -151,7 +145,33 @@ const getData = (params) => {
     let data = {
       page: 1,
     };
-    // data.name = filterForm.elements.name.value;
+
+    data.tags = (
+      [...filterForm.elements.tags].find((checkbox) => checkbox.checked) || {
+        value: null,
+      }
+    ).value;
+
+    data.views = (
+      [...filterForm.elements.views].find((radio) => radio.checked) || {
+        value: null,
+      }
+    ).value;
+
+    data.comments = (
+      [...filterForm.elements.comments].find(
+        (checkbox) => checkbox.checked
+      ) || {
+        value: null,
+      }
+    ).value;
+
+    data.limit = (
+      [...filterForm.elements.limit].find((radio) => radio.checked) || {
+        value: null,
+      }
+    ).value;
+
     data.sort = (
       [...filterForm.elements.sort].find((radio) => radio.checked) || {
         value: null,
@@ -173,7 +193,6 @@ const getData = (params) => {
       tagsBox.insertAdjacentHTML("beforeend", tagHTML);
     });
     const params = getParamsFromLocation();
-    console.log(params);
     setDataToFilter(params);
     getData(params);
     // hideLoader();
