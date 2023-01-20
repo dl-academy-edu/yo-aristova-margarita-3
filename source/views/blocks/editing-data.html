@@ -1,4 +1,4 @@
-<section class="modal editing-data">
+<section class="modal editing-data visible">
   <h1 class="hidden">Editing data</h1>
   <div class="overlay"></div>
   <div class="modal__dialog">
@@ -7,7 +7,7 @@
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form method="post" name="register" class="form">
+    <form name="register" class="form">
       <div>
         <label for="editingEmail" class="form__label">Email</label>
         <input
@@ -54,14 +54,20 @@
             class="form__input"
           />
         </div>
-        <div class="form__group">
-          <label for="editinPicture" class="form__label">Profile picture</label>
+        <div class="form__group file">
+          <label for="editingPicture" class="form__label"
+            >Profile picture</label
+          >
           <input
             type="file"
-            id="editinPicture"
-            name="editinPicture"
-            class="form__input"
+            id="editingPicture"
+            name="editingPicture"
+            class="form__input file__input"
           />
+          <svg class="file__icon" width="16" height="15">
+            <use xlink:href="./img/sprite.svg#upload"></use>
+          </svg>
+          <button class="button-link file__choose">Choose a file...</button>
         </div>
       </div>
       <button type="submit" class="button">Submit changes</button>

@@ -351,12 +351,6 @@
   }
 }
 
-.sign-in--visible,
-.register--visible,
-.send-message--visible {
-  visibility: visible;
-}
-
 .profile {
   padding: 40px 0 60px 0;
   &__title {
@@ -379,6 +373,25 @@
   }
   &__button {
     margin-top: 10px;
+  }
+}
+
+.file {
+  position: relative;
+  &__input {
+    position: absolute;
+    opacity: 0;
+    visibility: hidden;
+  }
+  &__icon {
+    position: absolute;
+    top: 39px;
+    left: 14px;
+  }
+  &__choose {
+    width: 290px;
+    border: 2.5px solid #e5e5e5;
+    padding: 14px 130px 14px 30px;
   }
 }
 
