@@ -60,7 +60,22 @@ const setDataToFilter = (data) => {
 const createPost = (src, title, date, views, commentsCount, text, tags) => {
   return `
     <div class="post">
-      <img src="${SERVER_URL}${src}" alt="${title}">
+      <picture>
+        <source srcset="${SERVER_URL}${src.mobilePhotoUrl}, ${SERVER_URL}${
+    src.mobilePhotoUrl
+  } 2x"
+        media="(max-width: 480px)" class="post__image>
+        <source srcset="${SERVER_URL}${src.tabletPhotoUrl}, ${SERVER_URL}${
+    src.tablet2xPhotoUrl
+  } 2x"
+        media="(max-width: 768px)" class="post__image>
+        <source srcset="${SERVER_URL}${src.desktopPhotoUrl}, ${SERVER_URL}${
+    src.desktop2xPhotoUrl
+  } 2x" class="post__image">
+        <img src="${SERVER_URL}${
+    src.desktopPhotoUrl
+  }" alt="Image: ${title}" class="post__image">
+      </picture>
       <div class="post__body">
       <div class="post__tags-wrapper">
          ${tags.map(
@@ -130,7 +145,7 @@ const getData = (params) => {
     console.log(response);
     response.data.forEach((card) => {
       const post = createPost(
-        card.photo.desktopPhotoUrl,
+        card.photo,
         card.title,
         card.date,
         card.views,
