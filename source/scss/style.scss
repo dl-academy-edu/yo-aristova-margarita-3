@@ -485,25 +485,11 @@
 
 .filter-form {
   display: flex;
+  justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
   &__subtitle {
     margin-bottom: 10px;
-  }
-  &__tags {
-    margin-right: 75px;
-  }
-  &__views {
-    margin-right: 70px;
-  }
-  &__comments {
-    margin-right: 137px;
-  }
-  &__show {
-    margin-right: 76px;
-  }
-  &__sort {
-    margin-right: 48px;
   }
   &__button {
     position: relative;
@@ -556,13 +542,6 @@
     justify-content: space-between;
     row-gap: 30px;
     column-gap: 35px;
-    &__tags,
-    &__views,
-    &__comments,
-    &__show,
-    &__sort {
-      margin-right: 0;
-    }
   }
 }
 
@@ -593,6 +572,12 @@
 }
 
 @media screen and (max-width: 648px) {
+  .filter-form {
+    column-gap: 45px;
+    &__sort {
+      margin-right: 0;
+    }
+  }
   .post {
     flex-direction: column;
   }
@@ -601,9 +586,6 @@
 @media screen and (max-width: 480px) {
   .filter-form {
     row-gap: 25px;
-    &__sort {
-      margin-right: 0;
-    }
   }
   .search-form {
     flex-direction: column;

@@ -31,7 +31,7 @@
             <h1 class="title">My blog</h1>
             @@include('blocks/menu-button.html')
           </div>
-          <form action="#" name="filter" class="filter-form">
+          <form method="POST" name="filter" class="filter-form">
             <div class="filter-form__tags">
               <p class="headline filter-form__subtitle">Tags</p>
               <div class="tags tags--js"></div>
@@ -89,7 +89,7 @@
                     class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-0" class="info info--bold"
-                    >0</label
+                    >not a single</label
                   >
                 </li>
                 <li>
@@ -97,11 +97,11 @@
                     type="checkbox"
                     id="input-comments-1"
                     name="comments"
-                    value="0-1"
+                    value="1"
                     class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-1" class="info info--bold"
-                    >0-1</label
+                    >more 1</label
                   >
                 </li>
                 <li>
@@ -109,11 +109,11 @@
                     type="checkbox"
                     id="input-comments-50"
                     name="comments"
-                    value="1-50"
+                    value="50"
                     class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-50" class="info info--bold"
-                    >1-50</label
+                    >more 50</label
                   >
                 </li>
               </ul>
@@ -194,7 +194,7 @@
           </form>
           <form action="#" class="search-form">
             <input type="text" class="search-form__input" />
-            <button class="button">Search</button>
+            <button type="reset" class="button">Search</button>
           </form>
           <div class="blog__list"></div>
           @@include('blocks/panel.html', { "class": "blog" })

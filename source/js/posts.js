@@ -65,7 +65,7 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
       <div class="post__tags-wrapper">
          ${tags.map(
            (tag) =>
-             `<div class="post__tags" style="background-color: ${tag.tag.color} "></div>`
+             `<div class="post__tags" style="background-color: ${tag.color} "></div>`
          )}
       </div>
         <div class="post__info">
@@ -89,38 +89,48 @@ const getData = (params) => {
   let searchParams = new URLSearchParams();
   let filter = {};
 
-  console.log("params from getData: ", params);
-
   searchParams.set("v", "1.0.0");
 
-  if (params.tags && Array.isArray(params.tags) && params.tags.lenght) {
+  console.log("params from getData: ", params);
+
+  if (params.tags && Array.isArray(params.tags) && params.tags.length) {
     searchParams.set("tags", JSON.stringify(params.tags));
   }
 
-  filter.page = 1;
+  if (
+    params.comments &&
+    Array.isArray(params.comments) &&
+    params.comments.length
+  ) {
+    searchParams.set("comments", JSON.stringify(params.comments));
+  }
 
-  // searchParams.set("filter", JSON.stringify(params.filter));
+  if (filter.lenght) {
+    searchParams.set("filter", JSON.stringify(params.filter));
+  }
+
+  if (params.views) {
+    searchParams.set("views", JSON.stringify(params.views));
+  }
 
   if (params.sort) {
     searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
   }
 
-  xhr.open("GET", SERVER_URL + "/api/posts?");
-
   console.log("search params to string: ", searchParams.toString());
 
-  // xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
+  xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
   xhr.send();
   result.innerHTML = "";
 
-  // showLoader();
+  showLoader();
 
   xhr.onload = () => {
     const response = JSON.parse(xhr.response);
     console.log(response);
     response.data.forEach((card) => {
       const post = createPost(
-        card.desktopPhotoUrl,
+        card.photo.desktopPhotoUrl,
         card.title,
         card.date,
         card.views,
@@ -130,7 +140,8 @@ const getData = (params) => {
       );
       result.insertAdjacentHTML("beforeend", post);
     });
-    // hideLoader();
+
+    hideLoader();
   };
 
   xhr.error = () => {
@@ -138,30 +149,40 @@ const getData = (params) => {
   };
 };
 
+const setSearchParams = (data) => {
+  let searchParams = new URLSearchParams();
+
+  data.tags.forEach((tag) => searchParams.append("tags", tag));
+
+  if (data.views) {
+    searchParams.set("views", data.views);
+  }
+
+  data.comments.forEach((comment) => searchParams.append("comments", comment));
+
+  if (data.limit) {
+    searchParams.set("limit", data.limit);
+  }
+
+  if (data.sort) {
+    searchParams.set("sort", data.sort);
+  }
+
+  history.replaceState(null, document.title, "?" + searchParams.toString());
+};
+
 (function () {
   const filterForm = document.forms.filter;
   filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let data = {
-      page: 1,
-    };
+    let data = {};
 
-    data.tags = (
-      [...filterForm.elements.tags].find((checkbox) => checkbox.checked) || {
-        value: null,
-      }
-    ).value;
+    data.tags = [...filterForm.elements.tags]
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
 
     data.views = (
       [...filterForm.elements.views].find((radio) => radio.checked) || {
-        value: null,
-      }
-    ).value;
-
-    data.comments = (
-      [...filterForm.elements.comments].find(
-        (checkbox) => checkbox.checked
-      ) || {
         value: null,
       }
     ).value;
@@ -172,18 +193,25 @@ const getData = (params) => {
       }
     ).value;
 
+    data.comments = [...filterForm.elements.comments]
+      .filter((checkbox) => checkbox.checked)
+      .map((checkbox) => checkbox.value);
+
     data.sort = (
       [...filterForm.elements.sort].find((radio) => radio.checked) || {
         value: null,
       }
     ).value;
+
+    getData(data);
+    setSearchParams(data);
   });
 
   let xhr = new XMLHttpRequest();
 
   xhr.open("GET", SERVER_URL + "/api/tags");
   xhr.send();
-  // showLoader();
+  showLoader();
 
   xhr.onload = () => {
     const tags = JSON.parse(xhr.response).data;
@@ -195,7 +223,7 @@ const getData = (params) => {
     const params = getParamsFromLocation();
     setDataToFilter(params);
     getData(params);
-    // hideLoader();
+    hideLoader();
   };
 
   xhr.error = () => {

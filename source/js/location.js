@@ -28,14 +28,14 @@ if (location.search) {
 
   updateInput(filterForm, "views");
   updateInput(filterForm, "comments");
-  updateInput(filterForm, "show");
+  updateInput(filterForm, "limit");
   updateInput(filterForm, "sort");
 
   filterForm.addEventListener("submit", (e) => {
     e.preventDefault();
     url.searchParams.delete("views");
     url.searchParams.delete("comments");
-    url.searchParams.delete("show");
+    url.searchParams.delete("limit");
     url.searchParams.delete("sort");
 
     const addCheckedInput = (nameGroupInputs, typeParam) => {
@@ -46,7 +46,7 @@ if (location.search) {
 
     addCheckedInput(e.target.views, "views");
     addCheckedInput(e.target.comments, "comments");
-    addCheckedInput(e.target.show, "show");
+    addCheckedInput(e.target.limit, "limit");
     addCheckedInput(e.target.sort, "sort");
 
     history.replaceState(null, "", url);
