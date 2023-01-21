@@ -389,9 +389,17 @@
     left: 14px;
   }
   &__choose {
+    display: block;
     width: 290px;
     border: 2.5px solid #e5e5e5;
-    padding: 14px 130px 14px 30px;
+    padding: 14px 130px 14px 40px;
+    @media screen and (max-width: 768px) {
+      width: 370px;
+    }
+    @media screen and (max-width: 576px) {
+      width: 100%;
+      padding-right: 85px;
+    }
   }
 }
 

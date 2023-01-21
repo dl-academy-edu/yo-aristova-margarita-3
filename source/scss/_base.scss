@@ -120,6 +120,7 @@ fieldset {
   border-radius: 30px;
   background-color: $primary;
   max-width: max-content;
+  outline: none;
   cursor: pointer;
   padding: 10px 19px;
   &:disabled {
