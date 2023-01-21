@@ -475,7 +475,7 @@
   &__info {
     display: flex;
     column-gap: 10px;
-    max-width: 234px;
+    max-width: 250px;
     margin-bottom: 15px;
   }
   &__data {
@@ -559,6 +559,9 @@
     border: 2.5px solid #e5e5e5;
     min-height: 50px;
     padding: 0;
+    &:focus {
+      outline: 2.5px solid $secondary;
+    }
   }
 }
 

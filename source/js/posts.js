@@ -1,6 +1,9 @@
 const SERVER_URL = "https://academy.directlinedev.com";
 const LIMIT = 9;
 const loader = document.querySelector(".loader--js");
+const links = document.querySelector(".blog__pagination--js");
+const buttonPrev = document.querySelector(".blog__button--prev-js");
+const buttonNext = document.querySelector(".blog__button--next-js");
 
 let loaderCount = 0;
 
@@ -33,8 +36,9 @@ const getParamsFromLocation = () => {
     tags: searchParams.getAll("tags"),
     views: searchParams.get("views"),
     comments: searchParams.getAll("comments"),
-    show: searchParams.get("show"),
+    limit: searchParams.get("limit"),
     sort: searchParams.get("sort"),
+    page: +searchParams.get("page") || 0,
   };
 };
 
@@ -108,6 +112,46 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
   `;
 };
 
+const createNewPage = (page) => {
+  const links = document.querySelectorAll(".blog__page-number");
+  console.log(links);
+  let searchParams = new URLSearchParams(location.search);
+  let params = getParamsFromLocation();
+  console.log("params: ", params);
+  console.log("pages: ", params.page, page, links[params.page]);
+  links[params.page].classList.remove("blog__page-number--active");
+  searchParams.set("page", page);
+  links[page].classList.add("blog__page-number--active");
+  history.replaceState(null, document.title, "?" + searchParams.toString());
+  getData(getParamsFromLocation());
+};
+
+const createPagesNumbers = (count) => {
+  for (let i = 0; i < count; i++) {
+    const link = createLink(i);
+    links.insertAdjacentElement("beforeend", link);
+  }
+};
+
+const createLink = (page) => {
+  const params = getParamsFromLocation();
+  const link = document.createElement("a");
+
+  link.href = "?page=" + page;
+  link.innerText = page + 1;
+  link.classList.add("blog__page-number");
+
+  if (page === +params.page) {
+    link.classList.add("blog__page-number--active");
+  }
+
+  link.addEventListener("click", (event) => {
+    event.preventDefault();
+    createNewPage(page);
+  });
+  return link;
+};
+
 const getData = (params) => {
   const result = document.querySelector(".blog__list");
 
@@ -143,19 +187,30 @@ const getData = (params) => {
     searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
   }
 
+  searchParams.set("limit", LIMIT);
+
+  if (+params.page) {
+    searchParams.set("offset", +params.page * LIMIT);
+  }
+
   console.log("search params to string: ", searchParams.toString());
 
   xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
   xhr.send();
   result.innerHTML = "";
 
+  links.innerHTML = "";
+
   showLoader();
 
   xhr.onload = () => {
     const response = JSON.parse(xhr.response);
     console.log(response);
+
+    let dataPost = "";
+
     response.data.forEach((card) => {
-      const post = createPost(
+      dataPost += createPost(
         card.photo,
         card.title,
         card.date,
@@ -164,7 +219,51 @@ const getData = (params) => {
         card.text,
         card.tags
       );
-      result.insertAdjacentHTML("beforeend", post);
+      result.innerHTML = dataPost;
+    });
+    const pageCount = Math.ceil(response.count / LIMIT);
+
+    buttonPrev.removeAttribute("disabled");
+    buttonNext.removeAttribute("disabled");
+
+    if (params.page === 0) {
+      buttonPrev.setAttribute("disabled", "");
+    }
+
+    if (params.page === pageCount - 1) {
+      buttonNext.setAttribute("disabled", "");
+    }
+
+    // for (let i = 0; i < pageCount; i++) {
+    //   const link = createLink(i);
+    //   links.insertAdjacentElement("beforeend", link);
+    // }
+
+    createPagesNumbers(pageCount);
+
+    buttonPrev.addEventListener("click", () => {
+      params.page = params.page - 1;
+      createNewPage(params.page);
+    });
+
+    buttonNext.addEventListener("click", () => {
+      console.log("params page from next ", params.page);
+      params.page = params.page + 1;
+      createNewPage(params.page);
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.code === "ArrowLeft") {
+        params.page = params.page - 1;
+        createNewPage(params.page);
+      }
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.code === "ArrowRight") {
+        params.page = params.page + 1;
+        createNewPage(params.page);
+      }
     });
 
     hideLoader();
@@ -179,6 +278,12 @@ const setSearchParams = (data) => {
   let searchParams = new URLSearchParams();
 
   data.tags.forEach((tag) => searchParams.append("tags", tag));
+
+  if (data.page) {
+    searchParams.set("page", data.page);
+  } else {
+    searchParams.set("page", 0);
+  }
 
   if (data.views) {
     searchParams.set("views", data.views);
@@ -201,7 +306,9 @@ const setSearchParams = (data) => {
   const filterForm = document.forms.filter;
   filterForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    let data = {};
+    let data = {
+      page: 0,
+    };
 
     data.tags = [...filterForm.elements.tags]
       .filter((checkbox) => checkbox.checked)
