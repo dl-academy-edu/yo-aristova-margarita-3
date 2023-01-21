@@ -5,6 +5,7 @@
   const registerCloseButton = registerModal.querySelector(".modal__close");
   const registerButton = registerForm.querySelector(".button--register-js");
   const accept = registerForm.elements.accept;
+  const registerLoader = registerModal.querySelector(".loader--js");
 
   interactiveWindow(registerModal, registerOpenButton, registerCloseButton);
 
@@ -12,8 +13,9 @@
     switchButton(registerButton);
   });
 
-  registerForm.addEventListener("submit", (event) => {
+  const register = (event) => {
     event.preventDefault();
+
     const email = registerForm.elements.email;
     const name = registerForm.elements.name;
     const surname = registerForm.elements.surname;
@@ -83,7 +85,14 @@
       setSuccessText(age);
     }
 
-    if (!Object.keys(errors).length) {
+    if (Object.keys(errors).length) {
+      console.log("Validation error");
+      Object.keys(errors).forEach((key) => {
+        const messageError = errors[key];
+        const input = registerForm.elements[key];
+        setErrorText(input, messageError);
+      });
+    } else {
       const data = {
         email: email.value,
         name: name.value,
@@ -92,18 +101,33 @@
         location: location.value,
         age: age.value,
       };
-      console.log(data);
-    } else {
-      console.log("Validation error");
-      Object.keys(errors).forEach((key) => {
-        const messageError = errors[key];
-        const input = registerForm.elements[key];
-        setErrorText(input, messageError);
-      });
+      registerLoader.classList.remove("hidden");
+      sendRequest({
+        url: "/api/users",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.success) {
+            registerLoader.classList.add("hidden");
+            interactiveModal(registerModal);
+            registerForm.reset();
+            console.log(response);
+            console.log(
+              `Нou have successfully registered. Your id - ${response.data.id} & your email - ${response.data.email}`
+            );
+          }
+        })
+        .catch((error) => {
+          clearForm();
+          console.log(error);
+        });
     }
+  };
 
-    // if (!accept.checked) {
-    //   errors.accept = "You must agree to sign up";
-    // }
-  });
+  registerForm.addEventListener("submit", register);
 })();

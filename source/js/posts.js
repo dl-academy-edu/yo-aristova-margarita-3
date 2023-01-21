@@ -114,7 +114,6 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
 
 const createNewPage = (page) => {
   const links = document.querySelectorAll(".blog__page-number");
-  console.log(links);
   let searchParams = new URLSearchParams(location.search);
   let params = getParamsFromLocation();
   console.log("params: ", params);
@@ -124,13 +123,6 @@ const createNewPage = (page) => {
   links[page].classList.add("blog__page-number--active");
   history.replaceState(null, document.title, "?" + searchParams.toString());
   getData(getParamsFromLocation());
-};
-
-const createPagesNumbers = (count) => {
-  for (let i = 0; i < count; i++) {
-    const link = createLink(i);
-    links.insertAdjacentElement("beforeend", link);
-  }
 };
 
 const createLink = (page) => {
@@ -234,12 +226,10 @@ const getData = (params) => {
       buttonNext.setAttribute("disabled", "");
     }
 
-    // for (let i = 0; i < pageCount; i++) {
-    //   const link = createLink(i);
-    //   links.insertAdjacentElement("beforeend", link);
-    // }
-
-    createPagesNumbers(pageCount);
+    for (let i = 0; i < pageCount; i++) {
+      const link = createLink(i);
+      links.insertAdjacentElement("beforeend", link);
+    }
 
     buttonPrev.addEventListener("click", () => {
       params.page = params.page - 1;
@@ -247,7 +237,6 @@ const getData = (params) => {
     });
 
     buttonNext.addEventListener("click", () => {
-      console.log("params page from next ", params.page);
       params.page = params.page + 1;
       createNewPage(params.page);
     });

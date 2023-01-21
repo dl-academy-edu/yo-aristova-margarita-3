@@ -1,3 +1,9 @@
+const BASE_SERVER_PATH = "https://academy.directlinedev.com";
+
+const sendRequest = ({ url, method = "GET", headers, body = null }) => {
+  return fetch(BASE_SERVER_PATH + url + "?v=0.0.1", { method, headers, body });
+};
+
 const interactiveModal = (modal) => {
   modal.classList.toggle("visible");
 };
