@@ -8,6 +8,11 @@
   const registerOpenButton = mobileMenu.querySelector(
     ".nav__link--register-js"
   );
+  const isLogin = localStorage.getItem("token");
+
+  if (isLogin) {
+    rerenderLinks();
+  }
 
   openMenuButton.addEventListener("click", () => {
     mobileMenu.classList.add("header-mobile--visible");

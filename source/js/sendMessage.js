@@ -107,7 +107,7 @@
         })
         .catch((error) => {
           clearForm();
-          console.log(error);
+          if (error._message) console.log(error._message);
         });
     }
   };
