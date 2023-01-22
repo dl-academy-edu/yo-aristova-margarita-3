@@ -1,7 +1,7 @@
 (function () {
-  const mobileMenu = document.querySelector(".header-mobile");
+  const mobileMenu = document.querySelector(".header");
   const openMenuButton = document.querySelector(".menu-button");
-  const closeMenuButton = mobileMenu.querySelector(".header-mobile__close");
+  const closeMenuButton = mobileMenu.querySelector(".header__close");
   const signInModal = document.querySelector(".sign-in");
   const signInOpenButton = mobileMenu.querySelector(".nav__link--sign-js");
   const registerModal = document.querySelector(".register");
@@ -14,25 +14,30 @@
     rerenderLinks();
   }
 
-  openMenuButton.addEventListener("click", () => {
-    mobileMenu.classList.add("header-mobile--visible");
-  });
+  let menuWidth = mobileMenu.offsetWidth;
 
-  closeMenuButton.addEventListener("click", () => {
-    mobileMenu.classList.remove("header-mobile--visible");
-  });
+  if (menuWidth <= 480) {
+    openMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.add("header--mobile");
+    });
 
-  signInOpenButton.addEventListener("click", () => {
-    const firstInput = signInModal.querySelector(".form__input");
-    mobileMenu.classList.remove("header-mobile--visible");
-    interactiveModal(signInModal);
-    firstInput.focus();
-  });
+    closeMenuButton.addEventListener("click", () => {
+      mobileMenu.classList.remove("header--mobile");
+    });
 
-  registerOpenButton.addEventListener("click", () => {
-    const firstInput = registerModal.querySelector(".form__input");
-    mobileMenu.classList.remove("header-mobile--visible");
-    interactiveModal(registerModal);
-    firstInput.focus();
-  });
+    signInOpenButton.addEventListener("click", () => {
+      const firstInput = signInModal.querySelector(".form__input");
+      mobileMenu.classList.remove("header--mobile");
+      signInModal.classList.toggle("visible");
+      console.log("click");
+      firstInput.focus();
+    });
+
+    registerOpenButton.addEventListener("click", () => {
+      const firstInput = registerModal.querySelector(".form__input");
+      mobileMenu.classList.remove("header--mobile");
+      registerModal.classList.add("visible");
+      firstInput.focus();
+    });
+  }
 })();

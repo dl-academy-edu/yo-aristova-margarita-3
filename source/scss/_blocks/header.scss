@@ -40,20 +40,21 @@
 
 @media screen and (max-width: 480px) {
   .header {
+    display: none;
     padding: 0;
+    &--mobile {
+      display: block;
+    }
     &__close {
       position: absolute;
       top: 50px;
       right: 13px;
       display: block;
-      z-index: 13;
+      z-index: 15;
       color: $secondary;
       &:hover {
         color: $base-grey;
       }
-    }
-    &--mobile {
-      display: block;
     }
     &__overlay {
       display: block;
@@ -62,14 +63,12 @@
   .nav {
     position: relative;
     z-index: 13;
-    &--mobile {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      row-gap: 40px;
-      border-bottom: none;
-      padding: 262px 20px 0 0;
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 40px;
+    border-bottom: none;
+    padding: 262px 20px 0 0;
     &__inner {
       flex-direction: column;
       align-items: flex-end;
