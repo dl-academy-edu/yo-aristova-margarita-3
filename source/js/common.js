@@ -4,6 +4,24 @@ const sendRequest = ({ url, method = "GET", headers, body = null }) => {
   return fetch(BASE_SERVER_PATH + url + "?v=0.0.1", { method, headers, body });
 };
 
+const showMessage = (message, status) => {
+  const dialog = document.querySelector(".dialog");
+  const closeButton = document.querySelector(".modal__close--js");
+  const newMessage = document.querySelector(".modal__message");
+
+  newMessage.innerText = message;
+  dialog.classList.add("visible");
+  if (status === "success") {
+    dialog.classList.add("modal__message--success");
+  } else {
+    dialog.classList.add("modal__message--invalid");
+  }
+
+  closeButton.addEventListener("click", () => {
+    dialog.classList.remove("visible");
+  });
+};
+
 const interactiveModal = (modal) => {
   modal.classList.toggle("visible");
 };

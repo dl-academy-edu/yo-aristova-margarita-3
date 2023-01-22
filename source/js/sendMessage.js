@@ -8,6 +8,7 @@
     ".button--send-message-js"
   );
   const accept = sendMessageForm.elements.accept;
+  const sendMessageLoader = sendMessageModal.querySelector(".loader--js");
 
   interactiveWindow(
     sendMessageModal,
@@ -21,7 +22,7 @@
     switchButton(sendMessageButton);
   });
 
-  sendMessageForm.addEventListener("submit", (event) => {
+  const sendMessage = (event) => {
     event.preventDefault();
     const name = sendMessageForm.elements.name;
     const subject = sendMessageForm.elements.subject;
@@ -67,22 +68,49 @@
       setSuccessText(phone);
     }
 
-    if (!Object.keys(errors).length) {
-      const data = {
-        name: name.value,
-        subject: subject.value,
-        email: email.value,
-        phone: phone.value,
-        message: message.value,
-      };
-      console.log(data);
-    } else {
+    if (Object.keys(errors).length) {
       console.log("Validation error");
       Object.keys(errors).forEach((key) => {
         const messageError = errors[key];
         const input = sendMessageForm.elements[key];
         setErrorText(input, messageError);
       });
+    } else {
+      const data = {
+        to: email.value,
+        body: {
+          name: name.value,
+          subject: subject.value,
+          phone: phone.value,
+          message: message.value,
+        },
+      };
+      console.log(JSON.stringify(data));
+      sendMessageLoader.classList.remove("hidden");
+      sendRequest({
+        url: "/api/emails",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.success) {
+            sendMessageLoader.classList.add("hidden");
+            interactiveModal(sendMessageModal);
+            sendMessageForm.reset();
+            console.log(response);
+            console.log(`Your message has been successfully sent`);
+          }
+        })
+        .catch((error) => {
+          clearForm();
+          console.log(error);
+        });
     }
-  });
+  };
+
+  sendMessageForm.addEventListener("submit", sendMessage);
 })();

@@ -117,14 +117,18 @@
             interactiveModal(registerModal);
             registerForm.reset();
             console.log(response);
-            console.log(
-              `Нou have successfully registered. Your id - ${response.data.id} & your email - ${response.data.email}`
+            showMessage(
+              `Нou have successfully registered. Your id - ${response.data.id} & your email - ${response.data.email}`,
+              "success"
             );
           }
         })
         .catch((error) => {
+          interactiveModal(registerModal);
+          registerLoader.classList.add("hidden");
           clearForm();
           console.log(error);
+          showMessage(`Ups! Something has gone wrong!`, "error");
         });
     }
   };
