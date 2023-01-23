@@ -60,13 +60,23 @@
       })
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("userId", response.data.userId);
-          rerenderLinks();
-          interactiveModal(signInModal);
+          if (response.success) {
+            console.log(response);
+            localStorage.setItem("token", response.data.token);
+            localStorage.setItem("userId", response.data.userId);
+            rerenderLinks();
+            interactiveModal(signInModal);
+            signInForm.reset();
+          } else {
+            interactiveModal(signInModal);
+            showMessage("Wrong password!", "error");
+            signInModal.reset();
+            clearForm();
+            throw response;
+          }
         })
         .catch((error) => {
+          signInForm.reset();
           clearForm();
           if (error._message) console.log(error._message);
         });

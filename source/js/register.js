@@ -125,8 +125,9 @@
         })
         .catch((error) => {
           interactiveModal(registerModal);
-          registerLoader.classList.add("hidden");
+          registerForm.reset();
           clearForm();
+          registerLoader.classList.add("hidden");
           console.log(error);
           showMessage(`Ups! Something has gone wrong!`, "error");
         });

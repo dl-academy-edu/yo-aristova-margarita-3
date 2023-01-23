@@ -106,6 +106,7 @@
           }
         })
         .catch((error) => {
+          sendMessageForm.reset();
           clearForm();
           if (error._message) console.log(error._message);
         });
