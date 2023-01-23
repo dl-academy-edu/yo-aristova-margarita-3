@@ -5,6 +5,9 @@
   const profileEmail = document.querySelector(".profile__email");
   const profileLocation = document.querySelector(".profile__location");
   const profileAge = document.querySelector(".profile__age");
+  const allLogOutButtons = [
+    ...document.querySelectorAll(".nav__link--log-out-js"),
+  ];
 
   const openButtonEditingData = document.querySelector(
     ".profile__button--data-js"
@@ -102,4 +105,13 @@
   });
 
   editingDataForm.addEventListener("submit", changeData);
+
+  allLogOutButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      location.pathname = "/";
+      rerenderLinks();
+    });
+  });
 })();
