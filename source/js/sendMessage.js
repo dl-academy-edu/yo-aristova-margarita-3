@@ -69,7 +69,6 @@
     }
 
     if (Object.keys(errors).length) {
-      console.log("Validation error");
       Object.keys(errors).forEach((key) => {
         const messageError = errors[key];
         const input = sendMessageForm.elements[key];
@@ -98,17 +97,22 @@
         .then((response) => response.json())
         .then((response) => {
           if (response.success) {
-            sendMessageLoader.classList.add("hidden");
+            // sendMessageLoader.classList.add("hidden");
             interactiveModal(sendMessageModal);
             sendMessageForm.reset();
             console.log(response);
-            console.log("Your message has been successfully sent");
+            console.log("Your message has been successfully sent!");
           }
         })
         .catch((error) => {
           sendMessageForm.reset();
           clearForm();
           if (error._message) console.log(error._message);
+        })
+        .finally(() => {
+          interactiveModal(sendMessageModal);
+          // sendMessageLoader.classList.add("hidden");
+          clearForm();
         });
     }
   };

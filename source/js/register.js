@@ -86,7 +86,6 @@
     }
 
     if (Object.keys(errors).length) {
-      console.log("Validation error");
       Object.keys(errors).forEach((key) => {
         const messageError = errors[key];
         const input = registerForm.elements[key];
@@ -113,22 +112,24 @@
         .then((response) => response.json())
         .then((response) => {
           if (response.success) {
-            registerLoader.classList.add("hidden");
-            interactiveModal(registerModal);
-            registerForm.reset();
             showMessage(
-              `Нou have successfully registered. Your id - ${response.data.id} & your email - ${response.data.email}`,
+              `Нou have successfully registered. Your email - ${response.data.email}.`,
               "success"
             );
+          } else {
+            showMessage("Perhaps this mail is already registered.", "error");
+            throw response;
           }
         })
         .catch((error) => {
+          if (error._message) console.log(error._message);
+          showMessage(`Ups! Something has gone wrong!`, "error");
+        })
+        .finally(() => {
           interactiveModal(registerModal);
+          registerLoader.classList.add("hidden");
           registerForm.reset();
           clearForm();
-          registerLoader.classList.add("hidden");
-          console.log(error);
-          showMessage(`Ups! Something has gone wrong!`, "error");
         });
     }
   };

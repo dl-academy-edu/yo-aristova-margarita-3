@@ -303,13 +303,17 @@ fieldset {
 }
 
 .success {
+  font-size: 14px;
+  line-height: 16px;
   color: $success;
   margin-top: 10px;
 }
 
 .invalid {
-  max-width: 290px;
+  font-size: 14px;
+  line-height: 16px;
   color: $invalid;
+  max-width: 290px;
   margin-top: 10px;
 }
 

@@ -3,6 +3,7 @@
   const signInOpenButton = document.querySelector(".nav__link--sign-js");
   const signInCloseButton = signInModal.querySelector(".modal__close");
   const signInForm = document.forms.signIn;
+  const signInLoader = signInModal.querySelector(".loader--js");
   const isLogin = localStorage.getItem("token");
 
   if (isLogin) {
@@ -38,7 +39,6 @@
     }
 
     if (Object.keys(errors).length) {
-      console.log("Validation error");
       Object.keys(errors).forEach((key) => {
         const messageError = errors[key];
         const input = signInForm.elements[key];
@@ -49,7 +49,7 @@
         email: email.value,
         password: password.value,
       };
-      console.log(data);
+      signInLoader.classList.add("hidden");
       sendRequest({
         url: "/api/users/login",
         method: "POST",
@@ -61,24 +61,24 @@
         .then((response) => response.json())
         .then((response) => {
           if (response.success) {
-            console.log(response);
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("userId", response.data.userId);
             rerenderLinks();
-            interactiveModal(signInModal);
-            signInForm.reset();
           } else {
-            interactiveModal(signInModal);
             showMessage("Wrong password!", "error");
             signInModal.reset();
-            clearForm();
             throw response;
           }
         })
         .catch((error) => {
-          signInForm.reset();
-          clearForm();
           if (error._message) console.log(error._message);
+          showMessage(`Ups! Something has gone wrong!`, "error");
+        })
+        .finally(() => {
+          interactiveModal(signInModal);
+          signInLoader.classList.add("hidden");
+          clearForm();
+          signInForm.reset();
         });
     }
   };
