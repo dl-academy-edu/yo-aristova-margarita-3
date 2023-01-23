@@ -1,16 +1,6 @@
 .header {
   padding-top: 33px;
-  &__overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: $overlay;
-    width: 100%;
-    height: 100%;
-    z-index: 11;
-  }
-  &__close {
+  @media screen and (max-width: 480px) {
     display: none;
   }
 }
@@ -35,48 +25,132 @@
       font-family: "Gilroy-700", sans-serif;
       color: $secondary;
     }
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    display: none;
-    padding: 0;
-    &--mobile {
-      display: block;
-    }
-    &__close {
-      position: absolute;
-      top: 50px;
-      right: 13px;
-      display: block;
-      z-index: 15;
-      color: $secondary;
-      &:hover {
-        color: $base-grey;
-      }
-    }
-    &__overlay {
-      display: block;
+    &--large {
+      font-size: 34px;
+      line-height: 41px;
     }
   }
-  .nav {
-    position: relative;
-    z-index: 13;
+  &--mobile {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     row-gap: 40px;
     border-bottom: none;
-    padding: 262px 20px 0 0;
-    &__inner {
-      flex-direction: column;
-      align-items: flex-end;
-      row-gap: 40px;
-    }
-    &__link--large {
-      font-size: 34px;
-      line-height: 41px;
+  }
+}
+
+.header-mobile {
+  display: none;
+  &--visible {
+    display: block;
+  }
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $overlay;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+  }
+  &__wrapper {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    row-gap: 187px;
+    top: 0;
+    right: 20px;
+    z-index: 12;
+    padding-top: 50px;
+  }
+  &__close {
+    color: $secondary;
+    &:hover {
+      color: $base-grey;
     }
   }
 }
+
+// .header {
+//   padding-top: 33px;
+//   &__overlay {
+//     display: none;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     background-color: $overlay;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 11;
+//   }
+//   &__close {
+//     display: none;
+//   }
+// }
+
+// .nav {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   padding-bottom: 33px;
+//   border-bottom: 1px solid $base-grey;
+//   &__inner {
+//     display: flex;
+//     align-items: center;
+//     column-gap: 20px;
+//   }
+//   &__link {
+//     font-family: "Gilroy-500", sans-serif;
+//     font-size: 18px;
+//     line-height: 22px;
+//     color: $base-grey;
+//     &--active {
+//       font-family: "Gilroy-700", sans-serif;
+//       color: $secondary;
+//     }
+//   }
+// }
+
+// @media screen and (max-width: 480px) {
+//   .header {
+//     display: none;
+//     padding: 0;
+//     &--mobile {
+//       display: block;
+//     }
+//     &__close {
+//       position: absolute;
+//       top: 50px;
+//       right: 13px;
+//       display: block;
+//       z-index: 15;
+//       color: $secondary;
+//       &:hover {
+//         color: $base-grey;
+//       }
+//     }
+//     &__overlay {
+//       display: block;
+//     }
+//   }
+//   .nav {
+//     position: relative;
+//     z-index: 13;
+//     display: flex;
+//     flex-direction: column;
+//     align-items: flex-end;
+//     row-gap: 40px;
+//     border-bottom: none;
+//     padding: 262px 20px 0 0;
+//     &__inner {
+//       flex-direction: column;
+//       align-items: flex-end;
+//       row-gap: 40px;
+//     }
+//     &__link--large {
+//       font-size: 34px;
+//       line-height: 41px;
+//     }
+//   }
+// }

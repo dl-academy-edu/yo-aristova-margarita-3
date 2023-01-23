@@ -138,27 +138,26 @@ const clearForm = () => {
 };
 
 const rerenderLinks = () => {
-  const loginButton = document.querySelector(".nav__item--login-js");
-  const registerButton = document.querySelector(".nav__item--register-js");
-  const myProfileButton = document.querySelector(".nav__item--profile-js");
-  const myBlogButton = document.querySelector(".nav__item--blog-js");
+  const loginButtons = [...document.querySelectorAll(".nav__item--login-js")];
+  const registerButtons = [
+    ...document.querySelectorAll(".nav__item--register-js"),
+  ];
+  const myBlogButtons = [...document.querySelectorAll(".nav__item--blog-js")];
+  const myProfileButtons = [
+    ...document.querySelectorAll(".nav__item--profile-js"),
+  ];
 
   const isLogin = localStorage.getItem("token");
 
-  console.log(loginButton);
-  console.log(registerButton);
-  console.log(myProfileButton);
-  console.log(myBlogButton);
-
   if (isLogin) {
-    loginButton.classList.add("hidden");
-    registerButton.classList.add("hidden");
-    myProfileButton.classList.remove("hidden");
-    myBlogButton.classList.remove("hidden");
+    loginButtons.forEach((button) => button.classList.add("hidden"));
+    registerButtons.forEach((button) => button.classList.add("hidden"));
+    myBlogButtons.forEach((button) => button.classList.remove("hidden"));
+    myProfileButtons.forEach((button) => button.classList.remove("hidden"));
   } else {
-    loginButton.classList.remove("hidden");
-    registerButton.classList.remove("hidden");
-    myProfileButton.classList.add("hidden");
-    myBlogButton.classList.add("hidden");
+    loginButtons.forEach((button) => button.classList.remove("hidden"));
+    registerButtons.forEach((button) => button.classList.remove("hidden"));
+    myBlogButtons.forEach((button) => button.classList.add("hidden"));
+    myProfileButtons.forEach((button) => button.classList.add("hidden"));
   }
 };

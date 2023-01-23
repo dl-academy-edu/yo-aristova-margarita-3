@@ -10,11 +10,3 @@ const getFileName = () => {
 };
 
 getFileName();
-
-(function () {
-  const isLogin = localStorage.getItem("token");
-
-  if (isLogin) {
-    rerenderLinks();
-  }
-})();

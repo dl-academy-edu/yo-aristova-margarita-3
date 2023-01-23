@@ -1,7 +1,7 @@
 (function () {
-  const mobileMenu = document.querySelector(".header");
+  const mobileMenu = document.querySelector(".header-mobile");
   const openMenuButton = document.querySelector(".menu-button");
-  const closeMenuButton = mobileMenu.querySelector(".header__close");
+  const closeMenuButton = mobileMenu.querySelector(".header-mobile__close");
   const signInModal = document.querySelector(".sign-in");
   const signInOpenButton = mobileMenu.querySelector(".nav__link--sign-js");
   const registerModal = document.querySelector(".register");
@@ -14,30 +14,26 @@
     rerenderLinks();
   }
 
-  let menuWidth = mobileMenu.offsetWidth;
+  openMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.add("header-mobile--visible");
+  });
 
-  if (menuWidth <= 480) {
-    openMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.add("header--mobile");
-    });
+  closeMenuButton.addEventListener("click", () => {
+    mobileMenu.classList.remove("header-mobile--visible");
+  });
 
-    closeMenuButton.addEventListener("click", () => {
-      mobileMenu.classList.remove("header--mobile");
-    });
+  signInOpenButton.addEventListener("click", () => {
+    const firstInput = signInModal.querySelector(".form__input");
+    mobileMenu.classList.remove("header-mobile--visible");
+    signInModal.classList.toggle("visible");
+    console.log("click");
+    firstInput.focus();
+  });
 
-    signInOpenButton.addEventListener("click", () => {
-      const firstInput = signInModal.querySelector(".form__input");
-      mobileMenu.classList.remove("header--mobile");
-      signInModal.classList.toggle("visible");
-      console.log("click");
-      firstInput.focus();
-    });
-
-    registerOpenButton.addEventListener("click", () => {
-      const firstInput = registerModal.querySelector(".form__input");
-      mobileMenu.classList.remove("header--mobile");
-      registerModal.classList.add("visible");
-      firstInput.focus();
-    });
-  }
+  registerOpenButton.addEventListener("click", () => {
+    const firstInput = registerModal.querySelector(".form__input");
+    mobileMenu.classList.remove("header-mobile--visible");
+    registerModal.classList.add("visible");
+    firstInput.focus();
+  });
 })();
