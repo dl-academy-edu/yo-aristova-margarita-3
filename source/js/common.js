@@ -146,6 +146,10 @@ const rerenderLinks = () => {
   const myProfileButtons = [
     ...document.querySelectorAll(".nav__item--profile-js"),
   ];
+  const logOutButtons = [
+    ...document.querySelectorAll(".nav__item--log-out-js"),
+  ];
+  console.log(logOutButtons);
 
   const isLogin = localStorage.getItem("token");
 
@@ -154,10 +158,12 @@ const rerenderLinks = () => {
     registerButtons.forEach((button) => button.classList.add("hidden"));
     myBlogButtons.forEach((button) => button.classList.remove("hidden"));
     myProfileButtons.forEach((button) => button.classList.remove("hidden"));
+    logOutButtons.forEach((button) => button.classList.remove("hidden"));
   } else {
     loginButtons.forEach((button) => button.classList.remove("hidden"));
     registerButtons.forEach((button) => button.classList.remove("hidden"));
     myBlogButtons.forEach((button) => button.classList.add("hidden"));
     myProfileButtons.forEach((button) => button.classList.add("hidden"));
+    logOutButtons.forEach((button) => button.classList.add("hidden"));
   }
 };

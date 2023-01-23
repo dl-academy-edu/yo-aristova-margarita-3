@@ -102,7 +102,7 @@
             interactiveModal(sendMessageModal);
             sendMessageForm.reset();
             console.log(response);
-            console.log(`Your message has been successfully sent`);
+            console.log("Your message has been successfully sent");
           }
         })
         .catch((error) => {
