@@ -149,7 +149,6 @@ const rerenderLinks = () => {
   const logOutButtons = [
     ...document.querySelectorAll(".nav__item--log-out-js"),
   ];
-  console.log(logOutButtons);
 
   const isLogin = localStorage.getItem("token");
 

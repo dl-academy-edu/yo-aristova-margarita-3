@@ -6,11 +6,22 @@
   const profileLocation = document.querySelector(".profile__location");
   const profileAge = document.querySelector(".profile__age");
 
+  const openButtonEditingData = document.querySelector(
+    ".profile__button--data-js"
+  );
+  const editingDataModal = document.querySelector(".editing-data");
+  const editingDataForm = document.forms.editingData;
+  const closeButtonEditingData =
+    editingDataModal.querySelector(".modal__close");
+  // const modalLoader = document.querySelector(".loader--js");
+
+  let profile = null;
+
   // добавить потом лоадер
   let loaderCount = 0;
 
-  const renderProfile = (profile) => {
-    // profileImage.style.backgroundImage = `url(${BASE_SERVER_PATH + profile.photoUrl})`;
+  const renderProfile = () => {
+    profileImage.src = BASE_SERVER_PATH + profile.photoUrl;
     profileName.innerText = profile.name;
     profileSurname.innerText = profile.surname;
     profileEmail.innerText = profile.email;
@@ -26,8 +37,8 @@
       .then((response) => response.json())
       .then((response) => {
         if (response.success) {
-          console.log(response);
-          renderProfile(response.data);
+          profile = response.data;
+          renderProfile();
         } else {
           location.pathname = "/";
         }
@@ -38,5 +49,57 @@
       });
   };
 
+  const changeData = (event) => {
+    event.preventDefault();
+    const data = new FormData(editingDataForm);
+    sendRequest({
+      url: "/api/users",
+      method: "PUT",
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+      body: data,
+    })
+      .then((response) => {
+        if (response.status === "401" || response.status === "403") {
+          localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          location.pathname = "/";
+          return;
+        }
+        return response.json();
+      })
+      .then((response) => {
+        if (response.success) {
+          profile = response.data;
+          renderProfile();
+        } else throw response;
+      })
+      .catch((error) => {
+        console.log("ups");
+        if (error._message) console.log(error._message);
+        clearForm();
+      })
+      .finally(() => {
+        interactiveModal(editingDataModal);
+        location.search = "";
+      });
+  };
+
   getProfile();
+
+  openButtonEditingData.addEventListener("click", () => {
+    editingDataForm.name.value = profile.name;
+    editingDataForm.surname.value = profile.surname;
+    editingDataForm.email.value = profile.email;
+    editingDataForm.location.value = profile.location;
+    editingDataForm.age.value = profile.age;
+    interactiveModal(editingDataModal);
+  });
+
+  closeButtonEditingData.addEventListener("click", () => {
+    interactiveModal(editingDataModal);
+  });
+
+  editingDataForm.addEventListener("submit", changeData);
 })();

@@ -7,32 +7,27 @@
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form name="register" class="form">
+    <form method="PUT" name="editingData" class="form">
       <div>
         <label for="editingEmail" class="form__label">Email</label>
         <input
           type="text"
           id="editingEmail"
-          name="editingEmail"
+          name="email"
           class="form__input form__input--long"
         />
       </div>
       <div class="form__wrapper">
         <div class="form__group">
           <label for="editingName" class="form__label">Name</label>
-          <input
-            type="text"
-            id="editingName"
-            name="editingName"
-            class="form__input"
-          />
+          <input type="text" id="editingName" name="name" class="form__input" />
         </div>
         <div class="form__group">
           <label for="editingSurname" class="form__label">Surname</label>
           <input
             type="text"
             id="editingSurname"
-            name="editingSurname"
+            name="surname"
             class="form__input"
           />
         </div>
@@ -41,25 +36,20 @@
           <input
             type="text"
             id="editingLocation"
-            name="editingLocation"
+            name="location"
             class="form__input"
           />
         </div>
         <div class="form__group">
           <label for="editingAge" class="form__label">Age</label>
-          <input
-            type="text"
-            id="editingAge"
-            name="editingAge"
-            class="form__input"
-          />
+          <input type="text" id="editingAge" name="age" class="form__input" />
         </div>
         <div class="form__group file">
           <span class="form__label">Profile picture</span>
           <input
             type="file"
             id="editingPicture"
-            name="editingPicture"
+            name="avatar"
             class="file__input"
           />
           <label for="editingPicture" class="file__choose"
@@ -72,5 +62,8 @@
       </div>
       <button type="submit" class="button">Submit changes</button>
     </form>
+  </div>
+  <div class="loader loader--js hidden">
+    <div class="loader__inner"></div>
   </div>
 </section>

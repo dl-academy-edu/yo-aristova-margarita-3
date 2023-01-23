@@ -116,7 +116,6 @@
             registerLoader.classList.add("hidden");
             interactiveModal(registerModal);
             registerForm.reset();
-            console.log(response);
             showMessage(
               `Нou have successfully registered. Your id - ${response.data.id} & your email - ${response.data.email}`,
               "success"
