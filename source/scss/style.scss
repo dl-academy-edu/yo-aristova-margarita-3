@@ -221,7 +221,7 @@
       @include progress(50%);
     }
     &--figma:before {
-      @include progress(80%);
+      @include progress(60%);
     }
   }
 }

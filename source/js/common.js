@@ -186,3 +186,13 @@ allLogOutButtons.forEach((button) => {
     rerenderLinks();
   });
 });
+
+const navLinks = [...document.getElementsByTagName("a")];
+
+navLinks.forEach((link) => {
+  if (link.href === location.href) {
+    link.classList.add("nav__link--active");
+  } else {
+    link.classList.remove("nav__link--active");
+  }
+});
