@@ -13,6 +13,15 @@
   const editingDataForm = document.forms.editingData;
   const closeButtonEditingData =
     editingDataModal.querySelector(".modal__close");
+
+  const openButtonEditingPassword = document.querySelector(
+    ".profile__button--password-js"
+  );
+  const editingPasswordModal = document.querySelector(".editing-password");
+  const editingPasswordForm = document.forms.editingPassword;
+  const closeButtonEditingPassword =
+    editingPasswordModal.querySelector(".modal__close");
+
   const modalLoader = document.querySelector(".loader--js");
 
   let profile = null;
@@ -143,6 +152,78 @@
     }
   };
 
+  const changePassword = (event) => {
+    event.preventDefault();
+    const oldPassword = editingPasswordForm.elements.oldPassword;
+    const newPassword = editingPasswordForm.elements.newPassword;
+    const newPasswordRepeat = editingPasswordForm.elements.newPasswordRepeat;
+
+    let errors = {};
+
+    clearForm();
+
+    if (!newPassword.value.length) {
+      errors.newPassword = "This field is required";
+    } else if (newPassword.value.length <= 6) {
+      errors.newPassword = "The password must be more than 6 characters";
+    } else {
+      setSuccessText(newPassword);
+    }
+
+    if (!newPasswordRepeat.value.length) {
+      errors.newPasswordRepeat = "This field is required";
+    } else if (newPasswordRepeat.value !== newPassword.value) {
+      errors.newPasswordRepeat = "Your passwords do not match";
+    } else {
+      setSuccessText(newPasswordRepeat);
+    }
+
+    if (Object.keys(errors).length) {
+      Object.keys(errors).forEach((key) => {
+        const messageError = errors[key];
+        const input = editingPasswordForm.elements[key];
+        setErrorText(input, messageError);
+      });
+    } else {
+      const data = new FormData(editingPasswordForm);
+      // modalLoader.classList.remove("hidden");
+      sendRequest({
+        url: "/api/users",
+        method: "PUT",
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+        body: data,
+      })
+        .then((response) => {
+          if (response.status === "401" || response.status === "403") {
+            localStorage.removeItem("token");
+            localStorage.removeItem("userId");
+            location.pathname = "/";
+            return;
+          }
+          return response.json();
+        })
+        .then((response) => {
+          if (response.success) {
+            profile = response.data;
+            showMessage("Form has been sent successfully!", "success");
+          } else {
+            console.log("help");
+            throw response;
+          }
+        })
+        .catch((error) => {
+          if (error._message) console.log(error._message);
+        })
+        .finally(() => {
+          interactiveModal(editingPasswordModal);
+          // modalLoader.classList.add("hidden");
+          clearForm();
+        });
+    }
+  };
+
   getProfile();
 
   openButtonEditingData.addEventListener("click", () => {
@@ -158,5 +239,17 @@
     interactiveModal(editingDataModal);
   });
 
+  openButtonEditingPassword.addEventListener("click", () => {
+    editingPasswordForm.oldPassword.value = profile.password;
+    oldPassword.setAttribute("readonly", "readonly");
+    interactiveModal(editingPasswordModal);
+  });
+
+  closeButtonEditingPassword.addEventListener("click", () => {
+    interactiveModal(editingPasswordModal);
+  });
+
   editingDataForm.addEventListener("submit", changeData);
+
+  editingPasswordForm.addEventListener("submit", changePassword);
 })();

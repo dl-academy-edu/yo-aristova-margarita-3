@@ -85,7 +85,7 @@
         },
       };
       console.log(JSON.stringify(data));
-      sendMessageLoader.classList.remove("hidden");
+      // sendMessageLoader.classList.remove("hidden");
       sendRequest({
         url: "/api/emails",
         method: "POST",
