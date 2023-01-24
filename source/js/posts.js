@@ -93,10 +93,12 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
       </picture>
       <div class="post__body">
       <div class="post__tags-wrapper">
-         ${tags.map(
-           (tag) =>
-             `<div class="post__tags" style="background-color: ${tag.color} "></div>`
-         )}
+         ${tags
+           .map(
+             (tag) =>
+               `<div class="post__tags" style="background-color: ${tag.color} "></div>`
+           )
+           .join(" ")}
       </div>
         <div class="post__info">
           <span class="post__data">${finalDate}</span>
