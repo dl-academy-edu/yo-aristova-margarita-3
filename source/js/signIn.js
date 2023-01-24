@@ -65,14 +65,12 @@
             localStorage.setItem("userId", response.data.userId);
             rerenderLinks();
           } else {
-            showMessage("Wrong password!", "error");
-            signInModal.reset();
             throw response;
           }
         })
         .catch((error) => {
           if (error._message) console.log(error._message);
-          showMessage(`Ups! Something has gone wrong!`, "error");
+          showMessage("No email/password combination found!", "error");
         })
         .finally(() => {
           interactiveModal(signInModal);

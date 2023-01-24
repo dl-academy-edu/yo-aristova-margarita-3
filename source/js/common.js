@@ -117,6 +117,7 @@ const clearForm = () => {
   const errorMessages = [...document.querySelectorAll(".invalid")];
   const errorInputs = [...document.querySelectorAll(".form__input--invalid")];
   const successMessages = [...document.querySelectorAll(".success")];
+  const successInputs = [...document.querySelectorAll(".form__input--success")];
 
   if (errorMessages) {
     for (let errorMessage of errorMessages) {
@@ -133,6 +134,12 @@ const clearForm = () => {
   if (errorInputs) {
     for (let errorInput of errorInputs) {
       errorInput.classList.remove("form__input--invalid");
+    }
+  }
+
+  if (successInputs) {
+    for (let successInput of successInputs) {
+      successInput.classList.remove("form__input--success");
     }
   }
 };

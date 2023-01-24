@@ -1,4 +1,3 @@
-const SERVER_URL = "https://academy.directlinedev.com";
 const LIMIT = 9;
 const loader = document.querySelector(".loader--js");
 const links = document.querySelector(".blog__pagination--js");
@@ -76,18 +75,18 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
   return `
     <div class="post">
       <picture>
-        <source srcset="${SERVER_URL}${src.mobilePhotoUrl}, ${SERVER_URL}${
+        <source srcset="${BASE_SERVER_PATH}${
     src.mobilePhotoUrl
-  } 2x"
+  }, ${BASE_SERVER_PATH}${src.mobilePhotoUrl} 2x"
         media="(max-width: 480px)" class="post__image>
-        <source srcset="${SERVER_URL}${src.tabletPhotoUrl}, ${SERVER_URL}${
-    src.tablet2xPhotoUrl
-  } 2x"
+        <source srcset="${BASE_SERVER_PATH}${
+    src.tabletPhotoUrl
+  }, ${BASE_SERVER_PATH}${src.tablet2xPhotoUrl} 2x"
         media="(max-width: 768px)" class="post__image>
-        <source srcset="${SERVER_URL}${src.desktopPhotoUrl}, ${SERVER_URL}${
-    src.desktop2xPhotoUrl
-  } 2x" class="post__image">
-        <img src="${SERVER_URL}${
+        <source srcset="${BASE_SERVER_PATH}${
+    src.desktopPhotoUrl
+  }, ${BASE_SERVER_PATH}${src.desktop2xPhotoUrl} 2x" class="post__image">
+        <img src="${BASE_SERVER_PATH}${
     src.desktopPhotoUrl
   }" alt="Image: ${title}" class="post__image">
       </picture>
@@ -116,9 +115,9 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
 
 const createNewPage = (page) => {
   const links = document.querySelectorAll(".blog__page-number");
+  console.log(links);
   let searchParams = new URLSearchParams(location.search);
   let params = getParamsFromLocation();
-  console.log("params: ", params);
   console.log("pages: ", params.page, page, links[params.page]);
   links[params.page].classList.remove("blog__page-number--active");
   searchParams.set("page", page);
@@ -155,8 +154,6 @@ const getData = (params) => {
 
   searchParams.set("v", "1.0.0");
 
-  console.log("params from getData: ", params);
-
   if (params.tags && Array.isArray(params.tags) && params.tags.length) {
     searchParams.set("tags", JSON.stringify(params.tags));
   }
@@ -187,9 +184,7 @@ const getData = (params) => {
     searchParams.set("offset", +params.page * LIMIT);
   }
 
-  console.log("search params to string: ", searchParams.toString());
-
-  xhr.open("GET", SERVER_URL + "/api/posts?" + searchParams.toString());
+  xhr.open("GET", BASE_SERVER_PATH + "/api/posts?" + searchParams.toString());
   xhr.send();
   result.innerHTML = "";
 
@@ -333,7 +328,7 @@ const setSearchParams = (data) => {
 
   let xhr = new XMLHttpRequest();
 
-  xhr.open("GET", SERVER_URL + "/api/tags");
+  xhr.open("GET", BASE_SERVER_PATH + "/api/tags");
   xhr.send();
   showLoader();
 

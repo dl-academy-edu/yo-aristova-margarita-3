@@ -42,12 +42,12 @@
     font-size: 14px;
     line-height: 16px;
     color: $base-grey;
-    &--link {
+    &-link {
       color: $base-grey;
       border-bottom: 1px $base-grey dashed;
     }
-    &--link:hover,
-    &--link:focus {
+    &-link:hover,
+    &-link:focus {
       color: $secondary;
       border-bottom: 1px $secondary solid;
       transition: all 0.4s;

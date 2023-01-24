@@ -21,6 +21,9 @@
   const editingPasswordForm = document.forms.editingPassword;
   const closeButtonEditingPassword =
     editingPasswordModal.querySelector(".modal__close");
+  const deleteProfileButton = document.querySelector(
+    ".profile__button--delete-js"
+  );
 
   const modalLoader = document.querySelector(".loader--js");
 
@@ -116,7 +119,7 @@
       });
     } else {
       const data = new FormData(editingDataForm);
-      // modalLoader.classList.remove("hidden");
+      modalLoader.classList.remove("hidden");
       sendRequest({
         url: "/api/users",
         method: "PUT",
@@ -142,19 +145,23 @@
           } else throw response;
         })
         .catch((error) => {
+          showMessage(
+            "The form was sent but the server transmits an error!",
+            "error"
+          );
           if (error._message) console.log(error._message);
         })
         .finally(() => {
           interactiveModal(editingDataModal);
-          // modalLoader.classList.add("hidden");
+          modalLoader.classList.add("hidden");
           clearForm();
+          editingDataForm.reset();
         });
     }
   };
 
   const changePassword = (event) => {
     event.preventDefault();
-    const oldPassword = editingPasswordForm.elements.oldPassword;
     const newPassword = editingPasswordForm.elements.newPassword;
     const newPasswordRepeat = editingPasswordForm.elements.newPasswordRepeat;
 
@@ -209,11 +216,11 @@
             profile = response.data;
             showMessage("Form has been sent successfully!", "success");
           } else {
-            console.log("help");
             throw response;
           }
         })
         .catch((error) => {
+          showMessage("Ups! Something went wrong!", "error");
           if (error._message) console.log(error._message);
         })
         .finally(() => {
@@ -222,6 +229,41 @@
           clearForm();
         });
     }
+  };
+
+  const deleteProfile = (event) => {
+    event.preventDefault();
+
+    sendRequest({
+      url: `/api/users/${localStorage.getItem("userId")}`,
+      method: "DELETE",
+      headers: {
+        "x-access-token": localStorage.getItem("token"),
+      },
+    })
+      .then((response) => {
+        if (response.status === "401" || response.status === "403") {
+          localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          location.pathname = "/";
+          return;
+        }
+        return response.json();
+      })
+      .then((response) => {
+        if (response.success) {
+          showMessage("Your profile has been deleted successfully!", "success");
+          localStorage.removeItem("token");
+          localStorage.removeItem("userId");
+          location.pathname = "/";
+        } else {
+          throw response;
+        }
+      })
+      .catch((error) => {
+        showMessage("Ups! Something went wrong!", "error");
+        if (error._message) console.log(error._message);
+      });
   };
 
   getProfile();
@@ -248,6 +290,8 @@
   closeButtonEditingPassword.addEventListener("click", () => {
     interactiveModal(editingPasswordModal);
   });
+
+  deleteProfileButton.addEventListener("click", deleteProfile);
 
   editingDataForm.addEventListener("submit", changeData);
 
