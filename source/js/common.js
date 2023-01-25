@@ -188,8 +188,12 @@ allLogOutButtons.forEach((button) => {
 });
 
 const navLinks = [...document.getElementsByTagName("a")];
+const homeLink = document.querySelector(".nav__link--home");
 
 navLinks.forEach((link) => {
+  if (location.pathname === "/") {
+    homeLink.classList.add("nav__link--active");
+  }
   if (link.href === location.href) {
     link.classList.add("nav__link--active");
   } else {
