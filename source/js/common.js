@@ -69,10 +69,10 @@ const hoverButton = (form) => {
 };
 
 const switchButton = (button) => {
-  if (button.disabled) {
-    button.disabled = false;
+  if (button.hasAttribute("disabled")) {
+    button.removeAttribute("disabled");
   } else {
-    button.disabled = true;
+    button.setAttribute("disabled", "disabled");
   }
 };
 
