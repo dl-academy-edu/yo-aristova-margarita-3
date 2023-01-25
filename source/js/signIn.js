@@ -16,27 +16,37 @@
     event.preventDefault();
     const email = signInForm.elements.email;
     const password = signInForm.elements.password;
+    const inputs = [...signInForm.querySelectorAll("input")];
 
     let errors = {};
+    let requiredInputs = [];
 
     clearForm();
 
-    if (!email.value.length) {
-      errors.email = "This field is required";
-    } else if (!isEmailValid(email.value)) {
+    if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
       setSuccessText(email);
     }
 
-    if (!password.value.length) {
-      errors.password = "This field is required";
-    } else if (password.value.length <= 6) {
+    if (password.value.length <= 6) {
       errors.password = "The password must be more than 6 characters";
     } else {
       setSuccessText(password);
     }
+
+    inputs.forEach((input) => {
+      if (input.hasAttribute("required")) {
+        requiredInputs.push(input);
+      }
+    });
+
+    requiredInputs.forEach((input) => {
+      if (!input.value.length) {
+        errors[input.name] = "This field is required";
+      }
+    });
 
     if (Object.keys(errors).length) {
       Object.keys(errors).forEach((key) => {

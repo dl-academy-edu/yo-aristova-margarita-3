@@ -53,21 +53,6 @@ const interactiveWindow = (modal, openButton, closeButton) => {
   });
 };
 
-const hoverButton = (form) => {
-  const personal = form.querySelector(".form__personal");
-  const button = form.querySelector(".form__button");
-
-  personal.addEventListener("mouseover", () => {
-    button.classList.toggle("form__button--hover");
-    button.disabled = false;
-  });
-
-  personal.addEventListener("mouseout", () => {
-    button.classList.toggle("form__button--hover");
-    button.disabled = true;
-  });
-};
-
 const switchButton = (button) => {
   if (button.hasAttribute("disabled")) {
     button.removeAttribute("disabled");

@@ -10,14 +10,13 @@
   );
   const accept = sendMessageForm.elements.accept;
   const sendMessageLoader = sendMessageModal.querySelector(".loader--js");
+  const inputs = [...sendMessageForm.querySelectorAll("input")];
 
   interactiveWindow(
     sendMessageModal,
     sendMessageOpenButton,
     sendMessageCloseButton
   );
-
-  // hoverButton(sendMessageForm);
 
   accept.addEventListener("click", () => {
     switchButton(sendMessageButton);
@@ -32,42 +31,47 @@
     const message = sendMessageForm.elements.message;
 
     let errors = {};
+    let requiredInputs = [];
 
     clearForm();
 
-    if (!name.value.length) {
-      errors.name = "This field is required";
-    } else if (name.value.length <= 2) {
+    if (name.value.length <= 2) {
       errors.name = "The name must be more than 2 characters";
     } else {
       setSuccessText(name);
     }
 
-    if (!subject.value.length) {
-      errors.subject = "This field is required";
-    } else if (subject.value.length <= 6) {
-      errors.subject = "The name must be more than 6 characters";
+    if (subject.value.length <= 3) {
+      errors.subject = "The subject must be more than 3 characters";
     } else {
       setSuccessText(subject);
     }
 
-    if (!email.value.length) {
-      errors.email = "This field is required";
-    } else if (!isEmailValid(email.value)) {
+    if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
       setSuccessText(email);
     }
 
-    if (!phone.value.length) {
-      errors.phone = "This field is required";
-    } else if (!isPhoneValid(phone.value)) {
+    if (!isPhoneValid(phone.value)) {
       errors.phone =
         "Please enter a valid phone (your entry is not in the format '+79999999999')";
     } else {
       setSuccessText(phone);
     }
+
+    inputs.forEach((input) => {
+      if (input.hasAttribute("required")) {
+        requiredInputs.push(input);
+      }
+    });
+
+    requiredInputs.forEach((input) => {
+      if (!input.value.length) {
+        errors[input.name] = "This field is required";
+      }
+    });
 
     if (Object.keys(errors).length) {
       Object.keys(errors).forEach((key) => {

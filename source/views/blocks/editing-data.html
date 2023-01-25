@@ -7,7 +7,7 @@
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form name="editingData" class="form">
+    <form name="editingData" class="form" novalidate>
       <div>
         <label for="editingEmail" class="form__label">Email</label>
         <input
@@ -20,7 +20,13 @@
       <div class="form__wrapper">
         <div class="form__group">
           <label for="editingName" class="form__label">Name</label>
-          <input type="text" id="editingName" name="name" class="form__input" />
+          <input
+            type="text"
+            id="editingName"
+            name="name"
+            class="form__input"
+            required
+          />
         </div>
         <div class="form__group">
           <label for="editingSurname" class="form__label">Surname</label>
@@ -29,6 +35,7 @@
             id="editingSurname"
             name="surname"
             class="form__input"
+            required
           />
         </div>
         <div class="form__group">
@@ -38,11 +45,18 @@
             id="editingLocation"
             name="location"
             class="form__input"
+            required
           />
         </div>
         <div class="form__group">
           <label for="editingAge" class="form__label">Age</label>
-          <input type="text" id="editingAge" name="age" class="form__input" />
+          <input
+            type="text"
+            id="editingAge"
+            name="age"
+            class="form__input"
+            required
+          />
         </div>
         <div class="form__group file">
           <span class="form__label">Profile picture</span>

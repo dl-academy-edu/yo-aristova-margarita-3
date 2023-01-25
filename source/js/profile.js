@@ -27,6 +27,8 @@
   );
 
   const modalLoader = document.querySelector(".loader--js");
+  const dataFormInputs = [...editingDataForm.querySelectorAll("input")];
+  const passwordFormInputs = [...editingPasswordForm.querySelectorAll("input")];
 
   let profile = null;
 
@@ -68,49 +70,51 @@
     const age = editingDataForm.elements.age;
 
     let errors = {};
+    let requiredInputs = [];
 
     clearForm();
 
-    if (!email.value.length) {
-      errors.email = "This field is required";
-    } else if (!isEmailValid(email.value)) {
+    if (!isEmailValid(email.value)) {
       errors.email =
         "Please enter a valid email address (your entry is not in the format 'somebody@example.com')";
     } else {
       setSuccessText(email);
     }
 
-    if (!name.value.length) {
-      errors.name = "This field is required";
-    } else if (name.value.length <= 2) {
+    if (name.value.length <= 2) {
       errors.name = "The name must be more than 2 characters";
     } else {
       setSuccessText(name);
     }
-
-    if (!surname.value.length) {
-      errors.surname = "This field is required";
-    } else if (surname.value.length <= 2) {
+    if (surname.value.length <= 2) {
       errors.surname = "The name must be more than 2 characters";
     } else {
       setSuccessText(surname);
     }
 
-    if (!location.value.length) {
-      errors.location = "This field is required";
-    } else if (location.value.length <= 3) {
+    if (location.value.length <= 3) {
       errors.location = "The location must be more than 3 characters";
     } else {
       setSuccessText(location);
     }
 
-    if (!age.value.length) {
-      errors.age = "This field is required";
-    } else if (!Number(age.value)) {
+    if (!Number(age.value)) {
       errors.age = "The age must be a number";
     } else {
       setSuccessText(age);
     }
+
+    dataFormInputs.forEach((input) => {
+      if (input.hasAttribute("required")) {
+        requiredInputs.push(input);
+      }
+    });
+
+    requiredInputs.forEach((input) => {
+      if (!input.value.length) {
+        errors[input.name] = "This field is required";
+      }
+    });
 
     if (Object.keys(errors).length) {
       Object.keys(errors).forEach((key) => {
@@ -170,24 +174,33 @@
     const newPasswordRepeat = editingPasswordForm.elements.newPasswordRepeat;
 
     let errors = {};
+    let requiredInputs = [];
 
     clearForm();
 
-    if (!newPassword.value.length) {
-      errors.newPassword = "This field is required";
-    } else if (newPassword.value.length <= 6) {
+    if (newPassword.value.length <= 6) {
       errors.newPassword = "The password must be more than 6 characters";
     } else {
       setSuccessText(newPassword);
     }
 
-    if (!newPasswordRepeat.value.length) {
-      errors.newPasswordRepeat = "This field is required";
-    } else if (newPasswordRepeat.value !== newPassword.value) {
+    if (newPasswordRepeat.value !== newPassword.value) {
       errors.newPasswordRepeat = "Your passwords do not match";
     } else {
       setSuccessText(newPasswordRepeat);
     }
+
+    passwordFormInputs.forEach((input) => {
+      if (input.hasAttribute("required")) {
+        requiredInputs.push(input);
+      }
+    });
+
+    requiredInputs.forEach((input) => {
+      if (!input.value.length) {
+        errors[input.name] = "This field is required";
+      }
+    });
 
     if (Object.keys(errors).length) {
       Object.keys(errors).forEach((key) => {
