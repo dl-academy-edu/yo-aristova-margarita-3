@@ -1,4 +1,5 @@
 (function () {
+  const dialog = document.querySelector(".dialog");
   const registerModal = document.querySelector(".register");
   const registerForm = document.forms.register;
   const registerOpenButton = document.querySelector(".nav__link--register-js");
@@ -116,6 +117,9 @@
               `Нou have successfully registered. Your email - ${response.data.email}.`,
               "success"
             );
+            setTimeout(() => {
+              dialog.classList.remove("visible");
+            }, 2000);
           } else {
             showMessage("Perhaps this mail is already registered.", "error");
             throw response;

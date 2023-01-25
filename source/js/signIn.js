@@ -63,7 +63,11 @@
           if (response.success) {
             localStorage.setItem("token", response.data.token);
             localStorage.setItem("userId", response.data.userId);
+            showMessage("You have successfully sign in!", "success");
             rerenderLinks();
+            setTimeout(() => {
+              location.pathname = "/profile.html";
+            }, 2000);
           } else {
             throw response;
           }

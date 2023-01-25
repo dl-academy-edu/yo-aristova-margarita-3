@@ -1,4 +1,5 @@
 (function () {
+  const dialog = document.querySelector(".dialog");
   const profileImage = document.querySelector(".profile__image");
   const profileName = document.querySelector(".profile__name");
   const profileSurname = document.querySelector(".profile__surname");
@@ -140,8 +141,11 @@
         .then((response) => {
           if (response.success) {
             profile = response.data;
-            renderProfile();
             showMessage("Form has been sent successfully!", "success");
+            renderProfile();
+            setTimeout(() => {
+              dialog.classList.remove("visible");
+            }, 2000);
           } else throw response;
         })
         .catch((error) => {
@@ -193,7 +197,7 @@
       });
     } else {
       const data = new FormData(editingPasswordForm);
-      // modalLoader.classList.remove("hidden");
+      modalLoader.classList.remove("hidden");
       sendRequest({
         url: "/api/users",
         method: "PUT",
@@ -215,6 +219,9 @@
           if (response.success) {
             profile = response.data;
             showMessage("Form has been sent successfully!", "success");
+            setTimeout(() => {
+              dialog.classList.remove("visible");
+            }, 2000);
           } else {
             throw response;
           }
@@ -225,8 +232,9 @@
         })
         .finally(() => {
           interactiveModal(editingPasswordModal);
-          // modalLoader.classList.add("hidden");
+          modalLoader.classList.add("hidden");
           clearForm();
+          editingPasswordForm.reset();
         });
     }
   };
@@ -255,7 +263,9 @@
           showMessage("Your profile has been deleted successfully!", "success");
           localStorage.removeItem("token");
           localStorage.removeItem("userId");
-          location.pathname = "/";
+          setTimeout(() => {
+            location.pathname = "/";
+          }, 2000);
         } else {
           throw response;
         }
@@ -281,6 +291,16 @@
     interactiveModal(editingDataModal);
   });
 
+  window.addEventListener("keydown", (event) => {
+    if (
+      event.code === "Escape" &&
+      editingDataModal.classList.contains("visible")
+    ) {
+      interactiveModal(editingDataModal);
+      openButtonEditingData.focus();
+    }
+  });
+
   openButtonEditingPassword.addEventListener("click", () => {
     editingPasswordForm.oldPassword.value = profile.password;
     oldPassword.setAttribute("readonly", "readonly");
@@ -289,6 +309,16 @@
 
   closeButtonEditingPassword.addEventListener("click", () => {
     interactiveModal(editingPasswordModal);
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (
+      event.code === "Escape" &&
+      editingPasswordModal.classList.contains("visible")
+    ) {
+      interactiveModal(editingPasswordModal);
+      openButtonEditingPassword.focus();
+    }
   });
 
   deleteProfileButton.addEventListener("click", deleteProfile);

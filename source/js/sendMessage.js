@@ -1,5 +1,6 @@
 (function () {
   const sendMessageModal = document.querySelector(".send-message");
+  const dialog = sendMessageModal.querySelector(".dialog");
   const sendMessageForm = document.forms.sendMessage;
   const sendMessageOpenButton = document.querySelector(".footer__button--js");
   const sendMessageCloseButton =
@@ -84,8 +85,8 @@
           message: message.value,
         },
       };
-      console.log(JSON.stringify(data));
-      // sendMessageLoader.classList.remove("hidden");
+      data.body = JSON.stringify(data.body);
+      sendMessageLoader.classList.remove("hidden");
       sendRequest({
         url: "/api/emails",
         method: "POST",
@@ -97,21 +98,23 @@
         .then((response) => response.json())
         .then((response) => {
           if (response.success) {
-            // sendMessageLoader.classList.add("hidden");
-            interactiveModal(sendMessageModal);
-            sendMessageForm.reset();
-            console.log(response);
-            console.log("Your message has been successfully sent!");
-          }
+            showMessage("Your message was successfully send!", "success");
+            setTimeout(() => {
+              dialog.classList.remove("visible");
+            }, 2000);
+          } else throw response;
         })
         .catch((error) => {
-          sendMessageForm.reset();
-          clearForm();
+          showMessage(
+            "This email is already subscribed to the mailing list!",
+            "error"
+          );
           if (error._message) console.log(error._message);
         })
         .finally(() => {
           interactiveModal(sendMessageModal);
-          // sendMessageLoader.classList.add("hidden");
+          sendMessageLoader.classList.add("hidden");
+          sendMessageForm.reset();
           clearForm();
         });
     }
