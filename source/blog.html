@@ -190,15 +190,20 @@
                 </li>
               </ul>
             </fieldset>
-            <button type="reset" class="button filter-form__button">
+            <button
+              type="reset"
+              aria-label="Reset form"
+              class="button filter-form__button"
+            >
               Reset
             </button>
             <div class="search filter-form__search">
               <input type="text" class="search__input" />
-              <button type="submit" class="button">Search</button>
+              <button type="submit" aria-label="Search in posts" class="button">
+                Search
+              </button>
             </div>
           </form>
-
           <div class="blog__list"></div>
           @@include('blocks/panel.html', { "class": "blog" })
         </div>
