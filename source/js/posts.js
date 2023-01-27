@@ -170,6 +170,20 @@ const getData = (params) => {
     Array.isArray(params.comments) &&
     params.comments.length
   ) {
+    if (+params.comments === 0) {
+      filter.commentsCount = {
+        $between: [0, 0],
+      };
+    } else if (+params.comments === 1) {
+      filter.commentsCount = {
+        $between: [2, 50],
+      };
+    } else {
+      filter.commentsCount = {
+        $between: [51, 150],
+      };
+    }
+
     searchParams.set("comments", JSON.stringify(params.comments));
   }
 
