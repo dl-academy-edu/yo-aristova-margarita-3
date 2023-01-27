@@ -32,6 +32,7 @@ const getParamsFromLocation = () => {
   let searchParams = new URLSearchParams(location.search);
 
   return {
+    name: searchParams.get("name") || "",
     tags: searchParams.getAll("tags"),
     views: searchParams.get("views"),
     comments: searchParams.getAll("comments"),
@@ -43,6 +44,9 @@ const getParamsFromLocation = () => {
 
 const setDataToFilter = (data) => {
   const filterForm = document.forms.filter;
+
+  filterForm.elements.name.value = data.name;
+
   filterForm.elements.tags.forEach((checkbox) => {
     checkbox.checked = data.tags.includes(checkbox.value);
   });
@@ -115,10 +119,8 @@ const createPost = (src, title, date, views, commentsCount, text, tags) => {
 
 const createNewPage = (page) => {
   const links = document.querySelectorAll(".blog__page-number");
-  console.log(links);
   let searchParams = new URLSearchParams(location.search);
   let params = getParamsFromLocation();
-  console.log("pages: ", params.page, page, links[params.page]);
   links[params.page].classList.remove("blog__page-number--active");
   searchParams.set("page", page);
   links[page].classList.add("blog__page-number--active");
@@ -154,6 +156,10 @@ const getData = (params) => {
 
   searchParams.set("v", "1.0.0");
 
+  if (params.name) {
+    filter.title = params.name;
+  }
+
   if (params.tags && Array.isArray(params.tags) && params.tags.length) {
     searchParams.set("tags", JSON.stringify(params.tags));
   }
@@ -164,10 +170,6 @@ const getData = (params) => {
     params.comments.length
   ) {
     searchParams.set("comments", JSON.stringify(params.comments));
-  }
-
-  if (filter.lenght) {
-    searchParams.set("filter", JSON.stringify(params.filter));
   }
 
   if (params.views) {
@@ -183,6 +185,8 @@ const getData = (params) => {
   if (+params.page) {
     searchParams.set("offset", +params.page * LIMIT);
   }
+
+  searchParams.set("filter", JSON.stringify(filter));
 
   xhr.open("GET", BASE_SERVER_PATH + "/api/posts?" + searchParams.toString());
   xhr.send();
@@ -263,6 +267,8 @@ const getData = (params) => {
 const setSearchParams = (data) => {
   let searchParams = new URLSearchParams();
 
+  searchParams.set("name", data.name);
+
   data.tags.forEach((tag) => searchParams.append("tags", tag));
 
   if (data.page) {
@@ -295,6 +301,8 @@ const setSearchParams = (data) => {
     let data = {
       page: 0,
     };
+
+    data.name = filterForm.elements.name.value;
 
     data.tags = [...filterForm.elements.tags]
       .filter((checkbox) => checkbox.checked)
