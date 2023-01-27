@@ -1,9 +1,9 @@
-const LIMIT = 9;
 const loader = document.querySelector(".loader--js");
 const links = document.querySelector(".blog__pagination--js");
 const buttonPrev = document.querySelector(".blog__button--prev-js");
 const buttonNext = document.querySelector(".blog__button--next-js");
 
+let LIMIT = 9;
 let loaderCount = 0;
 
 const showLoader = () => {
@@ -153,6 +153,7 @@ const getData = (params) => {
   let xhr = new XMLHttpRequest();
   let searchParams = new URLSearchParams();
   let filter = {};
+  let viewsArray = [];
 
   searchParams.set("v", "1.0.0");
 
@@ -173,11 +174,19 @@ const getData = (params) => {
   }
 
   if (params.views) {
+    viewsArray = params.views.split("-");
+    filter.views = {
+      $between: [viewsArray[0], viewsArray[1]],
+    };
     searchParams.set("views", JSON.stringify(params.views));
   }
 
   if (params.sort) {
     searchParams.set("sort", JSON.stringify([params.sort, "DESC"]));
+  }
+
+  if (params.limit) {
+    LIMIT = params.limit;
   }
 
   searchParams.set("limit", LIMIT);
@@ -198,7 +207,6 @@ const getData = (params) => {
 
   xhr.onload = () => {
     const response = JSON.parse(xhr.response);
-    console.log(response);
 
     let dataPost = "";
 
