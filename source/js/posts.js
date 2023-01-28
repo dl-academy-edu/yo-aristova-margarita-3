@@ -154,6 +154,7 @@ const getData = (params) => {
   let searchParams = new URLSearchParams();
   let filter = {};
   let viewsArray = [];
+  let commentsArray = [];
 
   searchParams.set("v", "1.0.0");
 
@@ -170,20 +171,14 @@ const getData = (params) => {
     Array.isArray(params.comments) &&
     params.comments.length
   ) {
-    if (+params.comments === 0) {
-      filter.commentsCount = {
-        $between: [0, 0],
-      };
-    } else if (+params.comments === 1) {
-      filter.commentsCount = {
-        $between: [2, 50],
-      };
-    } else {
-      filter.commentsCount = {
-        $between: [51, 150],
-      };
+    for (let i = 0; i < params.comments.length; i++) {
+      let comm = params.comments[i].split("-");
+      commentsArray.push(+comm[0]);
+      commentsArray.push(+comm[1]);
     }
-
+    filter.commentsCount = {
+      $between: [Math.min(...commentsArray), Math.max(...commentsArray)],
+    };
     searchParams.set("comments", JSON.stringify(params.comments));
   }
 
