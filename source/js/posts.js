@@ -172,9 +172,9 @@ const getData = (params) => {
     params.comments.length
   ) {
     for (let i = 0; i < params.comments.length; i++) {
-      let comm = params.comments[i].split("-");
-      commentsArray.push(+comm[0]);
-      commentsArray.push(+comm[1]);
+      let comment = params.comments[i].split("-");
+      commentsArray.push(+comment[0]);
+      commentsArray.push(+comment[1]);
     }
     filter.commentsCount = {
       $between: [Math.min(...commentsArray), Math.max(...commentsArray)],
