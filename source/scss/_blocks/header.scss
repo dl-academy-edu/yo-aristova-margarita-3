@@ -21,7 +21,12 @@
     font-size: 18px;
     line-height: 22px;
     color: $base-grey;
-    &--checked {
+    &:not(.nav__link--active):hover,
+    &:not(.nav__link--active):focus {
+      font-family: "Gilroy-700", sans-serif;
+      color: $secondary;
+    }
+    &--active {
       font-family: "Gilroy-700", sans-serif;
       color: $secondary;
     }
@@ -68,7 +73,6 @@
     color: $secondary;
     &:hover {
       color: $base-grey;
-      transition-duration: 0.4s;
     }
   }
 }

@@ -16,10 +16,18 @@
         docElement.className.replace(/\bno-js\b/, "") + " js";
     </script>
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+
     <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
 
     <!-- build:css -->
     <link href="css/style.min.css" rel="stylesheet" />
+
     <!-- endbuild -->
   </head>
   <body>
@@ -30,12 +38,131 @@
           <div class="main__block">
             <h1 class="title">Rita Aristova</h1>
             <p class="info main__info">
-              Future front-end developer, 31 years old, Tolyatti
+              Future front-end developer, 32 years old, Tolyatti
             </p>
             @@include('blocks/menu-button.html')
           </div>
-          <!-- Time link -->
-          <a href="./profile.html">My profile >></a>
+          <div class="main__slider">
+            <div class="slider">
+              <div class="slider__wrapper">
+                <div class="slider__inner-wrapper">
+                  <div class="slider__slide">
+                    <picture>
+                      <source
+                        srcset="
+                          ./img/slide-1-mobile.jpg,
+                          ./img/slide-1-mobile-2x.jpg 2x
+                        "
+                        media="(max-width: 480px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-1-tablet.jpg,
+                          ./img/slide-1-tablet-2x.jpg 2x
+                        "
+                        media="(max-width: 992px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-1-desktop.jpg,
+                          ./img/slide-1-desktop-2x.jpg 2x
+                        "
+                      />
+                      <img
+                        src="./img/slide-1-desktop.jpg"
+                        alt="Image: Slide 1"
+                      />
+                    </picture>
+                  </div>
+                  <div class="slider__slide">
+                    <picture>
+                      <source
+                        srcset="
+                          ./img/slide-2-mobile.jpg,
+                          ./img/slide-2-mobile-2x.jpg 2x
+                        "
+                        media="(max-width: 480px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-2-tablet.jpg,
+                          ./img/slide-2-tablet-2x.jpg 2x
+                        "
+                        media="(max-width: 992px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-2-desktop.jpg,
+                          ./img/slide-2-desktop-2x.jpg 2x
+                        "
+                      />
+                      <img
+                        src="./img/slide-2-desktop.jpg"
+                        alt="Image: Slide 2"
+                      />
+                    </picture>
+                  </div>
+                  <div class="slider__slide">
+                    <picture>
+                      <source
+                        srcset="
+                          ./img/slide-3-mobile.jpg,
+                          ./img/slide-3-mobile-2x.jpg 2x
+                        "
+                        media="(max-width: 480px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-3-tablet.jpg,
+                          ./img/slide-3-tablet-2x.jpg 2x
+                        "
+                        media="(max-width: 992px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-3-desktop.jpg,
+                          ./img/slide-3-desktop-2x.jpg 2x
+                        "
+                      />
+                      <img
+                        src="./img/slide-3-desktop.jpg"
+                        alt="Image: Slide 3"
+                      />
+                    </picture>
+                  </div>
+                  <div class="slider__slide">
+                    <picture>
+                      <source
+                        srcset="
+                          ./img/slide-4-mobile.jpg,
+                          ./img/slide-4-mobile-2x.jpg 2x
+                        "
+                        media="(max-width: 480px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-4-tablet.jpg,
+                          ./img/slide-4-tablet-2x.jpg 2x
+                        "
+                        media="(max-width: 992px)"
+                      />
+                      <source
+                        srcset="
+                          ./img/slide-4-desktop.jpg,
+                          ./img/slide-4-desktop-2x.jpg 2x
+                        "
+                      />
+                      <img
+                        src="./img/slide-4-desktop.jpg"
+                        alt="Image: Slide 4"
+                      />
+                    </picture>
+                  </div>
+                </div>
+              </div>
+              @@include('blocks/panel.html', { "class": "slider" })
+            </div>
+          </div>
         </div>
       </section>
       <section class="about">
@@ -43,20 +170,19 @@
           <h2 class="subtitle about__title">About me</h2>
           <div class="about__wrapper">
             <p class="info about__info">
-              Aliquam tortor molestie turpis est tristique. Congue diam orci
-              amet quis semper ut. Vitae aenean nibh facilisis urna, ultricies
-              euismod nunc. Commodo fringilla sit hendrerit consequat. Vel ac
-              elit vel sagittis.
+              I am a beginner front-end developer, in my training projects I
+              used html, scss, javascript, git and gulp. I really like front-end
+              and I'm interested in developing in this direction.
             </p>
             <p class="info about__info about__info--left">
-              Tincidunt id quis pellentesque rutrum pretium. Egestas aliquam
-              dictum ipsum nisl, sed pulvinar. Commodo elit sed a fermentum non
-              justo. Etiam platea consectetur.
+              I can work with different graphic editors: figma, photoshop,
+              avocode. At the same time, if necessary, I can use the perfect
+              pixel so that the discrepancies with the layout are minimal.
             </p>
             <p class="info about__info">
-              Quam ipsum odio tellus etiam aliquam dolor ut hendrerit. Felis
-              risus nec vitae nunc ultricies placerat. Nullam nec felis eu id
-              dolor pellentesque tristique.
+              I have responsive layout skills, I can use flexbox and grid
+              technologies. I also always check my layout for validity and
+              compliance with the BEM methodology.
             </p>
           </div>
         </div>
@@ -70,40 +196,40 @@
               <img src="./img/html.png" alt="Image: Html" />
               <span class="skill skills__program">HTML 5</span>
               <div class="progress">
-                <span class="skill progress__number">85%</span>
-                <div class="progress__line"></div>
+                <span class="skill progress__number">90%</span>
+                <div class="progress__line progress__line--html"></div>
               </div>
             </li>
             <li class="skills__item">
               <img src="./img/css.png" alt="Image: CSS" />
               <span class="skill skills__program">CSS/SCSS</span>
               <div class="progress">
-                <span class="skill progress__number">55%</span>
-                <div class="progress__line"></div>
+                <span class="skill progress__number">85%</span>
+                <div class="progress__line progress__line--css"></div>
               </div>
             </li>
             <li class="skills__item">
               <img src="./img/js.png" alt="Image: JavaScript" />
               <span class="skill skills__program">JavaScript</span>
               <div class="progress">
-                <span class="skill progress__number">5%</span>
-                <div class="progress__line"></div>
+                <span class="skill progress__number">50%</span>
+                <div class="progress__line progress__line--js"></div>
               </div>
             </li>
             <li class="skills__item">
               <img src="./img/git.png" alt="Image: Git" />
               <span class="skill skills__program">Git/GitHub</span>
               <div class="progress">
-                <span class="skill progress__number">15%</span>
-                <div class="progress__line"></div>
+                <span class="skill progress__number">50%</span>
+                <div class="progress__line progress__line--git"></div>
               </div>
             </li>
             <li class="skills__item">
               <img src="./img/figma.png" alt="Image: Figma" />
               <span class="skill skills__program">Figma</span>
               <div class="progress">
-                <span class="skill progress__number">80%</span>
-                <div class="progress__line"></div>
+                <span class="skill progress__number">60%</span>
+                <div class="progress__line progress__line--figma"></div>
               </div>
             </li>
           </ul>
@@ -112,51 +238,155 @@
       <section class="portfolio">
         <div class="container">
           <h2 class="subtitle portfolio__title">Portfolio</h2>
-          <div class="portfolio__wrapper">
-            <picture>
-              <source
-                srcset="
-                  ./img/monster-mobile.png,
-                  ./img/monster-mobile-2x.png 2x
-                "
-                media="(max-width: 480px)"
-                class="portfolio__image"
-              />
-              <source
-                srcset="
-                  ./img/monster-tablet.png,
-                  ./img/monster-tablet-2x.png 2x
-                "
-                media="(max-width: 992px)"
-                class="portfolio__image"
-              />
-              <source
-                srcset="./img/monster.png, ./img/monster-2x.png 2x"
-                class="portfolio__image"
-              />
-              <img
-                src="./img/monster.png"
-                alt="Image: Monster Project Cover"
-                class="portfolio__image"
-              />
-            </picture>
-            <div class="portfolio__overlay">
-              <a href="#" class="info portfolio__info">
-                Learning site for DL Academy courses
-              </a>
-              <p class="headline portfolio__description">
-                A simple multi-page static site. The design layout was in Figma.
-                HTML and CSS were used. The site is responsive and
-                cross-browser, but without adding interactivity via JavaScript.
-              </p>
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <picture>
+                  <source
+                    srcset="
+                      ./img/monster-mobile.png,
+                      ./img/monster-mobile-2x.png 2x
+                    "
+                    media="(max-width: 480px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="
+                      ./img/monster-tablet.png,
+                      ./img/monster-tablet-2x.png 2x
+                    "
+                    media="(max-width: 992px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="./img/monster.png, ./img/monster-2x.png 2x"
+                    class="portfolio__image"
+                  />
+                  <img
+                    src="./img/monster.png"
+                    alt="Image: Monster Project Cover"
+                    class="portfolio__image"
+                  />
+                </picture>
+                <div class="portfolio__overlay">
+                  <a
+                    href="https://ritaaris.ru/dlk/"
+                    target="_blank"
+                    aria-label="Go to project for DL Academy courses"
+                    class="info portfolio__info"
+                  >
+                    Learning site for DL Academy courses
+                  </a>
+                  <p class="headline portfolio__description">
+                    A simple multi-page static site. The design layout was in
+                    Figma. HTML and CSS were used. The site is responsive and
+                    cross-browser, but without adding interactivity via
+                    JavaScript.
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source
+                    srcset="
+                      ./img/tour-plan-mobile.png,
+                      ./img/tour-plan-mobile-2x.png 2x
+                    "
+                    media="(max-width: 480px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="
+                      ./img/tour-plan-tablet.png,
+                      ./img/tour-plan-tablet-2x.png 2x
+                    "
+                    media="(max-width: 992px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="./img/tour-plan.png, ./img/tour-plan-2x.png 2x"
+                    class="portfolio__image"
+                  />
+                  <img
+                    src="./img/tour-plan.png"
+                    alt="Image: Tour Plan Cover"
+                    class="portfolio__image"
+                  />
+                </picture>
+                <div class="portfolio__overlay">
+                  <a
+                    href="https://ritaaris.ru/tour-plan/"
+                    target="_blank"
+                    aria-label="Go to project for Glo Academy - Tour plan"
+                    class="info portfolio__info"
+                  >
+                    Learning site for Glo Academy courses
+                  </a>
+                  <p class="headline portfolio__description">
+                    A simple landing page. The design layout was in Figma. HTML
+                    and SASS were used. The site is responsive and cross-browser
+                    with some interactivity via JavaScript and sending emails
+                    via PHP.
+                  </p>
+                </div>
+              </div>
+              <div class="swiper-slide">
+                <picture>
+                  <source
+                    srcset="
+                      ./img/bookstore-mobile.png,
+                      ./img/bookstore-mobile-2x.png 2x
+                    "
+                    media="(max-width: 480px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="
+                      ./img/bookstore-tablet.png,
+                      ./img/bookstore-tablet-2x.png 2x
+                    "
+                    media="(max-width: 992px)"
+                    class="portfolio__image"
+                  />
+                  <source
+                    srcset="./img/bookstore.png, ./img/bookstore-2x.png 2x"
+                    class="portfolio__image"
+                  />
+                  <img
+                    src="./img/bookstore.png"
+                    alt="Image: Bookstore Cover"
+                    class="portfolio__image"
+                  />
+                </picture>
+                <div class="portfolio__overlay">
+                  <a
+                    href="https://ritaaris.ru/bookstore/"
+                    target="_blank"
+                    aria-label="Go to project for Glo Academy - Bookstore"
+                    class="info portfolio__info"
+                  >
+                    Learning site for Glo Academy courses
+                  </a>
+                  <p class="headline portfolio__description">
+                    A simple landing page. The design layout was in Figma. HTML
+                    and SASS were used. The site is responsive and cross-browser
+                    with some interactivity via JavaScript and sending emails
+                    via PHP.
+                  </p>
+                </div>
+              </div>
             </div>
-            <button class="button-link portfolio__button">
+            <button
+              aria-label="Go to previous slide"
+              class="button-link portfolio__button portfolio__button--prev"
+            >
               <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-prev"></use>
               </svg>
             </button>
             <button
-              class="button-link portfolio__button portfolio__button--right"
+              aria-label="Go to next slide"
+              class="button-link portfolio__button portfolio__button--right portfolio__button--next"
             >
               <svg class="button-link__arrow" width="43" height="61">
                 <use xlink:href="./img/sprite.svg#arrow-next"></use>
@@ -174,5 +404,8 @@
     <script src="js/signIn.js" defer></script>
     <script src="js/register.js" defer></script>
     <script src="js/sendMessage.js" defer></script>
+    <script src="js/slider.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/swiper.js" defer></script>
   </body>
 </html>

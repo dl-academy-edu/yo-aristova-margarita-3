@@ -7,12 +7,18 @@
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form method="post" name="signIn" class="form">
+    <form method="post" name="signIn" class="form" novalidate>
       <div>
         <label for="signInEmail" class="form__label form__label--required"
           >Email</label
         >
-        <input type="text" id="signInEmail" name="email" class="form__input" />
+        <input
+          type="text"
+          id="signInEmail"
+          name="email"
+          class="form__input"
+          required
+        />
       </div>
       <div>
         <label for="signInPassword" class="form__label form__label--required"
@@ -23,9 +29,16 @@
           id="signInPassword"
           name="password"
           class="form__input"
+          required
         />
       </div>
-      <button type="submit" class="button modal__button">Log in</button>
+      <button type="submit" aria-label="Log in" class="button modal__button">
+        Log in
+      </button>
     </form>
   </div>
+  <div class="loader loader--js hidden">
+    <div class="loader__inner"></div>
+  </div>
+  @@include('blocks/dialog.html')
 </section>

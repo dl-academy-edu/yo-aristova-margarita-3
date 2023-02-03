@@ -7,13 +7,13 @@
         <use xlink:href="./img/sprite.svg#close"></use>
       </svg>
     </button>
-    <form method="post" name="register" class="form">
+    <form name="editingData" class="form" novalidate>
       <div>
         <label for="editingEmail" class="form__label">Email</label>
         <input
           type="text"
           id="editingEmail"
-          name="editingEmail"
+          name="email"
           class="form__input form__input--long"
         />
       </div>
@@ -23,8 +23,9 @@
           <input
             type="text"
             id="editingName"
-            name="editingName"
+            name="name"
             class="form__input"
+            required
           />
         </div>
         <div class="form__group">
@@ -32,8 +33,9 @@
           <input
             type="text"
             id="editingSurname"
-            name="editingSurname"
+            name="surname"
             class="form__input"
+            required
           />
         </div>
         <div class="form__group">
@@ -41,8 +43,9 @@
           <input
             type="text"
             id="editingLocation"
-            name="editingLocation"
+            name="location"
             class="form__input"
+            required
           />
         </div>
         <div class="form__group">
@@ -50,21 +53,34 @@
           <input
             type="text"
             id="editingAge"
-            name="editingAge"
+            name="age"
             class="form__input"
+            required
           />
         </div>
-        <div class="form__group">
-          <label for="editinPicture" class="form__label">Profile picture</label>
+        <div class="form__group file">
+          <span class="form__label">Profile picture</span>
           <input
             type="file"
-            id="editinPicture"
-            name="editinPicture"
-            class="form__input"
+            id="editingPicture"
+            name="avatar"
+            class="file__input"
           />
+          <label for="editingPicture" class="file__choose"
+            >Choose a file...
+          </label>
+          <svg class="file__icon" width="16" height="15">
+            <use xlink:href="./img/sprite.svg#upload"></use>
+          </svg>
         </div>
       </div>
-      <button type="submit" class="button">Submit changes</button>
+      <button type="submit" aria-label="Submit changes" class="button">
+        Submit changes
+      </button>
     </form>
   </div>
+  <div class="loader loader--js hidden">
+    <div class="loader__inner"></div>
+  </div>
+  @@include('blocks/dialog.html')
 </section>

@@ -17,12 +17,15 @@
     </script>
 
     <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
 
     <!-- build:css -->
     <link href="css/style.min.css" rel="stylesheet" />
     <!-- endbuild -->
   </head>
   <body>
+    <!-- @@include('blocks/header.html')  -->
     @@include('blocks/header.html')
     <main>
       <section class="profile">
@@ -38,15 +41,50 @@
               alt="Image: Profile Photo"
             />
             <div class="profile__info">
-              <span class="info info--extrabold">Name:</span>
-              <span class="info info--extrabold">Surname:</span>
-              <span class="info info--extrabold">Email:</span>
-              <span class="info info--extrabold">Password:</span>
-              <span class="info info--extrabold">Location:</span>
-              <span class="info info--extrabold">Age:</span>
-              <button class="button profile__button">Change password</button>
-              <button class="button">Change other data</button>
-              <button class="button">Delete account</button>
+              <div class="profile__text">
+                <span class="info info--extrabold">Name:</span>
+                <span class="profile__name"></span>
+              </div>
+              <div class="profile__text">
+                <span class="info info--extrabold">Surname:</span>
+                <span class="profile__surname"></span>
+              </div>
+              <div class="profile__text">
+                <span class="info info--extrabold">Email:</span>
+                <span class="profile__email"></span>
+              </div>
+              <div class="profile__text">
+                <span class="info info--extrabold">Password:</span>
+                <span>*******</span>
+              </div>
+              <div class="profile__text">
+                <span class="info info--extrabold">Location:</span>
+                <span class="profile__location"></span>
+              </div>
+              <div class="profile__text">
+                <span class="info info--extrabold">Age:</span>
+                <span class="profile__age"></span>
+              </div>
+              <div class="profile__buttons">
+                <button
+                  aria-label="Change password"
+                  class="button profile__button profile__button--password-js"
+                >
+                  Change password
+                </button>
+                <button
+                  aria-label="Change other data"
+                  class="button profile__button profile__button--data-js"
+                >
+                  Change other data
+                </button>
+                <button
+                  aria-label="Delete account"
+                  class="button profile__button profile__button--delete-js"
+                >
+                  Delete account
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -55,6 +93,9 @@
     @@include('blocks/footer.html') @@include('blocks/editing-password.html')
     @@include('blocks/editing-data.html')
 
-    <script src="js/app.js" defer></script>
+    <script src="js/common.js" defer></script>
+    <script src="js/file.js" defer></script>
+    <script src="js/mobileMenu.js" defer></script>
+    <script src="js/profile.js" defer></script>
   </body>
 </html>

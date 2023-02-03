@@ -17,6 +17,8 @@
     </script>
 
     <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="./img/favicon.ico" type="image/x-icon" />
 
     <!-- build:css -->
     <link href="css/style.min.css" rel="stylesheet" />
@@ -31,78 +33,11 @@
             <h1 class="title">My blog</h1>
             @@include('blocks/menu-button.html')
           </div>
-          <form action="#" class="filter-form">
-            <fieldset class="filter-form__tags">
-              <legend class="headline filter-form__subtitle">Tags</legend>
-              <ul class="tags">
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-sapphire"
-                    class="checkbox checkbox--1"
-                    checked
-                  />
-                  <label for="input-tag-sapphire"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-blue"
-                    class="checkbox checkbox--2"
-                  />
-                  <label for="input-tag-blue"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-yellow"
-                    class="checkbox checkbox--3"
-                  />
-                  <label for="input-tag-yellow"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-ultramarine"
-                    class="checkbox checkbox--4"
-                  />
-                  <label for="input-tag-ultramarine"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-orange"
-                    class="checkbox checkbox--5"
-                  />
-                  <label for="input-tag-orange"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-pink"
-                    class="checkbox checkbox--6"
-                    checked
-                  />
-                  <label for="input-tag-pink"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-violet"
-                    class="checkbox checkbox--7"
-                  />
-                  <label for="input-tag-violet"></label>
-                </li>
-                <li class="tags__item">
-                  <input
-                    type="checkbox"
-                    id="input-tag-green"
-                    class="checkbox checkbox--8"
-                  />
-                  <label for="input-tag-green"></label>
-                </li>
-              </ul>
-            </fieldset>
+          <form method="POST" name="filter" class="filter-form">
+            <div class="filter-form__tags">
+              <p class="headline filter-form__subtitle">Tags</p>
+              <div class="tags tags--js"></div>
+            </div>
             <fieldset class="filter-form__views">
               <legend class="headline filter-form__subtitle">Views</legend>
               <ul class="filter-list">
@@ -111,6 +46,7 @@
                     type="radio"
                     id="input-views-100"
                     name="views"
+                    value="100-500"
                     class="radio"
                   />
                   <label for="input-views-100" class="info info--bold"
@@ -122,8 +58,8 @@
                     type="radio"
                     id="input-views-500"
                     name="views"
+                    value="500-1000"
                     class="radio"
-                    checked
                   />
                   <label for="input-views-500" class="info info--bold"
                     >500-1000</label
@@ -134,6 +70,7 @@
                     type="radio"
                     id="input-views-1000"
                     name="views"
+                    value="1000-2000"
                     class="radio"
                   />
                   <label for="input-views-1000" class="info info--bold"
@@ -150,8 +87,8 @@
                     type="checkbox"
                     id="input-comments-0"
                     name="comments"
-                    class="checkbox"
-                    checked
+                    value="0-0"
+                    class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-0" class="info info--bold"
                     >0</label
@@ -162,7 +99,8 @@
                     type="checkbox"
                     id="input-comments-1"
                     name="comments"
-                    class="checkbox"
+                    value="0-1"
+                    class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-1" class="info info--bold"
                     >0-1</label
@@ -173,7 +111,8 @@
                     type="checkbox"
                     id="input-comments-50"
                     name="comments"
-                    class="checkbox"
+                    value="1-50"
+                    class="checkbox checkbox--margin"
                   />
                   <label for="input-comments-50" class="info info--bold"
                     >1-50</label
@@ -188,9 +127,9 @@
                   <input
                     type="radio"
                     id="input-show-5"
-                    name="show"
+                    name="limit"
+                    value="5"
                     class="radio"
-                    checked
                   />
                   <label for="input-show-5" class="info info--bold"
                     >show 5</label
@@ -200,7 +139,8 @@
                   <input
                     type="radio"
                     id="input-show-10"
-                    name="show"
+                    name="limit"
+                    value="10"
                     class="radio"
                   />
                   <label for="input-show-10" class="info info--bold"
@@ -217,8 +157,8 @@
                     type="radio"
                     id="input-sort-date"
                     name="sort"
+                    value="date"
                     class="radio"
-                    checked
                   />
                   <label for="input-sort-date" class="info info--bold"
                     >date</label
@@ -229,6 +169,7 @@
                     type="radio"
                     id="input-sort-title"
                     name="sort"
+                    value="title"
                     class="radio"
                   />
                   <label for="input-sort-title" class="info info--bold"
@@ -240,6 +181,7 @@
                     type="radio"
                     id="input-sort-views"
                     name="sort"
+                    value="views"
                     class="radio"
                   />
                   <label for="input-sort-views" class="info info--bold"
@@ -248,15 +190,28 @@
                 </li>
               </ul>
             </fieldset>
-            <button class="button filter-form__button">Reset</button>
+            <button
+              type="reset"
+              aria-label="Reset form"
+              class="button filter-form__button"
+            >
+              Reset
+            </button>
+            <div class="search filter-form__search">
+              <input type="text" name="name" class="search__input" />
+              <button type="submit" aria-label="Search in posts" class="button">
+                Search
+              </button>
+            </div>
           </form>
-          <form action="#" class="search-form">
-            <input type="text" class="search-form__input" />
-            <button class="button">Search</button>
-          </form>
+          <div class="blog__list"></div>
+          @@include('blocks/panel.html', { "class": "blog" })
         </div>
       </section>
     </main>
+    <div class="loader loader--js hidden">
+      <div class="loader__inner"></div>
+    </div>
     @@include('blocks/footer.html') @@include('blocks/sign-in.html')
     @@include('blocks/register.html') @@include('blocks/send-message.html')
 
@@ -265,5 +220,6 @@
     <script src="js/signIn.js" defer></script>
     <script src="js/register.js" defer></script>
     <script src="js/sendMessage.js" defer></script>
+    <script src="js/posts.js" defer></script>
   </body>
 </html>

@@ -1,0 +1,18 @@
+.panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__button {
+    color: $secondary;
+    transition: all 0.4s;
+    &:not(:disabled):hover {
+      color: $base-grey;
+      cursor: pointer;
+    }
+    &:disabled {
+      user-select: none;
+      pointer-events: none;
+      color: #e5e5e5;
+    }
+  }
+}

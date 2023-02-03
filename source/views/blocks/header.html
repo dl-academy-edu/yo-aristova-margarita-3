@@ -1,35 +1,62 @@
 <header class="header">
   <div class="container">
-    <nav>
-      <ul class="nav">
-        <li>
-          <a href="../../index.html" class="nav__link nav__link--checked"
-            >Home</a
-          >
-        </li>
-        <li>
-          <ul class="nav__inner">
-            <li><a href="../../blog.html" class="nav__link">My blog</a></li>
-            <li>
-              <button
-                type="button"
-                class="button-link nav__link nav__link--sign-js"
-              >
-                Sign in
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                class="button-link nav__link nav__link--register-js"
-              >
-                Register
-              </button>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </nav>
+    <ul class="nav">
+      <li>
+        <a
+          href="../../index.html"
+          aria-label="Go to Home page"
+          class="nav__link nav__link--home"
+          >Home</a
+        >
+      </li>
+      <li>
+        <ul class="nav__inner">
+          <li class="nav__item nav__item--blog-js hidden">
+            <a
+              href="../../blog.html"
+              aria-label="Go to My blog"
+              class="nav__link nav__link--blog-js"
+              >My blog</a
+            >
+          </li>
+          <li class="nav__item nav__item--profile-js hidden">
+            <a
+              href="../../profile.html"
+              aria-label="Go to My profile"
+              class="nav__link nav__link--profile-js"
+              >My Profile</a
+            >
+          </li>
+          <li class="nav__item nav__item--login-js">
+            <button
+              type="button"
+              aria-label="Sign in profile"
+              class="button-link nav__link nav__link--sign-js"
+            >
+              Sign in
+            </button>
+          </li>
+          <li class="nav__item nav__item--register-js">
+            <button
+              type="button"
+              aria-label="Register"
+              class="button-link nav__link nav__link--register-js"
+            >
+              Register
+            </button>
+          </li>
+          <li class="nav__item nav__item--log-out-js hidden">
+            <button
+              type="button"
+              aria-label="Log out of profile"
+              class="button-link nav__link nav__link--log-out-js"
+            >
+              Log Out
+            </button>
+          </li>
+        </ul>
+      </li>
+    </ul>
   </div>
 </header>
 <header class="header-mobile">
@@ -45,29 +72,52 @@
         <li>
           <a
             href="../../index.html"
-            class="nav__link nav__link--large nav__link--checked"
+            aria-label="Go to Home page"
+            class="nav__link nav__link--large"
             >Home</a
           >
         </li>
-        <li>
-          <a href="../../blog.html" class="nav__link nav__link--large"
+        <li class="nav__item nav__item--blog-js hidden">
+          <a
+            href="../../blog.html"
+            aria-label="Go to My blog"
+            class="nav__link nav__link--large"
             >My blog</a
           >
         </li>
-        <li>
+        <li class="nav__item nav__item--profile-js hidden">
+          <a
+            href="../../profile.html"
+            aria-label="Go to My profile"
+            class="nav__link nav__link--large nav__link--profile-js"
+            >My Profile</a
+          >
+        </li>
+        <li class="nav__item nav__item--login-js">
           <button
             type="button"
+            aria-label="Sign in profile"
             class="button-link nav__link nav__link--large nav__link--sign-js"
           >
             Sign in
           </button>
         </li>
-        <li>
+        <li class="nav__item nav__item--register-js">
           <button
             type="button"
-            class="button-link nav__link nav__link--large nav__link--modal"
+            aria-label="Register"
+            class="button-link nav__link nav__link--large nav__link--register-js"
           >
             Register
+          </button>
+        </li>
+        <li class="nav__item nav__item--log-out-js">
+          <button
+            type="button"
+            aria-label="Log out of profile"
+            class="button-link nav__link nav__link--large nav__link--log-out-js"
+          >
+            Log Out
           </button>
         </li>
       </ul>
